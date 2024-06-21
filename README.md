@@ -36,7 +36,7 @@
 
 
 ################################## Part 2 ###################################
-# We will now explore the network type configuration network. We do this with a degree distribution based on data, and with a degree distribution sampled from a negative binomial distribution. You got a file with data from the POLYMOD study, from which we will use the column “cnt_count”, which contains the number of daily contacts for all participants.
+We will now explore the network type configuration network. We do this with a degree distribution based on data, and with a degree distribution sampled from a negative binomial distribution. You got a file with data from the POLYMOD study, from which we will use the column “cnt_count”, which contains the number of daily contacts for all participants.
 
 ## Task 1:
 
