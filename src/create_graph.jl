@@ -6,7 +6,7 @@ Create a graph based on the specified network type.
 # Arguments
 - `network_type`: The type of network to create. Can be `:random`, `:smallworld`, `:preferentialattachment`, `:configuration` or `:proportionatemixing`.
 - `n_nodes`: The number of nodes in the graph. For :configuration, the number of nodes is fixed to 1000. Default is 1000.
-- `mean_degree`: The average degree of the nodes in the graph. For :preferentialattachment, k is used instead, k/2 is the mean degree (for even numbers). Default is 4.
+- `mean_degree`: The average degree of the nodes in the graph. For :preferentialattachment, k is used as mean_degree/2 (for even numbers). Default is 4.
 - `dispersion`: The dispersion parameter for the negative binomial distribution, used only when `network_type` is `:proportionatemixing`. Default is 0.1.
 - `β`: The rewiring probability, used only when `network_type` is `:smallworld`. Default is 0.1.
 - `k`: The number of edges to attach from a new node to existing nodes, used only when `network_type` is `:preferentialattachment`. Default is 3.

@@ -64,7 +64,7 @@ CSV.write("data/graph_keyfig_$(model.network_type)_mdeg_$(model.mean_degree)_nn_
 include("src/plotting.jl")
 
 #plot_degree_distribution(graph_measures)
-plotdegdist = plot_degree_distribution(graph_measures)
+plotdegdist = plot_degree_distribution(graph_measures;model.network_type)
 display(plotdegdist)
 savefig(plotdegdist, "figures/plotdegdist_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).pdf")
 

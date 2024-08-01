@@ -14,10 +14,10 @@ Plot the degree distribution of a graph.
 plot_degree_distribution(graph_measures)
 ```
 """
-function plot_degree_distribution(graph_measures::DataFrame)
+function plot_degree_distribution(graph_measures::DataFrame; network_type::Symbol)
     degree_distribution = graph_measures.degree_distribution[1]
     degree_distribution = DataFrame(degree=collect(keys(degree_distribution)), count=collect(values(degree_distribution)))
-    p = plot(degree_distribution.degree, degree_distribution.count, seriestype=:bar, xlabel="Degree", ylabel="Count", legend=:none)
+    p = plot(degree_distribution.degree, degree_distribution.count, seriestype=:bar, title=String(network_type), xlabel="Degree", ylabel="Count", legend=:none)
     return p
 end
 
@@ -76,10 +76,10 @@ plot_single_run(:random, :random, :random, 4, 100)
 function plot_single_run(; network_type::Symbol,  mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
     model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob)
     _, mdf = run!(model, n_steps; adata, mdata)
-    graph_measures = analyze_graph(model.graph)
     plotdynamics=plot_epidemic_trajectories(mdf)
     savefig(plotdynamics, "figures/plotdynamics_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).pdf")
-    plotdegdist = plot_degree_distribution(graph_measures)
+    graph_measures = analyze_graph(model.graph)
+    plotdegdist = plot_degree_distribution(graph_measures;model.network_type)
     display(plotdegdist)
     savefig(plotdegdist,"figures/plotdegdist_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).pdf")
 end
@@ -109,8 +109,6 @@ run_and_plot(:sfr, :proportionatemixing, :random, 4)
 """
 function run_and_plot(; plot_type::Symbol, network_type::Symbol,  mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
     model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob)
-    graph_measures = analyze_graph(model.graph)
-    CSV.write("data/graph_keyfig_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).csv", graph_measures)
     multiple_runs = run_simulations(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, n_steps)
     grouped_data = groupby(multiple_runs, [:seed])
     final_results = combine(grouped_data, :infected_count => argmin => :first_to_last_infected, :infected_count => maximum => :max_infected)
