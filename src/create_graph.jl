@@ -19,13 +19,13 @@ Create a graph based on the specified network type.
 g = create_graph(; network_type = :random,  mean_degree = 4)
 ```
 """
-function create_graph(; network_type::Symbol, mean_degree::Integer, n_nodes::Integer=1000, dispersion::Float64=0.1, β::Float64=0.1, k::Integer=3)
+function create_graph(; network_type::Symbol, mean_degree::Integer, n_nodes::Integer=1000, dispersion::Float64=0.1, β::Float64=0.1, k::Integer=4)
     if network_type == :random
         graph = Graphs.erdos_renyi(n_nodes, mean_degree / n_nodes)
     elseif network_type == :smallworld
         graph = Graphs.newman_watts_strogatz(n_nodes, mean_degree, β::Float64)
     elseif network_type == :preferentialattachment
-        graph = Graphs.barabasi_albert(n_nodes, k::Integer)
+        graph = Graphs.barabasi_albert(n_nodes, Int(round(mean_degree / 2)))
     elseif network_type == :configuration
         graph = Graphs.random_configuration_model(1000, degrees[!, 1])
     elseif network_type == :proportionatemixing

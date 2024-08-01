@@ -109,6 +109,8 @@ run_and_plot(:sfr, :proportionatemixing, :random, 4)
 """
 function run_and_plot(; plot_type::Symbol, network_type::Symbol,  mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
     model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob)
+    graph_measures = analyze_graph(model.graph)
+    CSV.write("data/graph_keyfig_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).csv", graph_measures)
     multiple_runs = run_simulations(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, n_steps)
     grouped_data = groupby(multiple_runs, [:seed])
     final_results = combine(grouped_data, :infected_count => argmin => :first_to_last_infected, :infected_count => maximum => :max_infected)
