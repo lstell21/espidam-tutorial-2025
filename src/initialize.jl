@@ -1,5 +1,5 @@
 """
-    initialize(; network_type, mean_degree = 4, n_nodes = 1000, dispersion = 0.1, patient_zero = :random, high_risk=:random, fraction_high_risk=0.1, trans_prob = 0.1, days_to_recovered = 14, seed = 42)
+initialize(; network_type, mean_degree = 4, n_nodes = 1000, dispersion = 0.1, patient_zero = :random, high_risk=:random, fraction_high_risk=0.1, trans_prob = 0.1, days_to_recovered = 14, seed = 42)
 
 Initialize the model with default parameters.
 
@@ -38,7 +38,7 @@ end
 ############################### helper functions ###############################
 
 """
-    create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered)
+create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered)
 
 Create a dictionary of properties for the simulation.
 
@@ -77,7 +77,7 @@ function create_properties(graph, network_type, n_nodes, mean_degree, dispersion
 end
 
 """
-    populate(model, high_risk::Symbol, fraction_high_risk::Float64)
+populate(model, high_risk::Symbol, fraction_high_risk::Float64)
 
 Populates the model with agents based on the specified risk distribution.
 
@@ -134,7 +134,7 @@ function populate(model::ABM, high_risk::Symbol, fraction_high_risk::Float64=0.1
 end
 
 """
-    set_patient_zero!(model::ABM, patient_zero::Symbol)
+set_patient_zero!(model::ABM, patient_zero::Symbol)
 
 Set the initial infected agent in the model based on the given `patient_zero` strategy.
 
