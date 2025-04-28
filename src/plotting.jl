@@ -1,23 +1,40 @@
 """
-    plot_degree_distribution(graph_measures)
+    plot_degree_distribution(degree_distribution; network_type::Symbol)
 
 Plot the degree distribution of a graph.
 
 # Arguments
-- `graph_measures`: A structure containing graph measures.
+- `degree_distribution`: A dictionary mapping degrees to counts or DataFrame containing degree distribution
+- `network_type`: Symbol indicating the type of network (for title)
 
 # Returns
 - `p`: A plot of the degree distribution.
 
 # Example
 ```julia
-plot_degree_distribution(graph_measures)
+plot_degree_distribution(graph_analysis["degree_distribution"], :random)
 ```
 """
-function plot_degree_distribution(graph_measures::DataFrame; network_type::Symbol)
-    degree_distribution = graph_measures.degree_distribution[1]
-    degree_distribution = DataFrame(degree=collect(keys(degree_distribution)), count=collect(values(degree_distribution)))
-    p = plot(degree_distribution.degree, degree_distribution.count, seriestype=:bar, title=String(network_type), xlabel="Degree", ylabel="Count", legend=:none)
+function plot_degree_distribution(degree_distribution; network_type::Symbol)
+    # Handle the case when degree_distribution is a dictionary (from analyze_graph)
+    if isa(degree_distribution, Dict)
+        degrees = collect(keys(degree_distribution))
+        counts = collect(values(degree_distribution))
+    # Handle the case when degree_distribution is a DataFrame with degree_distribution column
+    elseif isa(degree_distribution, DataFrame) && haskey(degree_distribution, :degree_distribution)
+        dd = degree_distribution.degree_distribution[1]
+        degrees = collect(keys(dd))
+        counts = collect(values(dd))
+    # Handle the case when degree_distribution is already unpacked DataFrame
+    elseif isa(degree_distribution, DataFrame) && haskey(degree_distribution, :degree) && haskey(degree_distribution, :count)
+        degrees = degree_distribution.degree
+        counts = degree_distribution.count
+    else
+        error("Unsupported degree_distribution format")
+    end
+    
+    p = plot(degrees, counts, seriestype=:bar, title=String(network_type), 
+             xlabel="Degree", ylabel="Count", legend=:none)
     return p
 end
 
@@ -28,6 +45,9 @@ Plot the epidemic trajectories of susceptible, infected, and recovered individua
 
 # Arguments
 - `mdf`: A DataFrame containing the epidemic data with columns `:susceptible_count`, `:infected_count`, and `:recovered_count`.
+
+# Returns
+- `p`: A plot of the epidemic trajectories.
 
 # Example
 ```julia
@@ -44,13 +64,15 @@ function plot_epidemic_trajectories(mdf::DataFrame)
     time = 1:length(susceptible)
 
     # Plot the trajectories
-    plot(time, susceptible, label="Susceptible", legend=:topright, xlabel="Time", ylabel="Count", linewidth=2)
-    plot!(time, infected, label="Infected", legend=:topright, linewidth=2)
-    plot!(time, recovered, label="Recovered", legend=:topright, linewidth=2)
+    p = plot(time, susceptible, label="Susceptible", legend=:topright, xlabel="Time", ylabel="Count", linewidth=2)
+    plot!(p, time, infected, label="Infected", linewidth=2)
+    plot!(p, time, recovered, label="Recovered", linewidth=2)
+
+    return p
 end
 
 """
-    plot_single_run(network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
+    plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
 
 Plot a single run of an epidemic simulation.
 
@@ -66,22 +88,40 @@ Arguments:
 - `n_steps::Int`: The number of simulation steps to run. Default is 100.
 
 Returns:
-- Nothing.
+- `plotdynamics`: A plot of the epidemic trajectories (susceptible, infected, recovered) over time.
+- `plotdegdist`: A plot of the degree distribution of the graph.
+- `combined_plot`: A combined plot with both the epidemic trajectories and degree distribution side-by-side.
 
 Example:
 ```julia
-plot_single_run(:random, :random, :random, 4, 100)
+dynamics_plot, degdist_plot, combined_plot = plot_single_run(network_type=:random)
 ```
 """
 function plot_single_run(; network_type::Symbol,  mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
     model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob)
+    
+    # Define adata and mdata locally to avoid relying on global variables
+    adata = [:status]
+    mdata = [:susceptible_count, :infected_count, :recovered_count]
+    
     _, mdf = run!(model, n_steps; adata, mdata)
-    plotdynamics=plot_epidemic_trajectories(mdf)
+    plotdynamics = plot_epidemic_trajectories(mdf)
     savefig(plotdynamics, "figures/plotdynamics_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).pdf")
-    graph_measures = analyze_graph(model.graph)
-    plotdegdist = plot_degree_distribution(graph_measures;model.network_type)
-    display(plotdegdist)
+    
+    # Get graph analysis results
+    graph_analysis = analyze_graph(model.graph)
+    
+    # Plot degree distribution - pass the dictionary directly
+    plotdegdist = plot_degree_distribution(graph_analysis["degree_distribution"]; network_type=model.network_type)
     savefig(plotdegdist,"figures/plotdegdist_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).pdf")
+    
+    # Create a combined plot for side-by-side visualization
+    combined_plot = plot(plotdynamics, plotdegdist, layout=(1,2), size=(1000, 400),
+                         title=["Epidemic Dynamics" "Degree Distribution"])
+    savefig(combined_plot,"figures/combined_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    
+    # Return all three plots
+    return plotdynamics, plotdegdist, combined_plot
 end
 
 
@@ -102,9 +142,12 @@ Run simulations, save the results to file and plot the results based on the spec
 - `trans_prob::Float64`: The transmission probability. Default is 0.1.
 - `n_steps::Int`: The number of simulation steps to run. Default is 100.
 
+# Returns
+- A plot based on the specified plot_type
+
 # Example
 ```julia
-run_and_plot(:sfr, :proportionatemixing, :random, 4)
+result_plot = run_and_plot(plot_type=:sfr, network_type=:proportionatemixing, patient_zero=:random)
 ```
 """
 function run_and_plot(; plot_type::Symbol, network_type::Symbol,  mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
@@ -117,11 +160,30 @@ function run_and_plot(; plot_type::Symbol, network_type::Symbol,  mean_degree::I
     # Write the results to a CSV file
     CSV.write("data/simulation_results_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).csv", multiple_runs)
     CSV.write("output/final_results_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).csv", final_results)
-    if plot_type == :sfr
-        plot(final_results.susceptible_fraction_remaining, seriestype=:bar, xlabel="Seeds", ylabel="Susceptible Fraction Remaining", legend=:none)
-    elseif plot_type == :max_infected
-        plot(final_results.max_infected, seriestype=:bar, xlabel="Seeds", ylabel="Maximum Number of Infected", legend=:none)
-    elseif plot_type == :duration
-        plot(final_results.first_to_last_infected, seriestype=:bar, xlabel="Seeds", ylabel="Duration of Epidemic", legend=:none)
-    end
+    
+    # Create descriptive title
+    network_desc = "$(titlecase(String(network_type))) Network (mean degree: $(mean_degree))"
+    patient_desc = patient_zero == :random ? "Random Patient Zero" : "Patient Zero: $(titlecase(String(patient_zero)))"
+    plot_title = ""
+    
+    plot_title = "$(plot_type == :sfr ? "Susceptible Fraction Remaining" : plot_type == :max_infected ? "Maximum Number of Infected" : "Epidemic Duration")\n$(network_desc)"
+    ylabel = plot_type == :sfr ? "Susceptible Fraction Remaining" : plot_type == :max_infected ? "Maximum Number of Infected" : "Duration of Epidemic (steps)"
+    data = plot_type == :sfr ? final_results.susceptible_fraction_remaining : plot_type == :max_infected ? final_results.max_infected : final_results.first_to_last_infected
+
+    result_plot = plot(data, 
+                       seriestype=:bar, 
+                       xlabel="Simulation Run", 
+                       ylabel=ylabel, 
+                       legend=:none,
+                       title=plot_title,
+                       guidefontsize=10,
+                       titlefontsize=12,
+                       size=(700, 500),
+                       margin=10mm)
+    
+    # Save the plot with a descriptive filename
+    savefig(result_plot, "figures/$(plot_type)_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    
+    # Return the plot for display in notebook
+    return result_plot
 end
