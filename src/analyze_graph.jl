@@ -24,54 +24,103 @@ A DataFrame containing the following graph metrics:
 - `"eigenvector_centrality"`: The eigenvector centrality of the graph.
 """
 function analyze_graph(g::AbstractGraph)
-
+    # Calculate network metrics
     mean_degree = mean(Graphs.degree(g))
     density = Graphs.density(g)
     clustering_coefficient = global_clustering_coefficient(g)
     assortativity = Graphs.assortativity(g)
     diam = is_connected(g) ? diameter(g) : "Graph is not connected"
     degree_distribution = degree_histogram(g)
+    
+    # Calculate centrality measures
     dg_c = degree_centrality(g)
     btwn_c = betweenness_centrality(g)
     clns_c = closeness_centrality(g)
     eig_c = eigenvector_centrality(g)
+    
+    # Calculate component information
     cnct_components = connected_components(g)
     comp_lengths = map(length, connected_components(g))
     max_comp_length = maximum(map(length, connected_components(g)))
     max_cliques = maximal_cliques(g)
-
-    # Pad where necessary to ensure equal length
-    max_length = maximum([length(dg_c), length(btwn_c), length(clns_c), length(eig_c), length(cnct_components), length(comp_lengths), length(max_comp_length), length(max_cliques)])
-    mean_degree = vcat(mean_degree, fill(missing, max_length - length(mean_degree)))
-    density = vcat(density, fill(missing, max_length - length(density)))
-    clustering_coefficient = vcat(clustering_coefficient, fill(missing, max_length - length(clustering_coefficient)))
-    assortativity = vcat(assortativity, fill(missing, max_length - length(assortativity)))
-    diam = vcat(diam, fill(missing, max_length - 1))
-    degree_distribution = vcat(degree_distribution, fill(missing, max_length - 1))
-    dg_c = vcat(dg_c, fill(missing, max_length - length(dg_c)))
-    btwn_c = vcat(btwn_c, fill(missing, max_length - length(btwn_c)))
-    clns_c = vcat(clns_c, fill(missing, max_length - length(clns_c)))
-    eig_c = vcat(eig_c, fill(missing, max_length - length(eig_c)))
-    cnct_components = vcat(cnct_components, fill(missing, max_length - length(cnct_components)))
-    comp_lengths = vcat(comp_lengths, fill(missing, max_length - length(comp_lengths)))
-    max_comp_length = vcat(max_comp_length, fill(missing, max_length - length(max_comp_length)))
-    max_cliques = vcat(max_cliques, fill(missing, max_length - length(max_cliques)))
-
-    results = DataFrame(
-        mean_degree = mean_degree,
-        density = density,
-        clustering_coefficient = clustering_coefficient,
-        assortativity = assortativity,
-        diameter = diam,
-        degree_distribution = degree_distribution,
+    
+    # Create summary dataframe with scalar values
+    results_summary = DataFrame(
+        metric = [
+            "Mean Degree", 
+            "Density", 
+            "Clustering Coefficient",
+            "Assortativity",
+            "Diameter",
+            "Number of Connected Components",
+            "Max Component Length"
+        ],
+        value = [
+            mean_degree, 
+            density, 
+            clustering_coefficient,
+            assortativity,
+            diam,
+            length(cnct_components),
+            max_comp_length
+        ]
+    )
+    
+    # Store more detailed node-level metrics in a separate dataframe
+    centrality_measures = DataFrame(
+        node_id = 1:nv(g),
+        degree = Graphs.degree(g),
         degree_centrality = dg_c,
         betweenness_centrality = btwn_c,
         closeness_centrality = clns_c,
-        eigenvector_centrality = eig_c,
-        connected_components = cnct_components,
-        component_lengths = comp_lengths,
-        max_component_length = max_comp_length,
-        maximal_cliques = max_cliques
+        eigenvector_centrality = eig_c
     )
-   return results
+    
+    # Create a dictionary to hold all results
+    full_results = Dict(
+        "summary" => results_summary,
+        "centrality" => centrality_measures,
+        "degree_distribution" => degree_distribution,
+        "connected_components" => cnct_components,
+        "component_lengths" => comp_lengths,
+        "maximal_cliques" => max_cliques
+    )
+    
+    return full_results
+end
+
+"""
+    print_graph_analysis(analysis_results)
+
+Display the graph analysis results in a notebook-friendly format.
+
+# Arguments
+- `analysis_results`: The dictionary returned by `analyze_graph`.
+"""
+function print_graph_analysis(analysis_results)
+    # Create a result that will display nicely in Jupyter
+    summary_df = analysis_results["summary"]
+    
+    # Get centrality statistics for display
+    centrality_summary = describe(analysis_results["centrality"][:, 2:end])
+    
+    # Get degree distribution info
+    deg_dist = analysis_results["degree_distribution"]
+    deg_info = DataFrame(
+        metric = ["Min Degree", "Max Degree", "Most Common Degree", "Number of Connected Components"],
+        value = [
+            minimum(keys(deg_dist)), 
+            maximum(keys(deg_dist)),
+            findmax(collect(values(deg_dist)))[2],
+            length(analysis_results["connected_components"])
+        ]
+    )
+    
+    # Return a named tuple of dataframes that will display well in Jupyter
+    return (
+        summary = summary_df,
+        centrality = centrality_summary,
+        degree_info = deg_info,
+        component_sizes = DataFrame(size = analysis_results["component_lengths"])
+    )
 end
