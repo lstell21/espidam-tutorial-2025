@@ -39,22 +39,23 @@ function plot_degree_distribution(degree_distribution; network_type::Symbol)
 end
 
 """
-    plot_epidemic_trajectories(mdf)
+    plot_epidemic_trajectories(mdf, network_type::Symbol)
 
 Plot the epidemic trajectories of susceptible, infected, and recovered individuals over time.
 
 # Arguments
 - `mdf`: A DataFrame containing the epidemic data with columns `:susceptible_count`, `:infected_count`, and `:recovered_count`.
+- `network_type`: Symbol indicating the type of network (for title).
 
 # Returns
 - `p`: A plot of the epidemic trajectories.
 
 # Example
 ```julia
-plot_epidemic_trajectories(mdf)
+plot_epidemic_trajectories(mdf, :random)
 ```
 """
-function plot_epidemic_trajectories(mdf::DataFrame)
+function plot_epidemic_trajectories(mdf::DataFrame, network_type::Symbol)
     # Extract the data from mdata
     susceptible = mdf[!, :susceptible_count]
     infected = mdf[!, :infected_count]
@@ -63,8 +64,10 @@ function plot_epidemic_trajectories(mdf::DataFrame)
     # Create a time vector
     time = 1:length(susceptible)
 
-    # Plot the trajectories
-    p = plot(time, susceptible, label="Susceptible", legend=:topright, xlabel="Time", ylabel="Count", linewidth=2)
+    # Plot the trajectories with network type in the title
+    p = plot(time, susceptible, label="Susceptible", legend=:topright, 
+             xlabel="Time", ylabel="Count", linewidth=2,
+             title="Epidemic Dynamics ($(String(network_type)))")
     plot!(p, time, infected, label="Infected", linewidth=2)
     plot!(p, time, recovered, label="Recovered", linewidth=2)
 
@@ -105,7 +108,7 @@ function plot_single_run(; network_type::Symbol,  mean_degree::Int=4, n_nodes::I
     mdata = [:susceptible_count, :infected_count, :recovered_count]
     
     _, mdf = run!(model, n_steps; adata, mdata)
-    plotdynamics = plot_epidemic_trajectories(mdf)
+    plotdynamics = plot_epidemic_trajectories(mdf, model.network_type)
     savefig(plotdynamics, "figures/plotdynamics_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).pdf")
     
     # Get graph analysis results
@@ -115,9 +118,9 @@ function plot_single_run(; network_type::Symbol,  mean_degree::Int=4, n_nodes::I
     plotdegdist = plot_degree_distribution(graph_analysis["degree_distribution"]; network_type=model.network_type)
     savefig(plotdegdist,"figures/plotdegdist_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).pdf")
     
-    # Create a combined plot for side-by-side visualization
+    # Create a combined plot for side-by-side visualization with network type in titles
     combined_plot = plot(plotdynamics, plotdegdist, layout=(1,2), size=(1000, 400),
-                         title=["Epidemic Dynamics" "Degree Distribution"])
+                         title=["Epidemic Dynamics ($(String(model.network_type)))" "Degree Distribution ($(String(model.network_type)))"])
     savefig(combined_plot,"figures/combined_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
     
     # Return all three plots
