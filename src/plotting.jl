@@ -33,7 +33,7 @@ function plot_degree_distribution(degree_distribution; network_type::Symbol)
         error("Unsupported degree_distribution format")
     end
     
-    p = plot(degrees, counts, seriestype=:bar, title=String(network_type), 
+    p = plot(degrees, counts, seriestype=:bar, title="Degree Distribution ($(String(network_type)))", 
              xlabel="Degree", ylabel="Count", legend=:none)
     return p
 end
