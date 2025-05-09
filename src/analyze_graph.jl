@@ -40,8 +40,8 @@ function analyze_graph(g::AbstractGraph)
     
     # Calculate component information
     cnct_components = connected_components(g)
-    comp_lengths = map(length, connected_components(g))
-    max_comp_length = maximum(map(length, connected_components(g)))
+    comp_lengths = map(length, cnct_components)
+    max_comp_length = maximum(comp_lengths)
     max_cliques = maximal_cliques(g)
     
     # Create summary dataframe with scalar values
@@ -105,14 +105,18 @@ function print_graph_analysis(analysis_results)
     
     # Get degree distribution info
     deg_dist = analysis_results["degree_distribution"]
+    deg_keys = collect(keys(deg_dist))
+    deg_values = collect(values(deg_dist))
+    
     deg_info = DataFrame(
         metric = ["Min Degree", "Max Degree", "Most Common Degree"],
         value = [
-            minimum(keys(deg_dist)), 
-            maximum(keys(deg_dist)),
-            collect(keys(deg_dist))[findmax(collect(values(deg_dist)))[2]],
+            minimum(deg_keys),
+            maximum(deg_keys),
+            deg_keys[findmax(deg_values)[2]]
         ]
     )
+    
     # Create a component sizes table and summary
     comp_sizes = analysis_results["component_lengths"]
     component_sizes_df = DataFrame(component_id = 1:length(comp_sizes), size = comp_sizes)
