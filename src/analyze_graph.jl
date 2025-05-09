@@ -69,7 +69,6 @@ function analyze_graph(g::AbstractGraph)
     # Store more detailed node-level metrics in a separate dataframe
     centrality_measures = DataFrame(
         node_id = 1:nv(g),
-        degree = Graphs.degree(g),
         degree_centrality = dg_c,
         betweenness_centrality = btwn_c,
         closeness_centrality = clns_c,
@@ -107,20 +106,31 @@ function print_graph_analysis(analysis_results)
     # Get degree distribution info
     deg_dist = analysis_results["degree_distribution"]
     deg_info = DataFrame(
-        metric = ["Min Degree", "Max Degree", "Most Common Degree", "Number of Connected Components"],
+        metric = ["Min Degree", "Max Degree", "Most Common Degree"],
         value = [
             minimum(keys(deg_dist)), 
             maximum(keys(deg_dist)),
-            findmax(collect(values(deg_dist)))[2],
-            length(analysis_results["connected_components"])
+            collect(keys(deg_dist))[findmax(collect(values(deg_dist)))[2]],
         ]
     )
+    # Create a component sizes table and summary
+    comp_sizes = analysis_results["component_lengths"]
+    component_sizes_df = DataFrame(component_id = 1:length(comp_sizes), size = comp_sizes)
+    
+    # Create a component size summary table
+    size_counts = countmap(comp_sizes)
+    component_summary = DataFrame(
+        component_size = collect(keys(size_counts)),
+        count = collect(values(size_counts))
+    )
+    sort!(component_summary, :component_size)
     
     # Return a named tuple of dataframes that will display well in Jupyter
     return (
         summary = summary_df,
         centrality = centrality_summary,
         degree_info = deg_info,
-        component_sizes = DataFrame(size = analysis_results["component_lengths"])
+        component_sizes = component_sizes_df,
+        component_summary = component_summary
     )
 end
