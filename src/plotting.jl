@@ -129,12 +129,164 @@ end
 
 
 """
-    run_and_plot(plot_type::Symbol, network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random,  high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
+    run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::Int=4, n_nodes::Int=1000, 
+                          dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, 
+                          fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
 
-Run simulations, save the results to file and plot the results based on the specified parameters.
+Run simulations for multiple network types, save the results to file and generate comparison plots 
+of epidemic metrics across different network types.
 
 # Arguments
-- `plot_type::Symbol`: The type of plot to generate. Possible values are `:sfr` (susceptible fraction remaining), `:max_infected` (maximum number of infected), or `:duration` (duration of epidemic).
+- `network_types::Vector{Symbol}`: Vector of network types to compare. Possible values include `:random`, 
+  `:smallworld`, `:preferentialattachment`, `:configuration`, or `:proportionatemixing`.
+- `mean_degree::Int`: The mean degree of the network. Default is 4.
+- `n_nodes::Int`: The number of nodes in the network. Default is 1000.
+- `dispersion::Float64`: The dispersion parameter for the network. Default is 0.1.
+- `patient_zero::Symbol`: The type of patient zero to use. Default is `:random`.
+- `high_risk::Symbol`: How high-risk individuals are distributed. Default is `:random`.
+- `fraction_high_risk::Float64`: The fraction of high-risk individuals in the population. Default is `0.1`.
+- `trans_prob::Float64`: The transmission probability. Default is 0.1.
+- `n_steps::Int`: The number of simulation steps to run. Default is 100.
+
+# Returns
+- A tuple containing three comparison plots: (duration_comparison, max_infected_comparison, sfr_comparison)
+
+# Example
+```julia
+duration_comparison, max_infected_comparison, sfr_comparison = run_and_plot_comparison(
+    network_types=[:random, :smallworld, :preferentialattachment],
+    mean_degree=4
+)
+```
+"""
+function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::Int=4, n_nodes::Int=1000, 
+                               dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, 
+                               fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
+    # Store results for each network type
+    all_results = Dict()
+    
+    # Run simulations for each network type
+    for network_type in network_types
+        println("Running simulations for $(network_type) network...")
+        model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob)
+        multiple_runs = run_simulations(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, n_steps);
+        grouped_data = groupby(multiple_runs, [:seed])
+        final_results = combine(grouped_data, :infected_count => argmin => :first_to_last_infected, :infected_count => maximum => :max_infected)
+        last_rows = combine(grouped_data, names(multiple_runs) .=> last)
+        final_results[!, :susceptible_fraction_remaining] = last_rows.susceptible_count_last ./ (last_rows.susceptible_count_last + last_rows.infected_count_last + last_rows.recovered_count_last)
+        
+        # Save results for each network type
+        CSV.write("data/simulation_results_$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes)_disp_$(dispersion)_pat0_$(patient_zero)_hirisk_$(high_risk)_hr_frac_$(fraction_high_risk)_trans_$(trans_prob).csv", multiple_runs)
+        CSV.write("output/final_results_$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes)_disp_$(dispersion)_pat0_$(patient_zero)_hirisk_$(high_risk)_hr_frac_$(fraction_high_risk)_trans_$(trans_prob).csv", final_results)
+        
+        # Calculate summary statistics for each network type
+        all_results[network_type] = (
+            duration_mean = mean(final_results.first_to_last_infected),
+            duration_std = std(final_results.first_to_last_infected),
+            max_infected_mean = mean(final_results.max_infected),
+            max_infected_std = std(final_results.max_infected),
+            sfr_mean = mean(final_results.susceptible_fraction_remaining),
+            sfr_std = std(final_results.susceptible_fraction_remaining)
+        )
+    end
+    
+    # Prepare data for comparison plots
+    network_labels = [titlecase(String(nt)) for nt in network_types]
+    duration_means = [all_results[nt].duration_mean for nt in network_types]
+    duration_stds = [all_results[nt].duration_std for nt in network_types]
+    max_infected_means = [all_results[nt].max_infected_mean for nt in network_types]
+    max_infected_stds = [all_results[nt].max_infected_std for nt in network_types]
+    sfr_means = [all_results[nt].sfr_mean for nt in network_types]
+    sfr_stds = [all_results[nt].sfr_std for nt in network_types]
+    
+    # Generate comparison plots with optimized layout
+    
+    # 1. Duration comparison
+    duration_comparison = bar(
+        network_labels, 
+        duration_means,
+        yerror=duration_stds,
+        title="Epidemic Duration Comparison\n(mean degree: $(mean_degree))",
+        xlabel="Network Type",
+        ylabel="Duration (steps)",
+        legend=false,
+        size=(600, 300),         # Reduced size
+        margin=5mm,              # Reduced margins
+        guidefontsize=9,         # Smaller font size
+        titlefontsize=10,        # Smaller title font
+        xtickfontsize=8,         # Smaller tick labels
+        bar_width=0.4,           # Thinner bars (reduced from 0.6)
+        linewidth=1,             # Thinner error bars
+        left_margin=8mm          # Add left margin for aligned y-axis label
+    )
+    savefig(duration_comparison, "figures/duration_comparison_mdeg_$(mean_degree).pdf")
+    
+    # 2. Maximum infected comparison
+    max_infected_comparison = bar(
+        network_labels,
+        max_infected_means,
+        yerror=max_infected_stds,
+        title="Maximum Infected Comparison\n(mean degree: $(mean_degree))",
+        xlabel="Network Type",
+        ylabel="Maximum Number of Infected",
+        legend=false,
+        size=(600, 300),         # Reduced size
+        margin=5mm,              # Reduced margins
+        guidefontsize=9,         # Smaller font size
+        titlefontsize=10,        # Smaller title font
+        xtickfontsize=8,         # Smaller tick labels
+        bar_width=0.4,           # Thinner bars (reduced from 0.6)
+        linewidth=1,             # Thinner error bars
+        left_margin=8mm          # Add left margin for aligned y-axis label
+    )
+    savefig(max_infected_comparison, "figures/max_infected_comparison_mdeg_$(mean_degree).pdf")
+    
+    # 3. Susceptible fraction remaining comparison
+    sfr_comparison = bar(
+        network_labels,
+        sfr_means,
+        yerror=sfr_stds,
+        title="Susceptible Fraction Remaining Comparison\n(mean degree: $(mean_degree))",
+        xlabel="Network Type",
+        ylabel="Susceptible Fraction Remaining",
+        legend=false,
+        size=(600, 300),         # Reduced size
+        margin=5mm,              # Reduced margins
+        guidefontsize=9,         # Smaller font size
+        titlefontsize=10,        # Smaller title font
+        xtickfontsize=8,         # Smaller tick labels
+        bar_width=0.4,           # Thinner bars (reduced from 0.6)
+        linewidth=1,             # Thinner error bars
+        ylims=(0, maximum(sfr_means + sfr_stds) * 1.1), # Adjust y-axis to better show small values
+        left_margin=8mm          # Add left margin for aligned y-axis label
+    )
+    savefig(sfr_comparison, "figures/sfr_comparison_mdeg_$(mean_degree).pdf")
+    
+    # Create a more compact combined comparison plot with aligned y-axis labels
+    combined_comparison = plot(
+        duration_comparison, max_infected_comparison, sfr_comparison,
+        layout=(3,1),
+        size=(700, 700),         # More compact size
+        margin=3mm,              # Smaller margins around the overall plot
+        title=["Epidemic Duration" "Maximum Infected" "Susceptible Fraction Remaining"],
+        titlefontsize=10,
+        plot_title="Network Comparison (mean degree: $(mean_degree))", 
+        plot_titlefontsize=12,
+        left_margin=8mm          # Consistent left margin for alignment
+    )
+    savefig(combined_comparison, "figures/combined_comparison_mdeg_$(mean_degree).pdf")
+    
+    # Return only the combined comparison plot
+    return combined_comparison
+end
+
+
+"""
+    run_and_plot(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
+
+Run simulations, save the results to file and generate three plots: duration of epidemic, maximum number of infected, and susceptible fraction remaining.
+
+# Arguments
 - `network_type::Symbol`: The type of network to use for the simulation. Possible values are `:random`, `:smallworld`, `:preferentialattachment`, `:configuration`, or `:proportionatemixing`.
 - `mean_degree::Int`: The mean degree of the network. Default is 4.
 - `n_nodes::Int`: The number of nodes in the network. For :configuration, the number of nodes is fixed to 1000. Default is 1000.
@@ -146,47 +298,76 @@ Run simulations, save the results to file and plot the results based on the spec
 - `n_steps::Int`: The number of simulation steps to run. Default is 100.
 
 # Returns
-- A plot based on the specified plot_type
+- A tuple containing all three plots: (duration_plot, max_infected_plot, sfr_plot)
 
 # Example
 ```julia
-result_plot = run_and_plot(plot_type=:sfr, network_type=:proportionatemixing, patient_zero=:random)
+duration_plot, max_infected_plot, sfr_plot = run_and_plot(network_type=:proportionatemixing, patient_zero=:random)
 ```
 """
-function run_and_plot(; plot_type::Symbol, network_type::Symbol,  mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
+function run_and_plot(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
     model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob)
     multiple_runs = run_simulations(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, n_steps)
     grouped_data = groupby(multiple_runs, [:seed])
     final_results = combine(grouped_data, :infected_count => argmin => :first_to_last_infected, :infected_count => maximum => :max_infected)
     last_rows = combine(grouped_data, names(multiple_runs) .=> last)
     final_results[!, :susceptible_fraction_remaining] = last_rows.susceptible_count_last ./ (last_rows.susceptible_count_last + last_rows.infected_count_last + last_rows.recovered_count_last)
-    # Write the results to a CSV file
+    
+    # Write the results to CSV files
     CSV.write("data/simulation_results_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).csv", multiple_runs)
     CSV.write("output/final_results_$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob).csv", final_results)
     
-    # Create descriptive title
+    # Create descriptive base title that includes network type
     network_desc = "$(titlecase(String(network_type))) Network (mean degree: $(mean_degree))"
-    patient_desc = patient_zero == :random ? "Random Patient Zero" : "Patient Zero: $(titlecase(String(patient_zero)))"
-    plot_title = ""
     
-    plot_title = "$(plot_type == :sfr ? "Susceptible Fraction Remaining" : plot_type == :max_infected ? "Maximum Number of Infected" : "Epidemic Duration")\n$(network_desc)"
-    ylabel = plot_type == :sfr ? "Susceptible Fraction Remaining" : plot_type == :max_infected ? "Maximum Number of Infected" : "Duration of Epidemic (steps)"
-    data = plot_type == :sfr ? final_results.susceptible_fraction_remaining : plot_type == :max_infected ? final_results.max_infected : final_results.first_to_last_infected
-
-    result_plot = plot(data, 
-                       seriestype=:bar, 
-                       xlabel="Simulation Run", 
-                       ylabel=ylabel, 
-                       legend=:none,
-                       title=plot_title,
-                       guidefontsize=10,
-                       titlefontsize=12,
-                       size=(700, 500),
-                       margin=10mm)
+    # Generate the three plots
     
-    # Save the plot with a descriptive filename
-    savefig(result_plot, "figures/$(plot_type)_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    # 1. Duration plot
+    duration_plot = plot(final_results.first_to_last_infected, 
+                     seriestype=:bar, 
+                     xlabel="Simulation Run", 
+                     ylabel="Duration of Epidemic (steps)",
+                     legend=:none,
+                     title="Epidemic Duration\n$(network_desc)",
+                     guidefontsize=10,
+                     titlefontsize=12,
+                     size=(700, 500),
+                     margin=10mm)
+    savefig(duration_plot, "figures/duration_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
     
-    # Return the plot for display in notebook
-    return result_plot
+    # 2. Maximum infected plot
+    max_infected_plot = plot(final_results.max_infected, 
+                         seriestype=:bar, 
+                         xlabel="Simulation Run", 
+                         ylabel="Maximum Number of Infected",
+                         legend=:none,
+                         title="Maximum Number of Infected\n$(network_desc)",
+                         guidefontsize=10,
+                         titlefontsize=12,
+                         size=(700, 500),
+                         margin=10mm)
+    savefig(max_infected_plot, "figures/max_infected_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    
+    # 3. Susceptible fraction remaining plot
+    sfr_plot = plot(final_results.susceptible_fraction_remaining, 
+                seriestype=:bar, 
+                xlabel="Simulation Run", 
+                ylabel="Susceptible Fraction Remaining",
+                legend=:none,
+                title="Susceptible Fraction Remaining\n$(network_desc)",
+                guidefontsize=10,
+                titlefontsize=12,
+                size=(700, 500),
+                margin=10mm)
+    savefig(sfr_plot, "figures/sfr_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    
+    # Create a combined plot with all three metrics
+    combined_plot = plot(duration_plot, max_infected_plot, sfr_plot, 
+                    layout=(3,1), 
+                    size=(800, 900),
+                    title=["Epidemic Duration" "Maximum Number of Infected" "Susceptible Fraction Remaining"])
+    savefig(combined_plot, "figures/combined_metrics_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    
+    # Return comnined plot
+    return combined_plot
 end

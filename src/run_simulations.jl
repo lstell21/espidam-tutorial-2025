@@ -43,7 +43,7 @@ function run_simulations(; network_type::Symbol,  mean_degree::Int, n_nodes::Int
         initialize;
         mdata=[:susceptible_count, :infected_count, :recovered_count],
         n=n_steps,
-        showprogress=true
-    )
+        showprogress=false
+    );
     return mdf
 end
