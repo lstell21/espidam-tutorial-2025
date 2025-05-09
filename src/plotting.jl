@@ -142,7 +142,7 @@ of epidemic metrics across different network types.
 - `mean_degree::Int`: The mean degree of the network. Default is 4.
 - `n_nodes::Int`: The number of nodes in the network. Default is 1000.
 - `dispersion::Float64`: The dispersion parameter for the network. Default is 0.1.
-- `patient_zero::Symbol`: The type of patient zero to use. Default is `:random`.
+- `patient_zero::Symbol`: The type of patient zero to use for the simulation. Default is `:random`.
 - `high_risk::Symbol`: How high-risk individuals are distributed. Default is `:random`.
 - `fraction_high_risk::Float64`: The fraction of high-risk individuals in the population. Default is `0.1`.
 - `trans_prob::Float64`: The transmission probability. Default is 0.1.
@@ -370,4 +370,134 @@ function run_and_plot(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1
     
     # Return comnined plot
     return combined_plot
+end
+
+"""
+    compare_network_metrics(; network_types::Vector{Symbol}, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1)
+
+Compare key network metrics across different network types, visualized in a combined plot.
+
+# Arguments
+- `network_types::Vector{Symbol}`: Vector of network types to compare (e.g., [:random, :smallworld, :preferentialattachment])
+- `mean_degree::Int`: The mean degree to use for all networks. Default is 4.
+- `n_nodes::Int`: The number of nodes in each network. Default is 1000.
+- `dispersion::Float64`: The dispersion parameter for the network. Default is 0.1.
+
+# Returns
+- A plot comparing network metrics across different network types
+
+# Example
+```julia
+metrics_plot = compare_network_metrics(
+    network_types=[:random, :smallworld, :preferentialattachment],
+    mean_degree=4
+)
+```
+"""
+function compare_network_metrics(; network_types::Vector{Symbol}, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1)
+    # Store metrics for each network type
+    all_metrics = Dict()
+    
+    # For each network type, generate a network and calculate its metrics
+    for network_type in network_types
+        println("Analyzing metrics for $(network_type) network...")
+        model = initialize(; network_type, mean_degree, n_nodes, dispersion)
+        analysis = analyze_graph(model.graph)
+        
+        # Extract metrics from the analysis results - handle the metric/value format
+        summary_df = analysis["summary"]
+        centrality_df = analysis["centrality"]
+        
+        # The summary dataframe has "metric" and "value" columns, so we extract values by filtering rows
+        get_metric = function(metric_name)
+            row = summary_df[summary_df.metric .== metric_name, :]
+            return isempty(row) ? 0.0 : row.value[1]
+        end
+        
+        # Store the summary metrics and centrality statistics
+        all_metrics[network_type] = Dict(
+            "density" => get_metric("network_density"),
+            "clustering_coefficient" => get_metric("global_clustering_coefficient"),
+            "assortativity" => get_metric("degree_assortativity"),
+            "degree_centrality_mean" => mean(centrality_df.degree_centrality),
+            "betweenness_centrality_mean" => mean(centrality_df.betweenness_centrality),
+            "closeness_centrality_mean" => mean(centrality_df.closeness_centrality),
+            "eigenvector_centrality_mean" => mean(centrality_df.eigenvector_centrality)
+        )
+        
+        # Save the full results for this network type
+        CSV.write("data/network_metrics_$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes).csv", summary_df)
+        CSV.write("data/centrality_metrics_$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes).csv", centrality_df)
+    end
+    
+    # Prepare data for plotting
+    network_labels = [titlecase(String(nt)) for nt in network_types]
+    
+    # Create separate plots for different metric groups
+    
+    # 1. Structural metrics
+    structure_metrics_plot = plot(
+        ylabel="Value",
+        title="Network Structure Metrics\n(mean degree: $(mean_degree), nodes: $(n_nodes))",
+        legend=:topleft,
+        size=(600, 400),
+        margin=5mm,
+        guidefontsize=9,
+        titlefontsize=10,
+        xtickfontsize=8
+    )
+    
+    # Add density
+    density_values = [all_metrics[nt]["density"] for nt in network_types]
+    plot!(structure_metrics_plot, 1:length(network_types), density_values, label="Density", marker=:circle)
+    
+    # Add clustering coefficient
+    clustering_values = [all_metrics[nt]["clustering_coefficient"] for nt in network_types]
+    plot!(structure_metrics_plot, 1:length(network_types), clustering_values, label="Clustering Coefficient", marker=:square)
+    
+    # Add assortativity
+    assortativity_values = [all_metrics[nt]["assortativity"] for nt in network_types]
+    plot!(structure_metrics_plot, 1:length(network_types), assortativity_values, label="Assortativity", marker=:diamond)
+    
+    # Set x-axis ticks to network labels
+    plot!(structure_metrics_plot, xticks=(1:length(network_types), network_labels))
+    
+    # 2. Centrality metrics
+    centrality_metrics_plot = plot(
+        ylabel="Mean Value",
+        title="Mean Centrality Metrics\n(mean degree: $(mean_degree), nodes: $(n_nodes))",
+        legend=:topleft,
+        size=(600, 400),
+        margin=5mm,
+        guidefontsize=9,
+        titlefontsize=10,
+        xtickfontsize=8
+    )
+    
+    # Add mean degree centrality
+    degree_centrality_values = [all_metrics[nt]["degree_centrality_mean"] for nt in network_types]
+    plot!(centrality_metrics_plot, 1:length(network_types), degree_centrality_values, label="Degree Centrality", marker=:circle)
+    
+    # Add mean betweenness centrality
+    betweenness_centrality_values = [all_metrics[nt]["betweenness_centrality_mean"] for nt in network_types]
+    plot!(centrality_metrics_plot, 1:length(network_types), betweenness_centrality_values, label="Betweenness Centrality", marker=:square)
+    
+    # Add mean closeness centrality
+    closeness_centrality_values = [all_metrics[nt]["closeness_centrality_mean"] for nt in network_types]
+    plot!(centrality_metrics_plot, 1:length(network_types), closeness_centrality_values, label="Closeness Centrality", marker=:diamond)
+    
+    # Add mean eigenvector centrality
+    eigenvector_centrality_values = [all_metrics[nt]["eigenvector_centrality_mean"] for nt in network_types]
+    plot!(centrality_metrics_plot, 1:length(network_types), eigenvector_centrality_values, label="Eigenvector Centrality", marker=:star5)
+    
+    # Set x-axis ticks to network labels
+    plot!(centrality_metrics_plot, xticks=(1:length(network_types), network_labels))
+    
+    # Create a combined plot
+    combined_metrics_plot = plot(structure_metrics_plot, centrality_metrics_plot, layout=(2,1), size=(800, 800))
+    
+    # Save the combined plot
+    savefig(combined_metrics_plot, "figures/network_metrics_comparison_mdeg_$(mean_degree).pdf")
+    
+    return combined_metrics_plot
 end
