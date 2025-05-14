@@ -148,13 +148,13 @@ function plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::In
 end
 
 """
-    create_comparison_bar_plot(means, stds, labels, title, ylabel; filename=nothing)
+    create_comparison_box_plot(data_arrays, labels, title, ylabel; filename=nothing)
 
-Create a standardized bar plot for comparison data.
+Create a standardized box plot for comparison data.
 """
-function create_comparison_bar_plot(means, stds, labels, title, ylabel; filename=nothing)
-    p = bar(
-        labels, means, yerror=stds,
+function create_comparison_box_plot(data_arrays, labels, title, ylabel; filename=nothing)
+    p = boxplot(
+        labels, data_arrays,
         title=title,
         xlabel="Network Type",
         ylabel=ylabel,
@@ -164,9 +164,8 @@ function create_comparison_bar_plot(means, stds, labels, title, ylabel; filename
         guidefontsize=9,
         titlefontsize=10,
         xtickfontsize=8,
-        bar_width=0.4,
         linewidth=1,
-        left_margin=8mm
+        left_margin=8mm,
     )
     
     if !isnothing(filename)
@@ -217,45 +216,35 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         CSV.write("data/simulation_results_$(base_filename).csv", multiple_runs)
         CSV.write("output/final_results_$(base_filename).csv", final_results)
         
-        # Calculate summary statistics
-        all_results[network_type] = (
-            duration_mean = mean(final_results.first_to_last_infected),
-            duration_std = std(final_results.first_to_last_infected),
-            max_infected_mean = mean(final_results.max_infected),
-            max_infected_std = std(final_results.max_infected),
-            sfr_mean = mean(final_results.susceptible_fraction_remaining),
-            sfr_std = std(final_results.susceptible_fraction_remaining)
-        )
+        # Store all results for box plots
+        all_results[network_type] = final_results
     end
     
     # Prepare data for comparison plots
     network_labels = [titlecase(String(nt)) for nt in network_types]
     
-    # Extract metrics for plotting
-    duration_means = [all_results[nt].duration_mean for nt in network_types]
-    duration_stds = [all_results[nt].duration_std for nt in network_types]
-    max_infected_means = [all_results[nt].max_infected_mean for nt in network_types]
-    max_infected_stds = [all_results[nt].max_infected_std for nt in network_types]
-    sfr_means = [all_results[nt].sfr_mean for nt in network_types]
-    sfr_stds = [all_results[nt].sfr_std for nt in network_types]
+    # Extract metrics data arrays for box plots
+    duration_arrays = [all_results[nt].first_to_last_infected for nt in network_types]
+    max_infected_arrays = [all_results[nt].max_infected for nt in network_types]
+    sfr_arrays = [all_results[nt].susceptible_fraction_remaining for nt in network_types]
     
     # Generate comparison plots
-    duration_comparison = create_comparison_bar_plot(
-        duration_means, duration_stds, network_labels, 
+    duration_comparison = create_comparison_box_plot(
+        duration_arrays, network_labels, 
         "Epidemic Duration Comparison\n(mean degree: $(mean_degree))",
         "Duration (steps)",
         filename="figures/duration_comparison_mdeg_$(mean_degree).pdf"
     )
     
-    max_infected_comparison = create_comparison_bar_plot(
-        max_infected_means, max_infected_stds, network_labels, 
+    max_infected_comparison = create_comparison_box_plot(
+        max_infected_arrays, network_labels, 
         "Maximum Infected Comparison\n(mean degree: $(mean_degree))",
         "Maximum Number of Infected",
         filename="figures/max_infected_comparison_mdeg_$(mean_degree).pdf"
     )
     
-    sfr_comparison = create_comparison_bar_plot(
-        sfr_means, sfr_stds, network_labels, 
+    sfr_comparison = create_comparison_box_plot(
+        sfr_arrays, network_labels, 
         "Susceptible Fraction Remaining Comparison\n(mean degree: $(mean_degree))",
         "Susceptible Fraction Remaining",
         filename="figures/sfr_comparison_mdeg_$(mean_degree).pdf"
@@ -271,7 +260,7 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         titlefontsize=10,
         plot_title="Network Comparison (mean degree: $(mean_degree))", 
         plot_titlefontsize=12,
-        left_margin=8mm
+        left_margin=8mm,
     )
     savefig(combined_comparison, "figures/combined_comparison_mdeg_$(mean_degree).pdf")
     
@@ -279,6 +268,8 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
 end
 
 """
+!!! warning "Deprecated"
+    This function is deprecated. Use `run_and_plot_comparison` instead.
     run_and_plot(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, 
                 dispersion::Float64=0.1, patient_zero::Symbol=:random, 
                 high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, 
@@ -304,6 +295,8 @@ Run simulations, save the results to file and generate three plots: duration of 
 ```julia
 duration_plot, max_infected_plot, sfr_plot = run_and_plot(network_type=:proportionatemixing, patient_zero=:random)
 ```
+!!! warning "Deprecated"
+    This function is deprecated. Use `run_and_plot_comparison` instead.
 """
 function run_and_plot(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
     model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob)
