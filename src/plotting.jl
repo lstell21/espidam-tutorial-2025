@@ -456,3 +456,121 @@ function compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smal
     
     return plot
 end
+
+"""
+    plot_centrality_comparison(network_types=[:random, :smallworld, :preferentialattachment], mean_degree=4, n_nodes=1000)
+
+Plot boxplots comparing centrality measures across different network types.
+
+# Arguments
+- `network_types`: Vector of symbols representing the network types to compare
+- `mean_degree`: Mean degree for network generation
+- `n_nodes`: Number of nodes in each network
+
+# Returns
+- A combined plot showing boxplots of centrality measures for each network type
+
+# Example
+```julia
+centrality_comparison = plot_centrality_comparison()
+display(centrality_comparison)
+```
+"""
+function plot_centrality_comparison(;network_types=[:random, :smallworld, :preferentialattachment], mean_degree=4, n_nodes=1000)
+    # Initialize empty DataFrames to store the centrality data
+    centrality_data = Dict()
+    
+    # Generate and analyze each network type
+    for nt in network_types
+        model = initialize(; network_type=nt, mean_degree=mean_degree, n_nodes=n_nodes)
+        analysis = analyze_graph(model.graph)
+        centrality_data[nt] = analysis["centrality"]
+    end
+    
+    # Setup figure layout
+    plot_layout = @layout [a b c]
+    
+    # Colors for the different network types
+    colors = Dict(:random => :blue, :smallworld => :gray, :preferentialattachment => :orange)
+    
+    # Create plots for each centrality measure
+    plots = []
+    
+    # Get range limits for consistent y-axis scaling
+    all_measures = vcat([centrality_data[nt] for nt in network_types]...)
+    y_max = Dict(
+        "degree_centrality" => maximum(all_measures.degree_centrality) * 1.1,
+        "betweenness_centrality" => maximum(all_measures.betweenness_centrality) * 1.1, 
+        "closeness_centrality" => maximum(all_measures.closeness_centrality) * 1.1,
+        "eigenvector_centrality" => maximum(all_measures.eigenvector_centrality) * 1.1
+    )
+    
+    # Create a DataFrame for each network type to use with StatsPlots groupedboxplot
+    for (i, nt) in enumerate(network_types)
+        df = centrality_data[nt]
+        network_name = titlecase(String(nt))
+        
+        # Create a DataFrame for boxplot data
+        boxplot_data = DataFrame(
+            centrality_type = vcat(
+                fill("Degree", nrow(df)),
+                fill("Betweenness", nrow(df)),
+                fill("Closeness", nrow(df)),
+                fill("Eigenvector", nrow(df))
+            ),
+            value = vcat(
+                df.degree_centrality,
+                df.betweenness_centrality,
+                df.closeness_centrality,
+                df.eigenvector_centrality
+            )
+        )
+        
+        # Convert centrality_type to a categorical array with ordered levels
+        boxplot_data.centrality_type = CategoricalArray(
+            boxplot_data.centrality_type, 
+            ordered=true, 
+            levels=["Degree", "Betweenness", "Closeness", "Eigenvector"]
+        )
+        
+        # Create a more precisely aligned boxplot using @df macro
+        p = @df boxplot_data boxplot(
+            :centrality_type, 
+            :value,
+            fillcolor=[:blue :red :gray :gold],
+            title=network_name,
+            legend=false,
+            outliers=true,
+            marker=(0.5, :circle, 0.3),
+            alpha=0.5,
+            margin=7mm,
+            bottom_margin=10mm,
+            guidefontsize=9,
+            titlefontsize=10,
+            ylims=(0, maximum([
+                y_max["degree_centrality"],
+                y_max["betweenness_centrality"],
+                y_max["closeness_centrality"],
+                y_max["eigenvector_centrality"]
+            ]))
+        )
+        
+        push!(plots, p)
+    end
+    
+    # Combine plots in a single figure with improved margins
+    combined_plot = plot(plots..., 
+                      layout=plot_layout, 
+                      size=(1200, 450), 
+                      margin=10mm,
+                      left_margin=12mm,
+                      bottom_margin=15mm,
+                      xtickfontsize=9,
+                      xrotation=0,  # No rotation needed with categorical data
+                      title_position=:center)
+    
+    # Save the figure
+    savefig(combined_plot, "figures/centrality_comparison_mdeg_$(mean_degree).pdf")
+    
+    return combined_plot
+end
