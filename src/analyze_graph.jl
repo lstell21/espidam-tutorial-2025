@@ -1,27 +1,34 @@
 """
-    analyze_graph(g)
+    analyze_graph(g::AbstractGraph)
 
-Analyze the given graph `g` and return a DataFrame containing various graph metrics.
+Analyze a graph and compute various network metrics and properties.
+
+This function calculates a comprehensive set of graph metrics including:
+- Basic statistics (mean degree, density, clustering coefficient)
+- Centrality measures (degree, betweenness, closeness, eigenvector)
+- Component analysis
+- Clique information
 
 # Arguments
-- `g`: The input graph.
+- `g::AbstractGraph`: The graph to analyze
 
 # Returns
-A DataFrame containing the following graph metrics:
-- `"density"`: The density of the graph.
-- `"mean_degree"`: The mean degree of the graph.
-- `"clustering_coefficient"`: The clustering coefficient of the graph.
-- `"assortativity"`: The assortativity of the graph.
-- `"connected_components"`: The number of connected components in the graph.
-- `"component_lengths"`: The lengths of each connected component in the graph.
-- `"max_component_length"`: The length of the largest connected component in the graph.
-- `"maximal_cliques"`: The maximal cliques in the graph.
-- `"diameter"`: The diameter of the graph if it is connected, otherwise "Graph is not connected".
-- `"degree_distribution"`: The degree distribution of the graph.
-- `"degree_centrality"`: The degree centrality of the graph.
-- `"betweenness_centrality"`: The betweenness centrality of the graph.
-- `"closeness_centrality"`: The closeness centrality of the graph.
-- `"eigenvector_centrality"`: The eigenvector centrality of the graph.
+A dictionary containing the following keys:
+- `"summary"`: DataFrame with scalar network metrics
+- `"centrality"`: DataFrame with node-level centrality measures
+- `"degree_distribution"`: Dictionary mapping degrees to their frequency
+- `"connected_components"`: Vector of components (each a vector of vertex IDs)
+- `"component_lengths"`: Vector of component sizes
+- `"maximal_cliques"`: Vector of maximal cliques in the graph
+
+# Examples
+```julia
+using Graphs, DataFrames
+g = erdos_renyi(100, 0.1)
+results = analyze_graph(g)
+summary_metrics = results["summary"]
+centrality_data = results["centrality"]
+```
 """
 function analyze_graph(g::AbstractGraph)
     # Calculate network metrics

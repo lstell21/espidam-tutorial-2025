@@ -1,3 +1,5 @@
+using CategoricalArrays
+
 """
     plot_degree_distribution(degree_distribution; network_type::Symbol)
 
@@ -293,298 +295,164 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
 end
 
 """
-!!! warning "Deprecated"
-    This function is deprecated. Use `run_and_plot_comparison` instead.
-    run_and_plot(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, 
-                dispersion::Float64=0.1, patient_zero::Symbol=:random, 
-                high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, 
-                trans_prob::Float64=0.1, n_steps::Int=100)
+    plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{String, Nothing}=nothing)
 
-Run simulations, save the results to file and generate three plots: duration of epidemic, maximum number of infected, and susceptible fraction remaining.
+Create a horizontal bar chart comparing various network metrics across different network types.
 
 # Arguments
-- `network_type::Symbol`: The type of network to use for the simulation. Possible values are `:random`, `:smallworld`, `:preferentialattachment`, `:configuration`, or `:proportionatemixing`.
-- `mean_degree::Int`: The mean degree of the network. Default is 4.
-- `n_nodes::Int`: The number of nodes in the network. For :configuration, the number of nodes is fixed to 1000. Default is 1000.
-- `dispersion::Float64`: The dispersion parameter for the network. Default is 0.1.
-- `patient_zero::Symbol`: The type of patient zero to use for the simulation. Can be `:random`(a random agent), `:maxdegree` (the agent with highest degree_centrality), `:maxbetweenness`, and `:maxeigenvector`. Default is `:random`.
-- `high_risk::Symbol`: How high-risk individuals are distributed in the graph. Can be `:random` (randomly distributed), `:maxdegree` (based on degree centrality), `:maxbetweenness` (based on betweenness centrality), and `:maxeigenvector` (based on eigenvector centrality). Default is `:random`.
-- `fraction_high_risk::Float64`: The fraction of high-risk individuals in the population. Default is `0.1`.
-- `trans_prob::Float64`: The transmission probability. Default is 0.1.
-- `n_steps::Int`: The number of simulation steps to run. Default is 100.
+- `metrics_data::Dict`: Dictionary with network types as keys and their metrics as values
+- `save_path::Union{String, Nothing}=nothing`: Optional file path to save the plot
 
 # Returns
-- A tuple containing all three plots: (duration_plot, max_infected_plot, sfr_plot)
+- A horizontal bar chart comparing network metrics across different network types
 
 # Example
 ```julia
-duration_plot, max_infected_plot, sfr_plot = run_and_plot(network_type=:proportionatemixing, patient_zero=:random)
+# Create networks and analyze them
+network_types = [:random, :smallworld, :preferential]
+metrics_data = Dict()
+for nt in network_types
+    model = initialize(; network_type=nt, mean_degree=4)
+    metrics_data[nt] = analyze_graph(model.graph)
+end
+# Plot comparison
+plot_network_metrics_comparison(metrics_data)
 ```
-!!! warning "Deprecated"
-    This function is deprecated. Use `run_and_plot_comparison` instead.
 """
-function run_and_plot(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, n_steps::Int=100)
-    model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob)
-    multiple_runs = run_simulations(; network_type, mean_degree, n_nodes, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, n_steps)
-    grouped_data = groupby(multiple_runs, [:seed])
-    final_results = combine(grouped_data, :infected_count => argmin => :first_to_last_infected, 
-                           :infected_count => maximum => :max_infected)
-    last_rows = combine(grouped_data, names(multiple_runs) .=> last)
-    final_results[!, :susceptible_fraction_remaining] = last_rows.susceptible_count_last ./ 
-        (last_rows.susceptible_count_last + last_rows.infected_count_last + last_rows.recovered_count_last)
+function plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{String, Nothing}=nothing)
+    # Network types to include in the comparison
+    network_types = collect(keys(metrics_data))
+    network_labels = Dict(
+        :random => "random",
+        :smallworld => "smallworld", 
+        :preferentialattachment => "preferentialattachment"
+    )
     
-    # Save results
-    base_filename = create_base_filename(model)
-    CSV.write("data/simulation_results_$(base_filename).csv", multiple_runs)
-    CSV.write("output/final_results_$(base_filename).csv", final_results)
+    # Define metrics to extract and their display names
+    metrics = [
+        "density",
+        "clustering_coefficient",
+        "assortativity",
+        "degree_centrality",
+        "betweenness_centrality",
+        "closeness_centrality",
+        "eigenvector_centrality"
+    ]
     
-    # Create descriptive title
-    network_desc = "$(titlecase(String(network_type))) Network (mean degree: $(mean_degree))"
+    metric_display_names = [
+        "Density",
+        "Clustering Coefficient",
+        "Assortativity",
+        "Degree Centrality",
+        "Betweenness Centrality",
+        "Closeness Centrality", 
+        "Eigenvector Centrality"
+    ]
     
-    # Create plots using a common function to reduce redundancy
-    plot_bar_data = function(data, ylabel, subtitle)
-        plot(data, 
-             seriestype=:bar, 
-             xlabel="Simulation Run", 
-             ylabel=ylabel,
-             legend=:none,
-             title="$(subtitle)\n$(network_desc)",
-             guidefontsize=10,
-             titlefontsize=12,
-             size=(700, 500),
-             margin=10mm)
+    # Create empty dictionary to store extracted metrics
+    extracted_metrics = Dict()
+    
+    # For each network type, extract the relevant metrics
+    for network_type in network_types
+        analysis = metrics_data[network_type]
+        
+        # Get values from analysis
+        centrality_df = analysis["centrality"]
+        summary_df = analysis["summary"]
+        
+        # Extract values
+        extracted_metrics[network_type] = Dict(
+            "density" => summary_df[summary_df.metric .== "Density", :value][1],
+            "clustering_coefficient" => summary_df[summary_df.metric .== "Clustering Coefficient", :value][1],
+            "assortativity" => summary_df[summary_df.metric .== "Assortativity", :value][1],
+            "degree_centrality" => mean(centrality_df.degree_centrality),
+            "betweenness_centrality" => mean(centrality_df.betweenness_centrality),
+            "closeness_centrality" => mean(centrality_df.closeness_centrality),
+            "eigenvector_centrality" => mean(centrality_df.eigenvector_centrality)
+        )
     end
     
-    # Generate the three plots
-    duration_plot = plot_bar_data(final_results.first_to_last_infected, 
-                              "Duration of Epidemic (steps)", "Epidemic Duration")
-    savefig(duration_plot, "figures/duration_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    # Prepare data for plotting - we need to organize it by metric first
+    plot_data = Dict{String, Vector{Float64}}()
     
-    max_infected_plot = plot_bar_data(final_results.max_infected, 
-                                  "Maximum Number of Infected", "Maximum Number of Infected")
-    savefig(max_infected_plot, "figures/max_infected_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    for network_type in network_types
+        network_name = get(network_labels, network_type, String(network_type))
+        plot_data[network_name] = Float64[]
+        
+        for metric in metrics
+            push!(plot_data[network_name], extracted_metrics[network_type][metric])
+        end
+    end
     
-    sfr_plot = plot_bar_data(final_results.susceptible_fraction_remaining, 
-                         "Susceptible Fraction Remaining", "Susceptible Fraction Remaining")
-    savefig(sfr_plot, "figures/sfr_plot_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    # Define colors for each network type
+    colors = Dict(
+        "random" => :blue,
+        "smallworld" => :orange,
+        "preferentialattachment" => :green
+    )
     
-    # Create combined plot
-    combined_plot = plot(duration_plot, max_infected_plot, sfr_plot, 
-                    layout=(3,1), 
-                    size=(800, 900),
-                    title=["Epidemic Duration" "Maximum Number of Infected" "Susceptible Fraction Remaining"])
-    savefig(combined_plot, "figures/combined_metrics_$(model.network_type)_mdeg_$(model.mean_degree).pdf")
+    # Create horizontal bar chart with proper grouping
+    p = groupedbar(
+        1:length(metric_display_names),  # x positions
+        [plot_data[nt] for nt in [get(network_labels, nt, String(nt)) for nt in network_types]],  # y values grouped by network type
+        group=[get(network_labels, nt, String(nt)) for nt in network_types],  # group labels
+        orientation=:horizontal,
+        yticks=(1:length(metric_display_names), reverse(metric_display_names)),  # y-axis ticks with metric names
+        xlabel="Value",
+        ylabel="Metric",
+        title="Comparison of Graph Measures",
+        legend=:bottomright,
+        palette=[colors[get(network_labels, nt, String(nt))] for nt in network_types],
+        size=(800, 600),
+        margin=10mm,
+        left_margin=18mm,
+        grid=true,
+        framestyle=:box,
+        linewidth=1
+    )
     
-    return combined_plot
+    # Save if path provided
+    if !isnothing(save_path)
+        savefig(p, save_path)
+    end
+    
+    return p
 end
 
 """
-    compare_network_metrics(; network_types::Vector{Symbol}, mean_degree::Int=4, n_nodes::Int=1000, dispersion::Float64=0.1, use_log_scale::Bool=false, separate_assortativity::Bool=false, special_handle_clustering::Bool=false)
+    compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smallworld, :preferentialattachment], 
+                          mean_degree::Int=4, n_nodes::Int=1000)
 
-Compare key network metrics across different network types, visualized in a combined plot.
+Generate, analyze, and compare metrics across different network types.
 
 # Arguments
-- `network_types::Vector{Symbol}`: Vector of network types to compare (e.g., [:random, :smallworld, :preferentialattachment])
-- `mean_degree::Int`: The mean degree to use for all networks. Default is 4.
-- `n_nodes::Int`: The number of nodes in each network. Default is 1000.
-- `dispersion::Float64`: The dispersion parameter for the network. Default is 0.1.
-- `use_log_scale::Bool`: Whether to use a log scale for the y-axis. Default is false.
-- `separate_assortativity::Bool`: Whether to separate assortativity into its own panel. Default is false.
-- `special_handle_clustering::Bool`: Whether to apply special handling for clustering coefficient visualization. Default is false.
+- `network_types::Vector{Symbol}`: List of network types to compare
+- `mean_degree::Int`: Mean degree for network generation
+- `n_nodes::Int`: Number of nodes in each network
 
 # Returns
-- A plot comparing network metrics across different network types
+- A horizontal bar chart comparing network metrics across different network types
 
 # Example
 ```julia
-metrics_plot = compare_network_metrics(
-    network_types=[:random, :smallworld, :preferentialattachment],
-    mean_degree=4,
-    use_log_scale=true,
-    separate_assortativity=true,
-    special_handle_clustering=true
-)
+compare_network_metrics(mean_degree=6)
 ```
 """
-function compare_network_metrics(; network_types::Vector{Symbol}, mean_degree::Int=4, 
-                               n_nodes::Int=1000, dispersion::Float64=0.1,
-                               use_log_scale::Bool=false, separate_assortativity::Bool=false)
-    # Store metrics for each network type
-    all_metrics = Dict()
+function compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smallworld, :preferentialattachment], 
+                               mean_degree::Int=4, n_nodes::Int=1000)
     
-    # Helper function to extract metric from summary dataframe
-    get_metric = function(summary_df, metric_name)
-        row = summary_df[summary_df.metric .== metric_name, :]
-        return isempty(row) ? 0.0 : row.value[1]
+    metrics_data = Dict()
+    
+    # Generate and analyze each network type
+    for nt in network_types
+        println("Analyzing $(nt) network...")
+        model = initialize(; network_type=nt, mean_degree=mean_degree, n_nodes=n_nodes)
+        metrics_data[nt] = analyze_graph(model.graph)
     end
     
-    # Analyze each network type
-    for network_type in network_types
-        println("Analyzing metrics for $(network_type) network...")
-        model = initialize(; network_type, mean_degree, n_nodes, dispersion)
-        analysis = analyze_graph(model.graph)
-        
-        # Extract metrics
-        summary_df = analysis["summary"]
-        centrality_df = analysis["centrality"]
-        
-        # Store metrics
-        all_metrics[network_type] = Dict(
-            "density" => get_metric(summary_df, "Density"),
-            "clustering_coefficient" => get_metric(summary_df, "Clustering Coefficient"),
-            "assortativity" => get_metric(summary_df, "Assortativity"),
-            "degree_centrality_mean" => mean(centrality_df.degree_centrality),
-            "betweenness_centrality_mean" => mean(centrality_df.betweenness_centrality),
-            "closeness_centrality_mean" => mean(centrality_df.closeness_centrality),
-            "eigenvector_centrality_mean" => mean(centrality_df.eigenvector_centrality)
-        )
-        
-        # Save results
-        CSV.write("data/network_metrics_$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes).csv", summary_df)
-        CSV.write("data/centrality_metrics_$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes).csv", centrality_df)
-    end
+    # Generate the comparison plot
+    plot = plot_network_metrics_comparison(metrics_data, 
+                                         save_path="figures/network_metrics_comparison_mdeg_$(mean_degree).pdf")
     
-    # Prepare data for plotting
-    network_labels = [titlecase(String(nt)) for nt in network_types]
-    
-    # Extract all metrics
-    density_values = [all_metrics[nt]["density"] for nt in network_types]
-    clustering_values = [all_metrics[nt]["clustering_coefficient"] for nt in network_types]
-    assortativity_values = [all_metrics[nt]["assortativity"] for nt in network_types]
-    degree_centrality_values = [all_metrics[nt]["degree_centrality_mean"] for nt in network_types]
-    betweenness_centrality_values = [all_metrics[nt]["betweenness_centrality_mean"] for nt in network_types]
-    closeness_centrality_values = [all_metrics[nt]["closeness_centrality_mean"] for nt in network_types]
-    eigenvector_centrality_values = [all_metrics[nt]["eigenvector_centrality_mean"] for nt in network_types]
-    
-    if separate_assortativity
-        # Create a multi-panel plot with separate handling for assortativity
-        
-        # Panel 1: Positive-valued metrics with log scale (if requested)
-        clustering_label = "Clustering Coefficient"
-        
-        positive_metrics_plot = plot(
-            title="Network Metrics (Positive-valued)",
-            ylabel=use_log_scale ? "Value (Log Scale)" : "Value",
-            legend=:topleft,
-            yscale=use_log_scale ? :log10 : :identity,
-            size=(600, 400),
-            margin=5mm
-        )
-        
-        # Make sure all values for log scale are positive
-        if use_log_scale
-            density_values = [max(v, 1e-10) for v in density_values]
-            clustering_values = [max(v, 1e-10) for v in clustering_values]
-            degree_centrality_values = [max(v, 1e-10) for v in degree_centrality_values]
-            betweenness_centrality_values = [max(v, 1e-10) for v in betweenness_centrality_values]
-            closeness_centrality_values = [max(v, 1e-10) for v in closeness_centrality_values]
-            eigenvector_centrality_values = [max(v, 1e-10) for v in eigenvector_centrality_values]
-        end
-        
-        plot!(positive_metrics_plot, 1:length(network_types), density_values, 
-              label="Density", marker=:circle, markersize=6, linewidth=2)
-        plot!(positive_metrics_plot, 1:length(network_types), clustering_values, 
-              label=clustering_label, marker=:square, markersize=6, linewidth=2)
-        plot!(positive_metrics_plot, 1:length(network_types), degree_centrality_values, 
-              label="Degree Centrality", marker=:star5, markersize=6, linewidth=2)
-        plot!(positive_metrics_plot, 1:length(network_types), betweenness_centrality_values, 
-              label="Betweenness Centrality", marker=:utriangle, markersize=6, linewidth=2)
-        plot!(positive_metrics_plot, 1:length(network_types), closeness_centrality_values, 
-              label="Closeness Centrality", marker=:dtriangle, markersize=6, linewidth=2)
-        plot!(positive_metrics_plot, 1:length(network_types), eigenvector_centrality_values, 
-              label="Eigenvector Centrality", marker=:hexagon, markersize=6, linewidth=2)
-        plot!(positive_metrics_plot, xticks=(1:length(network_types), network_labels))
-        
-        # Panel 2: Assortativity (which can be negative)
-        assortativity_plot = plot(
-            title="Degree Assortativity",
-            ylabel="Assortativity Value",
-            legend=false,
-            size=(600, 300),
-            margin=5mm
-        )
-        
-        # Use bar plot for assortativity to clearly show positive/negative values
-        bar!(assortativity_plot, 1:length(network_types), assortativity_values, 
-             fillcolor=:lightblue, linecolor=:blue, alpha=0.7)
-        plot!(assortativity_plot, xticks=(1:length(network_types), network_labels))
-        hline!(assortativity_plot, [0], linestyle=:dash, color=:gray, label="")
-        
-        # Combine the plots
-        combined_metrics_plot = plot(
-            positive_metrics_plot, assortativity_plot,
-            layout=(2, 1),
-            size=(800, 700),
-            plot_title="Network Metrics Comparison (mean degree: $(mean_degree))",
-            plot_titlefontsize=14
-        )
-        
-        # Save plot
-        log_suffix = use_log_scale ? "_log" : ""
-        savefig(combined_metrics_plot, "figures/network_metrics_comparison$(log_suffix)_mdeg_$(mean_degree).pdf")
-        
-        return combined_metrics_plot
-    else
-        # Original single-plot approach with all metrics together
-        # Adjustments for clustering if needed
-        clustering_label = "Clustering Coefficient"
-        
-        # Create a unified plot for all metrics
-        scale_type = use_log_scale ? :log10 : :identity
-        scale_label = use_log_scale ? "(Log Scale)" : ""
-        
-        combined_metrics_plot = plot(
-            ylabel="Value $scale_label",
-            title="Network Metrics Comparison $scale_label\n(mean degree: $(mean_degree), nodes: $(n_nodes))",
-            legend=:topleft,
-            size=(800, 500),
-            margin=8mm,
-            guidefontsize=9,
-            titlefontsize=12,
-            xtickfontsize=10,
-            linewidth=2,
-            yscale=scale_type
-        )
-        
-        # Ensure positive values for log scale if needed
-        if use_log_scale
-            # Handle each metric separately
-            density_values = [max(v, 1e-10) for v in density_values]
-            clustering_values = [max(v, 1e-10) for v in clustering_values]
-            # Skip assortativity for log scale as it can be negative
-            degree_centrality_values = [max(v, 1e-10) for v in degree_centrality_values]
-            betweenness_centrality_values = [max(v, 1e-10) for v in betweenness_centrality_values]
-            closeness_centrality_values = [max(v, 1e-10) for v in closeness_centrality_values]
-            eigenvector_centrality_values = [max(v, 1e-10) for v in eigenvector_centrality_values]
-        end
-        
-        # Add metrics to plot (excluding assortativity for log scale)
-        plot!(combined_metrics_plot, 1:length(network_types), density_values, 
-            label="Density", marker=:circle, markersize=6)
-        plot!(combined_metrics_plot, 1:length(network_types), clustering_values, 
-            label=clustering_label, marker=:square, markersize=6)
-        
-        if !use_log_scale || !any(assortativity_values .< 0)
-            plot!(combined_metrics_plot, 1:length(network_types), assortativity_values, 
-                label="Assortativity", marker=:diamond, markersize=6)
-        end
-        
-        plot!(combined_metrics_plot, 1:length(network_types), degree_centrality_values, 
-            label="Degree Centrality", marker=:star5, markersize=6)
-        plot!(combined_metrics_plot, 1:length(network_types), betweenness_centrality_values, 
-            label="Betweenness Centrality", marker=:utriangle, markersize=6)
-        plot!(combined_metrics_plot, 1:length(network_types), closeness_centrality_values, 
-            label="Closeness Centrality", marker=:dtriangle, markersize=6)
-        plot!(combined_metrics_plot, 1:length(network_types), eigenvector_centrality_values, 
-            label="Eigenvector Centrality", marker=:hexagon, markersize=6)
-        
-        # Set x-axis labels to network types
-        plot!(combined_metrics_plot, xticks=(1:length(network_types), network_labels))
-        
-        # Save plot
-        log_suffix = use_log_scale ? "_log" : ""
-        savefig(combined_metrics_plot, "figures/network_metrics_comparison$(log_suffix)_mdeg_$(mean_degree).pdf")
-        
-        return combined_metrics_plot
-    end
+    return plot
 end
