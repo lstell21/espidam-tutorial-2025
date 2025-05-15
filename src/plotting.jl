@@ -458,7 +458,7 @@ function compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smal
 end
 
 """
-    plot_centrality_comparison(network_types=[:random, :smallworld, :preferentialattachment], mean_degree=4, n_nodes=1000)
+    plot_centrality_comparison(;network_types=[:random, :smallworld, :preferentialattachment], mean_degree=4, n_nodes=1000)
 
 Plot boxplots comparing centrality measures across different network types.
 
@@ -487,8 +487,8 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
         centrality_data[nt] = analysis["centrality"]
     end
     
-    # Setup figure layout
-    plot_layout = @layout [a b c]
+    # Setup figure layout - use a simple grid layout instead of percentage-based layout
+    plot_layout = (1, 3)
     
     # Colors for the different network types
     colors = Dict(:random => :blue, :smallworld => :gray, :preferentialattachment => :orange)
@@ -496,14 +496,22 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
     # Create plots for each centrality measure
     plots = []
     
-    # Get range limits for consistent y-axis scaling
-    all_measures = vcat([centrality_data[nt] for nt in network_types]...)
-    y_max = Dict(
-        "degree_centrality" => maximum(all_measures.degree_centrality) * 1.1,
-        "betweenness_centrality" => maximum(all_measures.betweenness_centrality) * 1.1, 
-        "closeness_centrality" => maximum(all_measures.closeness_centrality) * 1.1,
-        "eigenvector_centrality" => maximum(all_measures.eigenvector_centrality) * 1.1
-    )
+    # Calculate y-axis limits for each network type independently
+    # This allows better visualization of the specific distributions
+    y_limits = Dict()
+    
+    for nt in network_types
+        df = centrality_data[nt]
+        
+        # Find the maximum values for each centrality measure with some buffer
+        degree_max = maximum(df.degree_centrality) * 1.15
+        betweenness_max = maximum(df.betweenness_centrality) * 1.15
+        closeness_max = maximum(df.closeness_centrality) * 1.15
+        eigenvector_max = maximum(df.eigenvector_centrality) * 1.15
+        
+        # Store the maximum overall for this network type
+        y_limits[nt] = max(degree_max, betweenness_max, closeness_max, eigenvector_max)
+    end
     
     # Create a DataFrame for each network type to use with StatsPlots groupedboxplot
     for (i, nt) in enumerate(network_types)
@@ -533,6 +541,10 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
             levels=["Degree", "Betweenness", "Closeness", "Eigenvector"]
         )
         
+        # Set y-axis limits based on the specific network type
+        # This helps better visualize the distribution patterns
+        y_max = y_limits[nt]
+        
         # Create a more precisely aligned boxplot using @df macro
         p = @df boxplot_data boxplot(
             :centrality_type, 
@@ -540,19 +552,17 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
             fillcolor=[:blue :red :gray :gold],
             title=network_name,
             legend=false,
-            outliers=true,
+            outliers=false,  # Hide outliers to improve readability
             marker=(0.5, :circle, 0.3),
-            alpha=0.5,
-            margin=7mm,
-            bottom_margin=10mm,
+            alpha=0.7,       
             guidefontsize=9,
             titlefontsize=10,
-            ylims=(0, maximum([
-                y_max["degree_centrality"],
-                y_max["betweenness_centrality"],
-                y_max["closeness_centrality"],
-                y_max["eigenvector_centrality"]
-            ]))
+            widen=true,      
+            bar_width=0.7,   
+            xticks=([1,2,3,4], ["Degree", "Betweenness", "Closeness", "Eigenvector"]),
+            xrotation=0,     
+            ylims=(0, y_max), # Use network-specific y-axis limit
+            ylabel="Centrality Value"
         )
         
         push!(plots, p)
@@ -561,12 +571,14 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
     # Combine plots in a single figure with improved margins
     combined_plot = plot(plots..., 
                       layout=plot_layout, 
-                      size=(1200, 450), 
-                      margin=10mm,
-                      left_margin=12mm,
-                      bottom_margin=15mm,
+                      size=(1200, 450),
+                      margin=4mm,         
+                      left_margin=6mm,    
+                      right_margin=2mm,   
+                      bottom_margin=8mm,  
+                      top_margin=6mm,     
                       xtickfontsize=9,
-                      xrotation=0,  # No rotation needed with categorical data
+                      link=:none,        # Don't link y axes to allow different scales
                       title_position=:center)
     
     # Save the figure
