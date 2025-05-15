@@ -148,13 +148,23 @@ function plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::In
 end
 
 """
-    create_comparison_box_plot(data_arrays, labels, title, ylabel; filename=nothing)
+    create_comparison_box_plot(formatted_data, title, ylabel; filename=nothing)
 
 Create a standardized box plot for comparison data.
+
+# Arguments
+- `formatted_data`: A DataFrame with columns `value` and `network_type`
+- `title`: Plot title
+- `ylabel`: Y-axis label
+- `filename`: Optional filename to save the plot
+
+# Returns
+- A boxplot comparing the data across network types
 """
-function create_comparison_box_plot(data_arrays, labels, title, ylabel; filename=nothing)
+function create_comparison_box_plot(formatted_data, title, ylabel; filename=nothing, colors=nothing)
+    # If colors are provided, use them for the boxplot
     p = boxplot(
-        labels, data_arrays,
+        formatted_data.network_type, formatted_data.value,
         title=title,
         xlabel="Network Type",
         ylabel=ylabel,
@@ -166,7 +176,8 @@ function create_comparison_box_plot(data_arrays, labels, title, ylabel; filename
         xtickfontsize=8,
         linewidth=1,
         left_margin=8mm,
-    )
+        outliers=false
+        )
     
     if !isnothing(filename)
         savefig(p, filename)
@@ -180,7 +191,7 @@ end
                           n_nodes::Int=1000, dispersion::Float64=0.1, 
                           patient_zero::Symbol=:random, high_risk::Symbol=:random, 
                           fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, 
-                          n_steps::Int=100)
+                          n_steps::Int=100, boxplot_colors=nothing)
 
 Run simulations for multiple network types and generate comparison plots.
 """
@@ -188,9 +199,14 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
                                n_nodes::Int=1000, dispersion::Float64=0.1, 
                                patient_zero::Symbol=:random, high_risk::Symbol=:random, 
                                fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, 
-                               n_steps::Int=100)
+                               n_steps::Int=100, boxplot_colors=nothing)
     # Store results for each network type
     all_results = Dict()
+    
+    # Prepare empty DataFrames for each metric
+    duration_data = DataFrame(value=Float64[], network_type=String[])
+    max_infected_data = DataFrame(value=Float64[], network_type=String[])
+    susceptible_remaining_data = DataFrame(value=Float64[], network_type=String[])
     
     # Run simulations for each network type
     for network_type in network_types
@@ -216,45 +232,54 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         CSV.write("data/simulation_results_$(base_filename).csv", multiple_runs)
         CSV.write("output/final_results_$(base_filename).csv", final_results)
         
-        # Store all results for box plots
+        # Store results for box plots
         all_results[network_type] = final_results
+        
+        # Add data for each metric to the appropriate DataFrame with network type as a label
+        network_label = titlecase(String(network_type))
+        for value in final_results.first_to_last_infected
+            push!(duration_data, (value, network_label))
+        end
+        
+        for value in final_results.max_infected
+            push!(max_infected_data, (value, network_label))
+        end
+        
+        for value in final_results.susceptible_fraction_remaining
+            push!(susceptible_remaining_data, (value, network_label))
+        end
     end
     
-    # Prepare data for comparison plots
-    network_labels = [titlecase(String(nt)) for nt in network_types]
-    
-    # Extract metrics data arrays for box plots
-    duration_arrays = [all_results[nt].first_to_last_infected for nt in network_types]
-    max_infected_arrays = [all_results[nt].max_infected for nt in network_types]
-    sfr_arrays = [all_results[nt].susceptible_fraction_remaining for nt in network_types]
-    
-    # Generate comparison plots
+    # Generate comparison plots using the pre-formatted data and colors
     duration_comparison = create_comparison_box_plot(
-        duration_arrays, network_labels, 
+        duration_data,
         "Epidemic Duration Comparison\n(mean degree: $(mean_degree))",
         "Duration (steps)",
-        filename="figures/duration_comparison_mdeg_$(mean_degree).pdf"
+        filename="figures/duration_comparison_mdeg_$(mean_degree).pdf",
+        colors=boxplot_colors
     )
     
     max_infected_comparison = create_comparison_box_plot(
-        max_infected_arrays, network_labels, 
+        max_infected_data,
         "Maximum Infected Comparison\n(mean degree: $(mean_degree))",
         "Maximum Number of Infected",
-        filename="figures/max_infected_comparison_mdeg_$(mean_degree).pdf"
+        filename="figures/max_infected_comparison_mdeg_$(mean_degree).pdf",
+        colors=boxplot_colors
     )
     
     sfr_comparison = create_comparison_box_plot(
-        sfr_arrays, network_labels, 
+        susceptible_remaining_data,
         "Susceptible Fraction Remaining Comparison\n(mean degree: $(mean_degree))",
         "Susceptible Fraction Remaining",
-        filename="figures/sfr_comparison_mdeg_$(mean_degree).pdf"
+        filename="figures/sfr_comparison_mdeg_$(mean_degree).pdf",
+        colors=boxplot_colors
     )
     
     # Create combined comparison plot
     combined_comparison = plot(
         duration_comparison, max_infected_comparison, sfr_comparison,
-        layout=(3,1),
-        size=(700, 700),
+        layout=(1,3),
+        size=(1200, 500),
         margin=3mm,
         title=["Epidemic Duration" "Maximum Infected" "Susceptible Fraction Remaining"],
         titlefontsize=10,
