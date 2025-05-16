@@ -37,6 +37,7 @@ function plot_degree_distribution(degree_distribution; network_type::Symbol)
                 xlabel="Degree", ylabel="Count", legend=:none)
 end
 
+
 """
     plot_epidemic_trajectories(mdf, network_type::Symbol)
 
@@ -70,6 +71,7 @@ function plot_epidemic_trajectories(mdf::DataFrame, network_type::Symbol)
     
     return p
 end
+
 
 """
     create_base_filename(model)
@@ -143,6 +145,7 @@ function plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::In
     return plotdynamics, plotdegdist, combined_plot
 end
 
+
 """
     create_comparison_box_plot(formatted_data, title, ylabel; filename=nothing)
 
@@ -181,6 +184,7 @@ function create_comparison_box_plot(formatted_data, title, ylabel; filename=noth
     
     return p
 end
+
 
 """
     run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::Int=4, 
@@ -290,6 +294,7 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
     
     return combined_comparison
 end
+
 
 """
     plot_centrality_comparison(;network_types=[:random, :smallworld, :preferential], mean_degree=4, n_nodes=1000, link_axes=false)
@@ -485,4 +490,133 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
     savefig(combined_plot, "figures/centrality_comparison_$(net_types_str)_mdeg_$(mean_degree).pdf")
     
     return combined_plot
+end
+
+
+"""
+    plot_network_metrics_comparison(;network_types=[:random, :smallworld, :preferential], mean_degree=4, n_nodes=1000)
+
+Create a horizontal bar plot comparing structural metrics across different network types.
+
+# Arguments
+- `network_types`: Vector of symbols representing the network types to compare
+- `mean_degree`: Mean degree for network generation
+- `n_nodes`: Number of nodes in each network
+
+# Returns
+- A horizontal bar chart comparing network metrics across network types
+
+# Example
+```julia
+# Default comparison of three network types
+metrics_plot = plot_network_metrics_comparison()
+
+# Custom comparison with two network types
+metrics_plot = plot_network_metrics_comparison(
+    network_types=[:random, :preferential],
+    mean_degree=6
+)
+```
+"""
+function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :preferential], mean_degree=4, n_nodes=1000)
+    # Create storage for metrics
+    density_values = Float64[]
+    clustering_values = Float64[]
+    assortativity_values = Float64[]
+    degree_cent_values = Float64[]
+    betweenness_cent_values = Float64[]
+    closeness_cent_values = Float64[]
+    eigenvector_cent_values = Float64[]
+    network_labels = String[]
+
+    # Collect metrics for each network type
+    for nt in network_types
+        println("Analyzing $(nt) network...")
+        model = initialize(; network_type=nt, mean_degree=mean_degree, n_nodes=n_nodes)
+        analysis = analyze_graph(model.graph)
+        
+        # Extract key metrics
+        density = analysis["summary"][analysis["summary"].metric .== "Density", :value][1]
+        clustering = analysis["summary"][analysis["summary"].metric .== "Clustering Coefficient", :value][1]
+        assortativity = analysis["summary"][analysis["summary"].metric .== "Assortativity", :value][1]
+        degree_cent = mean(analysis["centrality"].degree_centrality)
+        betweenness_cent = mean(analysis["centrality"].betweenness_centrality)
+        closeness_cent = mean(analysis["centrality"].closeness_centrality)
+        eigenvector_cent = mean(analysis["centrality"].eigenvector_centrality)
+        
+        # Store values
+        push!(density_values, density)
+        push!(clustering_values, clustering)
+        push!(assortativity_values, assortativity)
+        push!(degree_cent_values, degree_cent)
+        push!(betweenness_cent_values, betweenness_cent)
+        push!(closeness_cent_values, closeness_cent)
+        push!(eigenvector_cent_values, eigenvector_cent)
+        
+        # Create display label
+        label = if nt == :random
+            "Random"
+        elseif nt == :smallworld
+            "Small-World"
+        elseif nt == :preferential
+            "Preferential Attachment"
+        else
+            String(nt)
+        end
+        push!(network_labels, label)
+    end
+
+    # Create DataFrame with metrics
+    df = DataFrame(
+        "metric" => [
+            "Density", 
+            "Clustering Coefficient", 
+            "Assortativity", 
+            "Degree Centrality", 
+            "Betweenness Centrality", 
+            "Closeness Centrality", 
+            "Eigenvector Centrality"
+        ],
+        "position" => 1:7
+    )
+
+    # Add columns for each network type
+    for (i, label) in enumerate(network_labels)
+        df[!, label] = [
+            density_values[i],
+            clustering_values[i],
+            assortativity_values[i],
+            degree_cent_values[i],
+            betweenness_cent_values[i],
+            closeness_cent_values[i],
+            eigenvector_cent_values[i]
+        ]
+    end
+
+    # Reshape for plotting
+    df_long = stack(df, Not(["metric", "position"]), variable_name = "Model", value_name = "Value")
+
+    # Create grouped bar plot with improved spacing and margins
+    metrics_plot = @df df_long groupedbar(
+        :metric, 
+        :Value,
+        group = :Model,
+        bar_position = :dodge,
+        xlabel = "Metric",
+        ylabel = "Value",
+        title = "Network Metrics by Model Type",
+        legend = :topright,
+        size = (900, 550),
+        ylims = (-0.15, 0.4),
+        left_margin = 5mm,
+        top_margin = 5mm,
+        bottom_margin = 15mm,
+        xrotation = 45 
+    )
+
+    # Save the plot
+    network_types_str = join([String(nt) for nt in network_types], "_")
+    savefig(metrics_plot, "figures/network_metrics_comparison_$(network_types_str)_mdeg_$(mean_degree).pdf")
+
+    return metrics_plot
 end
