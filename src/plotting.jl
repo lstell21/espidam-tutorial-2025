@@ -372,16 +372,25 @@ function plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{St
         )
     end
     
-    # Prepare data for plotting - we need to organize it by metric first
-    plot_data = Dict{String, Vector{Float64}}()
+    # Prepare data for plotting - create a DataFrame for grouped bar plotting
+    plot_data = DataFrame()
     
+    # Create a position column for the bars
+    plot_data.position = 1:length(metric_display_names)
+    plot_data.metric = reverse(metric_display_names)
+    
+    # Add a column for each network type
     for network_type in network_types
         network_name = get(network_labels, network_type, String(network_type))
-        plot_data[network_name] = Float64[]
+        values = Float64[]
         
-        for metric in metrics
-            push!(plot_data[network_name], extracted_metrics[network_type][metric])
+        # Get values in the same order as metric_display_names (reversed)
+        for metric in reverse(metrics)
+            push!(values, extracted_metrics[network_type][metric])
         end
+        
+        # Add the column to the DataFrame
+        plot_data[!, network_name] = values
     end
     
     # Define colors for each network type
@@ -391,18 +400,21 @@ function plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{St
         "preferentialattachment" => :green
     )
     
-    # Create horizontal bar chart with proper grouping
+    # Get network names from the DataFrame columns (excluding position and metric)
+    network_names = setdiff(names(plot_data), ["position", "metric"])
+    
+    # Create horizontal bar chart - Using direct array access instead of col() function
     p = groupedbar(
-        1:length(metric_display_names),  # x positions
-        [plot_data[nt] for nt in [get(network_labels, nt, String(nt)) for nt in network_types]],  # y values grouped by network type
-        group=[get(network_labels, nt, String(nt)) for nt in network_types],  # group labels
+        plot_data.position,
+        Matrix(plot_data[:, network_names]),  # Directly accessing columns as a matrix
+        group=network_names,
         orientation=:horizontal,
-        yticks=(1:length(metric_display_names), reverse(metric_display_names)),  # y-axis ticks with metric names
+        yticks=(plot_data.position, plot_data.metric),  # y-axis ticks with metric names
         xlabel="Value",
         ylabel="Metric",
         title="Comparison of Graph Measures",
         legend=:bottomright,
-        palette=[colors[get(network_labels, nt, String(nt))] for nt in network_types],
+        palette=[colors[n] for n in network_names],
         size=(800, 600),
         margin=10mm,
         left_margin=18mm,
