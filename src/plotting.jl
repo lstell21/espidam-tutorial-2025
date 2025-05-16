@@ -89,7 +89,7 @@ end
 Plot a single run of an epidemic simulation.
 
 # Arguments
-- `network_type::Symbol`: The type of network to use for the simulation. Possible values are `:random`, `:smallworld`, `:preferentialattachment`, `:configuration`, or `:proportionatemixing`.
+- `network_type::Symbol`: The type of network to use for the simulation. Possible values are `:random`, `:smallworld`, `:preferential`, `:configuration`, or `:proportionatemixing`.
 - `mean_degree::Int`: The mean degree of the network. Default is 4.
 - `n_nodes::Int`: The number of nodes in the network. Default is 1000.
 - `dispersion::Float64`: The dispersion parameter for the network. Default is 0.1.
@@ -225,9 +225,9 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         
         # Save results
         base_filename = "$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes)_disp_$(dispersion)_pat0_$(patient_zero)_hirisk_$(high_risk)_hr_frac_$(fraction_high_risk)_trans_$(trans_prob)"
-        println("Saving simulation results to data/simulation_results_$(base_filename).csv")
+        println("Saving simulation results to data/simulation_results...")
         CSV.write("data/simulation_results_$(base_filename).csv", multiple_runs)
-        println("Saving final results to output/final_results_$(base_filename).csv")
+        println("Saving final results to output/final_results...")
         CSV.write("output/final_results_$(base_filename).csv", final_results)
         
         # Store results for box plots
@@ -320,9 +320,9 @@ function plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{St
     # Network types to include in the comparison
     network_types = collect(keys(metrics_data))
     network_labels = Dict(
-        :random => "random",
-        :smallworld => "smallworld", 
-        :preferentialattachment => "preferentialattachment"
+        :random => "Random",
+        :smallworld => "Small-World", 
+        :preferential => "Preferential Attachment"
     )
     
     # Define metrics to extract and their display names
@@ -394,7 +394,7 @@ function plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{St
     colors = Dict(
         "random" => :blue,
         "smallworld" => :orange,
-        "preferentialattachment" => :green
+        "preferential" => :green
     )
     
     # Get network names from the DataFrame columns (excluding position and metric)
@@ -429,7 +429,7 @@ function plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{St
 end
 
 """
-    compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smallworld, :preferentialattachment], 
+    compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smallworld, :preferential], 
                           mean_degree::Int=4, n_nodes::Int=1000)
 
 Generate, analyze, and compare metrics across different network types.
@@ -447,7 +447,7 @@ Generate, analyze, and compare metrics across different network types.
 compare_network_metrics(mean_degree=6)
 ```
 """
-function compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smallworld, :preferentialattachment], 
+function compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smallworld, :preferential], 
                                mean_degree::Int=4, n_nodes::Int=1000)
     
     metrics_data = Dict()
@@ -467,25 +467,37 @@ function compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smal
 end
 
 """
-    plot_centrality_comparison(;network_types=[:random, :smallworld, :preferentialattachment], mean_degree=4, n_nodes=1000)
+    plot_centrality_comparison(;network_types=[:random, :smallworld, :preferential], mean_degree=4, n_nodes=1000, link_axes=false)
 
 Plot boxplots comparing centrality measures across different network types.
 
 # Arguments
-- `network_types`: Vector of symbols representing the network types to compare
+- `network_types`: Vector of symbols representing the network types to compare (any number supported)
 - `mean_degree`: Mean degree for network generation
 - `n_nodes`: Number of nodes in each network
+- `link_axes`: Boolean indicating whether to link y-axes across plots for easier comparison (default: false)
 
 # Returns
 - A combined plot showing boxplots of centrality measures for each network type
 
 # Example
 ```julia
+# Default visualization with independent y-axes for three network types
 centrality_comparison = plot_centrality_comparison()
-display(centrality_comparison)
+
+# With linked y-axes for direct comparison with two network types
+centrality_comparison = plot_centrality_comparison(
+    network_types=[:random, :preferential],
+    link_axes=true
+)
+
+# With five different network types
+centrality_comparison = plot_centrality_comparison(
+    network_types=[:random, :smallworld, :preferential, :configuration, :proportionate]
+)
 ```
 """
-function plot_centrality_comparison(;network_types=[:random, :smallworld, :preferentialattachment], mean_degree=4, n_nodes=1000)
+function plot_centrality_comparison(;network_types=[:random, :smallworld, :preferential], mean_degree=4, n_nodes=1000, link_axes=false)
     # Initialize empty DataFrames to store the centrality data
     centrality_data = Dict()
     
@@ -496,11 +508,37 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
         centrality_data[nt] = analysis["centrality"]
     end
     
-    # Setup figure layout - use a simple grid layout instead of percentage-based layout
-    plot_layout = (1, 3)
+    # Determine the optimal plot layout based on the number of network types
+    n_types = length(network_types)
+    
+    if n_types == 1
+        # For a single network type, use 1x1
+        plot_layout = (1, 1)
+        plot_width = 600
+    elseif n_types == 2
+        # For two network types, use 1x2
+        plot_layout = (1, 2)
+        plot_width = 1000
+    elseif n_types <= 4
+        # For 3-4 network types, use 1xN
+        plot_layout = (1, n_types)
+        plot_width = min(1600, 500 * n_types)
+    else
+        # For more than 4 network types, use a more compact grid layout
+        n_cols = ceil(Int, sqrt(n_types))
+        n_rows = ceil(Int, n_types / n_cols)
+        plot_layout = (n_rows, n_cols)
+        plot_width = min(1800, 450 * n_cols)
+    end
+    
+    # Fixed plot height per row
+    plot_height_per_row = 450
+    plot_height = plot_height_per_row * first(plot_layout)
     
     # Colors for the different network types
-    colors = Dict(:random => :blue, :smallworld => :gray, :preferentialattachment => :orange)
+    # Define a color palette that can handle more than 3 network types
+    color_palette = [:blue, :gray, :orange, :green, :red, :purple, :brown, :pink, :cyan, :magenta]
+    colors = Dict(zip(network_types, color_palette[1:min(length(color_palette), n_types)]))
     
     # Create plots for each centrality measure
     plots = []
@@ -521,6 +559,9 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
         # Store the maximum overall for this network type
         y_limits[nt] = max(degree_max, betweenness_max, closeness_max, eigenvector_max)
     end
+    
+    # If link_axes is true, find the global maximum across all networks
+    global_y_max = link_axes ? maximum(values(y_limits)) : 0
     
     # Create a DataFrame for each network type to use with StatsPlots groupedboxplot
     for (i, nt) in enumerate(network_types)
@@ -550,9 +591,8 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
             levels=["Degree", "Betweenness", "Closeness", "Eigenvector"]
         )
         
-        # Set y-axis limits based on the specific network type
-        # This helps better visualize the distribution patterns
-        y_max = y_limits[nt]
+        # Set y-axis limits based on link_axes parameter
+        y_max = link_axes ? global_y_max : y_limits[nt]
         
         # Create a more precisely aligned boxplot using @df macro
         p = @df boxplot_data boxplot(
@@ -569,30 +609,42 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
             widen=true,      
             bar_width=0.7,   
             xticks=([1,2,3,4], ["Degree", "Betweenness", "Closeness", "Eigenvector"]),
-            xrotation=0,     
-            ylims=(0, y_max), # Use network-specific y-axis limit
-            ylabel="Centrality Value"
+            xrotation=30,    
+            ylims=(0, y_max),
+            ylabel="Centrality Value",
+            margin=8mm,      # Add individual plot margins for better spacing
+            bottom_margin=10mm,  # Add extra space at the bottom for x-axis labels
+            left_margin=8mm      # Add extra space for y-axis labels
         )
         
         push!(plots, p)
     end
     
+    # Handle case where we might have more layout slots than plots
+    if length(plots) < prod(plot_layout)
+        # Fill remaining slots with empty plots
+        for i in length(plots)+1:prod(plot_layout)
+            push!(plots, plot(framestyle=:none, grid=false, showaxis=false))
+        end
+    end
+    
     # Combine plots in a single figure with improved margins
     combined_plot = plot(plots..., 
                       layout=plot_layout, 
-                      size=(1200, 450),
-                      margin=4mm,         
-                      left_margin=6mm,    
-                      right_margin=2mm,   
-                      bottom_margin=8mm,  
-                      top_margin=6mm,     
+                      size=(plot_width, plot_height),
+                      margin=10mm,        # Increase the overall margin
+                      left_margin=12mm,   # Increase left margin for y-axis labels
+                      right_margin=8mm,   # Add more right margin for balance
+                      bottom_margin=12mm, # Increase bottom margin for x-axis labels
+                      top_margin=10mm,    # Add more top margin for titles
                       xtickfontsize=9,
-                      link=:none,        # Don't link y axes to allow different scales
+                      link=link_axes ? :y : :none,
                       title_position=:center)
     
     # Save the figure
-    println("Saving combined centrality comparison plot to figures/centrality_comparison_mdeg_$(mean_degree).pdf")
-    savefig(combined_plot, "figures/centrality_comparison_mdeg_$(mean_degree).pdf")
+    net_types_str = join([String(nt) for nt in network_types], "_")
+    println("Saving combined centrality comparison plot to figures/centrality_comparison_$(net_types_str)_mdeg_$(mean_degree).pdf")
+    savefig(combined_plot, "figures/centrality_comparison_$(net_types_str)_mdeg_$(mean_degree).pdf")
     
     return combined_plot
 end
