@@ -1,5 +1,3 @@
-using CategoricalArrays
-
 """
     plot_degree_distribution(degree_distribution; network_type::Symbol)
 
@@ -136,10 +134,6 @@ function plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::In
     plotdynamics = plot_epidemic_trajectories(mdf, model.network_type)
     plotdegdist = plot_degree_distribution(graph_analysis["degree_distribution"]; network_type=model.network_type)
     
-    # Save plots
-    savefig(plotdynamics, "figures/plotdynamics_$(base_filename).pdf")
-    savefig(plotdegdist, "figures/plotdegdist_$(base_filename).pdf")
-    
     # Create a combined plot for side-by-side visualization
     combined_plot = plot(plotdynamics, plotdegdist, layout=(1,2), size=(1000, 400),
                        title=["Epidemic Dynamics ($(String(model.network_type)))" "Degree Distribution ($(String(model.network_type)))"])
@@ -231,7 +225,9 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         
         # Save results
         base_filename = "$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes)_disp_$(dispersion)_pat0_$(patient_zero)_hirisk_$(high_risk)_hr_frac_$(fraction_high_risk)_trans_$(trans_prob)"
+        println("Saving simulation results to data/simulation_results_$(base_filename).csv")
         CSV.write("data/simulation_results_$(base_filename).csv", multiple_runs)
+        println("Saving final results to output/final_results_$(base_filename).csv")
         CSV.write("output/final_results_$(base_filename).csv", final_results)
         
         # Store results for box plots
@@ -285,10 +281,11 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         margin=3mm,
         title=["Epidemic Duration" "Maximum Infected" "Susceptible Fraction Remaining"],
         titlefontsize=10,
-        plot_title="Network Comparison (mean degree: $(mean_degree))", 
+        plot_title="Epidemic Comparison (mean degree: $(mean_degree))", 
         plot_titlefontsize=12,
         left_margin=8mm,
     )
+    println("Saving combined comparison plot to figures/combined_comparison_mdeg_$(mean_degree).pdf")
     savefig(combined_comparison, "figures/combined_comparison_mdeg_$(mean_degree).pdf")
     
     return combined_comparison
@@ -594,6 +591,7 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
                       title_position=:center)
     
     # Save the figure
+    println("Saving combined centrality comparison plot to figures/centrality_comparison_mdeg_$(mean_degree).pdf")
     savefig(combined_plot, "figures/centrality_comparison_mdeg_$(mean_degree).pdf")
     
     return combined_plot
