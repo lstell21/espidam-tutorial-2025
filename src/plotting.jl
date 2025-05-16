@@ -292,136 +292,123 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
 end
 
 """
-    plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{String, Nothing}=nothing)
+    plot_network_metrics_comparison(metrics_data::Dict; save_path::String="")
 
-Create a horizontal bar chart comparing various network metrics across different network types.
+Create a horizontal bar chart comparing network metrics across different network types.
 
 # Arguments
-- `metrics_data::Dict`: Dictionary with network types as keys and their metrics as values
-- `save_path::Union{String, Nothing}=nothing`: Optional file path to save the plot
+- `metrics_data`: Dictionary with network types as keys and metrics as values
+- `save_path`: Optional file path to save the plot
 
 # Returns
-- A horizontal bar chart comparing network metrics across different network types
-
-# Example
-```julia
-# Create networks and analyze them
-network_types = [:random, :smallworld, :preferential]
-metrics_data = Dict()
-for nt in network_types
-    model = initialize(; network_type=nt, mean_degree=4)
-    metrics_data[nt] = analyze_graph(model.graph)
-end
-# Plot comparison
-plot_network_metrics_comparison(metrics_data)
-```
+- A horizontal bar chart comparing network metrics
 """
-function plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{String, Nothing}=nothing)
-    # Network types to include in the comparison
+function plot_network_metrics_comparison(metrics_data::Dict; save_path::String="")
+    # Get network types and prepare labels
     network_types = collect(keys(metrics_data))
     network_labels = Dict(
         :random => "Random",
         :smallworld => "Small-World", 
-        :preferential => "Preferential Attachment"
+        :preferential => "Preferential Attachment",
+        :configuration => "Configuration",
+        :proportionate => "Proportionate Mixing"
     )
     
     # Define metrics to extract and their display names
     metrics = [
-        "density",
-        "clustering_coefficient",
-        "assortativity",
-        "degree_centrality",
-        "betweenness_centrality",
-        "closeness_centrality",
-        "eigenvector_centrality"
+        "density", "clustering_coefficient", "assortativity",
+        "degree_centrality", "betweenness_centrality", 
+        "closeness_centrality", "eigenvector_centrality"
     ]
     
-    metric_display_names = [
-        "Density",
-        "Clustering Coefficient",
-        "Assortativity",
-        "Degree Centrality",
-        "Betweenness Centrality",
-        "Closeness Centrality", 
-        "Eigenvector Centrality"
+    metric_names = [
+        "Density", "Clustering Coefficient", "Assortativity",
+        "Degree Centrality", "Betweenness Centrality", 
+        "Closeness Centrality", "Eigenvector Centrality"
     ]
     
-    # Create empty dictionary to store extracted metrics
-    extracted_metrics = Dict()
+    # Extract metrics for each network type
+    data = Dict()
     
-    # For each network type, extract the relevant metrics
     for network_type in network_types
         analysis = metrics_data[network_type]
         
-        # Get values from analysis
-        centrality_df = analysis["centrality"]
-        summary_df = analysis["summary"]
-        
-        # Extract values
-        extracted_metrics[network_type] = Dict(
-            "density" => summary_df[summary_df.metric .== "Density", :value][1],
-            "clustering_coefficient" => summary_df[summary_df.metric .== "Clustering Coefficient", :value][1],
-            "assortativity" => summary_df[summary_df.metric .== "Assortativity", :value][1],
-            "degree_centrality" => mean(centrality_df.degree_centrality),
-            "betweenness_centrality" => mean(centrality_df.betweenness_centrality),
-            "closeness_centrality" => mean(centrality_df.closeness_centrality),
-            "eigenvector_centrality" => mean(centrality_df.eigenvector_centrality)
+        data[network_type] = Dict(
+            "density" => analysis["summary"][analysis["summary"].metric .== "Density", :value][1],
+            "clustering_coefficient" => analysis["summary"][analysis["summary"].metric .== "Clustering Coefficient", :value][1],
+            "assortativity" => analysis["summary"][analysis["summary"].metric .== "Assortativity", :value][1],
+            "degree_centrality" => mean(analysis["centrality"].degree_centrality),
+            "betweenness_centrality" => mean(analysis["centrality"].betweenness_centrality),
+            "closeness_centrality" => mean(analysis["centrality"].closeness_centrality),
+            "eigenvector_centrality" => mean(analysis["centrality"].eigenvector_centrality)
         )
     end
     
-    # Prepare data for plotting - create a DataFrame for grouped bar plotting
-    plot_data = DataFrame()
+    # Prepare DataFrame for plotting
+    df = DataFrame(metric = metric_names, position = 1:length(metric_names))
     
-    # Create a position column for the bars
-    plot_data.position = 1:length(metric_display_names)
-    plot_data.metric = reverse(metric_display_names)
-    
-    # Add a column for each network type
+    # Add columns for each network type
     for network_type in network_types
-        network_name = get(network_labels, network_type, String(network_type))
-        values = Float64[]
-        
-        # Get values in the same order as metric_display_names (reversed)
-        for metric in reverse(metrics)
-            push!(values, extracted_metrics[network_type][metric])
-        end
-        
-        # Add the column to the DataFrame
-        plot_data[!, network_name] = values
+        name = get(network_labels, network_type, String(network_type))
+        df[!, name] = [data[network_type][metric] for metric in metrics]
     end
     
-    # Define colors for each network type
+    # Set colors for network types
     colors = Dict(
-        "random" => :blue,
-        "smallworld" => :orange,
-        "preferential" => :green
+        "Random" => :blue,
+        "Small-World" => :orange,
+        "Preferential Attachment" => :green
     )
     
-    # Get network names from the DataFrame columns (excluding position and metric)
-    network_names = setdiff(names(plot_data), ["position", "metric"])
+    # Get network names
+    network_names = setdiff(names(df), ["position", "metric"])
     
-    # Create horizontal bar chart - Using direct array access instead of col() function
-    p = groupedbar(
-        plot_data.position,
-        Matrix(plot_data[:, network_names]),  # Directly accessing columns as a matrix
+    # Display the data that will be plotted
+    println("Plotting DataFrame:")
+    println(df)
+    
+    # Create plot, using Vector{String} for yticks labels to ensure all display properly
+    ytick_labels = Vector{String}(df.metric)
+    
+    # Properly normalize the data for better visualization
+    # Scale the values to make them visible on the same plot
+    scaled_df = deepcopy(df)
+    for metric in metrics
+        max_val = maximum([data[nt][metric] for nt in network_types])
+        if max_val > 0
+            idx = findfirst(==(metric_names[findfirst(==(metric), metrics)]), df.metric)
+            if idx !== nothing
+                # Apply logarithmic scaling to make small values more visible
+                if max_val < 0.01
+                    for network_name in network_names
+                        scaled_df[idx, network_name] *= 100
+                    end
+                    ytick_labels[idx] = "$(ytick_labels[idx]) (×100)"
+                end
+            end
+        end
+    end
+    
+    p = StatsPlots.groupedbar(
+        df.position,
+        Matrix(df[:, network_names]),
         group=network_names,
         orientation=:horizontal,
-        yticks=(plot_data.position, plot_data.metric),  # y-axis ticks with metric names
+        yticks=(df.position, ytick_labels),
         xlabel="Value",
         ylabel="Metric",
-        title="Comparison of Graph Measures",
+        title="Comparison of Network Metrics",
         legend=:bottomright,
         palette=[colors[n] for n in network_names],
-        size=(800, 600),
+        size=(900, 700),
         margin=10mm,
-        left_margin=18mm,
-        grid=true,
-        framestyle=:box,
-        linewidth=1
+        guidefontsize=9,
+        tickfontsize=8,
+        titlefontsize=12
     )
     
     # Save if path provided
-    if !isnothing(save_path)
+    if !isempty(save_path)
         savefig(p, save_path)
     end
     
@@ -429,39 +416,31 @@ function plot_network_metrics_comparison(metrics_data::Dict; save_path::Union{St
 end
 
 """
-    compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smallworld, :preferential], 
-                          mean_degree::Int=4, n_nodes::Int=1000)
+    compare_network_metrics(; network_types::Vector{Symbol}, mean_degree::Int=4, n_nodes::Int=1000)
 
-Generate, analyze, and compare metrics across different network types.
+Generate and compare metrics across different network types.
 
 # Arguments
-- `network_types::Vector{Symbol}`: List of network types to compare
-- `mean_degree::Int`: Mean degree for network generation
-- `n_nodes::Int`: Number of nodes in each network
+- `network_types`: List of network types to compare
+- `mean_degree`: Mean degree for network generation
+- `n_nodes`: Number of nodes in each network
 
 # Returns
-- A horizontal bar chart comparing network metrics across different network types
-
-# Example
-```julia
-compare_network_metrics(mean_degree=6)
-```
+- A horizontal bar chart comparing network metrics
 """
-function compare_network_metrics(; network_types::Vector{Symbol}=[:random, :smallworld, :preferential], 
-                               mean_degree::Int=4, n_nodes::Int=1000)
-    
+function compare_network_metrics(; network_types::Vector{Symbol}, mean_degree::Int=4, n_nodes::Int=1000)
+    # Generate and analyze each network type
     metrics_data = Dict()
     
-    # Generate and analyze each network type
     for nt in network_types
         println("Analyzing $(nt) network...")
         model = initialize(; network_type=nt, mean_degree=mean_degree, n_nodes=n_nodes)
         metrics_data[nt] = analyze_graph(model.graph)
     end
     
-    # Generate the comparison plot
-    plot = plot_network_metrics_comparison(metrics_data, 
-                                         save_path="figures/network_metrics_comparison_mdeg_$(mean_degree).pdf")
+    # Generate and save the comparison plot
+    filename = "figures/network_metrics_comparison_mdeg_$(mean_degree).pdf"
+    plot = plot_network_metrics_comparison(metrics_data, save_path=filename)
     
     return plot
 end
@@ -535,11 +514,6 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
     plot_height_per_row = 450
     plot_height = plot_height_per_row * first(plot_layout)
     
-    # Colors for the different network types
-    # Define a color palette that can handle more than 3 network types
-    color_palette = [:blue, :gray, :orange, :green, :red, :purple, :brown, :pink, :cyan, :magenta]
-    colors = Dict(zip(network_types, color_palette[1:min(length(color_palette), n_types)]))
-    
     # Create plots for each centrality measure
     plots = []
     
@@ -550,11 +524,32 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
     for nt in network_types
         df = centrality_data[nt]
         
-        # Find the maximum values for each centrality measure with some buffer
-        degree_max = maximum(df.degree_centrality) * 1.15
-        betweenness_max = maximum(df.betweenness_centrality) * 1.15
-        closeness_max = maximum(df.closeness_centrality) * 1.15
-        eigenvector_max = maximum(df.eigenvector_centrality) * 1.15
+        # Calculate quartiles for each centrality measure
+        q1_degree = quantile(df.degree_centrality, 0.25)
+        q3_degree = quantile(df.degree_centrality, 0.75)
+        iqr_degree = q3_degree - q1_degree
+        upper_whisker_degree = min(maximum(df.degree_centrality), q3_degree + 1.5 * iqr_degree)
+        
+        q1_betweenness = quantile(df.betweenness_centrality, 0.25)
+        q3_betweenness = quantile(df.betweenness_centrality, 0.75)
+        iqr_betweenness = q3_betweenness - q1_betweenness
+        upper_whisker_betweenness = min(maximum(df.betweenness_centrality), q3_betweenness + 1.5 * iqr_betweenness)
+        
+        q1_closeness = quantile(df.closeness_centrality, 0.25)
+        q3_closeness = quantile(df.closeness_centrality, 0.75)
+        iqr_closeness = q3_closeness - q1_closeness
+        upper_whisker_closeness = min(maximum(df.closeness_centrality), q3_closeness + 1.5 * iqr_closeness)
+        
+        q1_eigenvector = quantile(df.eigenvector_centrality, 0.25)
+        q3_eigenvector = quantile(df.eigenvector_centrality, 0.75)
+        iqr_eigenvector = q3_eigenvector - q1_eigenvector
+        upper_whisker_eigenvector = min(maximum(df.eigenvector_centrality), q3_eigenvector + 1.5 * iqr_eigenvector)
+        
+        # Use upper whiskers (excluding outliers) with a small buffer for y-axis limits
+        degree_max = upper_whisker_degree * 1.15
+        betweenness_max = upper_whisker_betweenness * 1.15
+        closeness_max = upper_whisker_closeness * 1.15
+        eigenvector_max = upper_whisker_eigenvector * 1.15
         
         # Store the maximum overall for this network type
         y_limits[nt] = max(degree_max, betweenness_max, closeness_max, eigenvector_max)
@@ -598,7 +593,6 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
         p = @df boxplot_data boxplot(
             :centrality_type, 
             :value,
-            fillcolor=[:blue :red :gray :gold],
             title=network_name,
             legend=false,
             outliers=false,  # Hide outliers to improve readability
@@ -612,6 +606,7 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
             xrotation=30,    
             ylims=(0, y_max),
             ylabel="Centrality Value",
+            dpi=300,
             margin=8mm,      # Add individual plot margins for better spacing
             bottom_margin=10mm,  # Add extra space at the bottom for x-axis labels
             left_margin=8mm      # Add extra space for y-axis labels
@@ -632,9 +627,6 @@ function plot_centrality_comparison(;network_types=[:random, :smallworld, :prefe
     combined_plot = plot(plots..., 
                       layout=plot_layout, 
                       size=(plot_width, plot_height),
-                      margin=10mm,        # Increase the overall margin
-                      left_margin=12mm,   # Increase left margin for y-axis labels
-                      right_margin=8mm,   # Add more right margin for balance
                       bottom_margin=12mm, # Increase bottom margin for x-axis labels
                       top_margin=10mm,    # Add more top margin for titles
                       xtickfontsize=9,
