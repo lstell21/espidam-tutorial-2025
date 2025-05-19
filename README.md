@@ -68,7 +68,7 @@ We will explore the network types **configuration network** and **proportionate 
 4. Fit a negative binomial distribution to the data using maximum likelihood estimation
 5. Visualize how well the fitted distribution captures the observed data
 
-### Task 2: Configuration Networks and Proportionate Mixing
+### Task 2: Configuration Network and Proportionate Mixing
 
 1. Use the `deg_dist.csv` file to generate a configuration network and run the SIR model simulation
 2. Examine key network metrics (clustering coefficient, centrality measures, etc.)

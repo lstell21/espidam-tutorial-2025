@@ -139,7 +139,7 @@ function plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::In
     plotdegdist = plot_degree_distribution(graph_analysis["degree_distribution"]; network_type=model.network_type)
     
     # Create a combined plot for side-by-side visualization
-    combined_plot = plot(plotdynamics, plotdegdist, layout=(1,2), size=(1000, 400),
+    combined_plot = plot(plotdynamics, plotdegdist, layout=(1,2), size=(1000, 400), margin=5mm,
                        title=["Epidemic Dynamics ($(String(model.network_type)))" "Degree Distribution ($(String(model.network_type)))"])
     savefig(combined_plot, "figures/combined_plot_$(base_filename).pdf")
     
