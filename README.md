@@ -31,25 +31,22 @@ If you encounter any issues during installation, please check the [Julia documen
 
 ### Task 1: Getting Started with Random Networks
 
-1. Choose a graph type: `random`
-2. Run the model; these steps will be done automatically:
-   - Generate network (done with Initialization)
+1. Start with graph type: `random`
+2. Run the notebook; these steps will be done automatically:
+   - Generate network (done with initialization)
    - Calculate and visualize degree distribution
    - Calculate network properties (clustering coefficient, component sizes, diameter)
    - Calculate centrality measures for nodes
    - Run SIR model on the network with default parameters
-3. Import the output files into R or Excel, or any other software you like to work with
-4. Make figures of temporal dynamics, final size distribution, distribution of durations
-5. Start with one graph type to go through all steps
+3. Start with one graph type to go through all steps
 
 ### Task 2: Comparing Network Types
 
-1. Repeat the same analysis with graph types `smallworld` and `preferentialattachment`
+1. Repeat the same analysis with graph types `smallworld` and `preferential`
 2. Compare degree distributions and other graph-based measures
 3. Compare the dynamics of the outbreaks
 4. Compare the final sizes
-5. Make graphs to compare the epidemics on these 3 types of networks
-6. Investigate whether there is a relationship between any of the graph measures and the final epidemic size (number of infected individuals at the end of the outbreak)
+5. Investigate whether there is a relationship between any of the graph measures and the final epidemic size (number of infected individuals at the end of the outbreak)
 
 ### Task 3: Parameter Variation
 
@@ -61,22 +58,24 @@ If you encounter any issues during installation, please check the [Julia documen
 
 ## Part 2: Configuration Networks and Real-World Data
 
-We will now explore the network type configuration network. We do this with a degree distribution based on data, and with a degree distribution sampled from a negative binomial distribution. You got a file with data from the POLYMOD study, from which we will use the column "cnt_count", which contains the number of daily contacts for all participants.
+We will explore the network types **configuration network** and **proportionate mixing network**. We do this with a degree distribution based on data, and with a degree distribution sampled from a negative binomial distribution.
 
-### Task 1: Data Preparation
+### Task 1: Data Preparation and Analysis
 
-1. Make yourself familiar with the data file. Choose a country for which you want to extract a degree distribution
-2. You need a list of degrees of length 1000. Sample this from the data for the chosen country and write it on a file `deg_dist.csv`
-3. Plot a histogram of the distribution
-4. Visually fit a negative binomial distribution to the data
+1. Explore the POLYMOD contact data (or sample data) to understand real-world contact patterns
+2. Sample or generate a list of 1000 contact degrees and save it to `deg_dist.csv`
+3. Calculate and visualize the basic statistics of the degree distribution
+4. Fit a negative binomial distribution to the data using maximum likelihood estimation
+5. Visualize how well the fitted distribution captures the observed data
 
-### Task 2: Configuration Networks
+### Task 2: Configuration Networks and Proportionate Mixing
 
-1. Use the file `deg_dist.csv` to generate a configuration network and run the model on this network
-2. Compare the results to those from the previous practical. How does the structure of this network compare to the other network types?
-3. Interpretation: in which aspects is the generated network not a realistic model of the real contact network measured by POLYMOD?
-4. Run also the proportionatemixing network with the parameters for the negative binomial distribution estimated (roughly) from the data. Are the results similar to the results from the configuration network?
-5. Now vary the mean degree of the negative binomial distribution and observe how this influences network structure and epidemic dynamics. (Optional: vary the dispersion parameter and observe how it influences the dynamics)
+1. Use the `deg_dist.csv` file to generate a configuration network and run the SIR model simulation
+2. Examine key network metrics (clustering coefficient, centrality measures, etc.)
+3. Interpretation: In which aspects is the generated network not a realistic model of the real contact network measured by POLYMOD?
+4. Generate a proportionate mixing network using the parameters (μ, θ) estimated from the fitted negative binomial distribution
+5. Compare the structure and epidemic outcomes between different network types (random, configuration, and proportionate mixing)
+6. Investigate how the mean degree and dispersion parameters influence network structure and epidemic dynamics
 
 ### Task 3: Risk Factors and Interventions
 
