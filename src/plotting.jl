@@ -86,7 +86,7 @@ end
     plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, 
                    dispersion::Float64=0.1, patient_zero::Symbol=:random, 
                    high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, 
-                   trans_prob::Float64=0.1, n_steps::Int=100)
+                   trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
 
 Plot a single run of an epidemic simulation.
 
@@ -100,6 +100,8 @@ Plot a single run of an epidemic simulation.
 - `fraction_high_risk::Float64`: The fraction of high-risk individuals in the population. Default is 0.1.
 - `trans_prob::Float64`: The transmission probability. Default is 0.1.
 - `n_steps::Int`: The number of simulation steps to run. Default is 100.
+- `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`. Default is nothing.
+- `p̂`: The p parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`. Default is nothing.
 
 # Returns
 - `plotdynamics`: A plot of the epidemic trajectories.
@@ -114,10 +116,10 @@ dynamics_plot, degdist_plot, combined_plot = plot_single_run(network_type=:rando
 function plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, 
                        dispersion::Float64=0.1, patient_zero::Symbol=:random, 
                        high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, 
-                       trans_prob::Float64=0.1, n_steps::Int=100)
+                       trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
     # Initialize model and run simulation
     model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, 
-                     high_risk, fraction_high_risk, trans_prob)
+                     high_risk, fraction_high_risk, trans_prob, r̂, p̂)
     
     # Define adata and mdata locally to avoid relying on global variables
     adata = [:status]
@@ -191,7 +193,7 @@ end
                           n_nodes::Int=1000, dispersion::Float64=0.1, 
                           patient_zero::Symbol=:random, high_risk::Symbol=:random, 
                           fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, 
-                          n_steps::Int=100, boxplot_colors=nothing)
+                          n_steps::Int=100, boxplot_colors=nothing, r̂=nothing, p̂=nothing)
 
 Run simulations for multiple network types and generate comparison plots.
 """
@@ -199,7 +201,7 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
                                n_nodes::Int=1000, dispersion::Float64=0.1, 
                                patient_zero::Symbol=:random, high_risk::Symbol=:random, 
                                fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, 
-                               n_steps::Int=100, boxplot_colors=nothing)
+                               n_steps::Int=100, boxplot_colors=nothing, r̂=nothing, p̂=nothing)
     # Store results for each network type
     all_results = Dict()
     
@@ -212,12 +214,12 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
     for network_type in network_types
         println("Running simulations for $(network_type) network...")
         model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, 
-                          high_risk, fraction_high_risk, trans_prob)
+                          high_risk, fraction_high_risk, trans_prob, r̂, p̂)
         
         # Run simulations
         multiple_runs = run_simulations(; network_type, mean_degree, n_nodes, dispersion, 
                                        patient_zero, high_risk, fraction_high_risk, 
-                                       trans_prob, n_steps)
+                                       trans_prob, n_steps, r̂, p̂)
         
         # Process results
         grouped_data = groupby(multiple_runs, [:seed])
@@ -299,7 +301,8 @@ end
 
 
 """
-    plot_centrality_comparison(;network_types=[:random, :smallworld, :preferential], mean_degree=4, n_nodes=1000, link_axes=false)
+    plot_centrality_comparison(;network_types=[:random, :smallworld, :preferential], 
+                              mean_degree=4, n_nodes=1000, link_axes=false, r̂=nothing, p̂=nothing)
 
 Plot boxplots comparing centrality measures across different network types.
 
@@ -308,6 +311,8 @@ Plot boxplots comparing centrality measures across different network types.
 - `mean_degree`: Mean degree for network generation
 - `n_nodes`: Number of nodes in each network
 - `link_axes`: Boolean indicating whether to link y-axes across plots for easier comparison (default: false)
+- `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`
+- `p̂`: The p parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`
 
 # Returns
 - A combined plot showing boxplots of centrality measures for each network type
@@ -325,17 +330,19 @@ centrality_comparison = plot_centrality_comparison(
 
 # With five different network types
 centrality_comparison = plot_centrality_comparison(
-    network_types=[:random, :smallworld, :preferential, :configuration, :proportionate]
+    network_types=[:random, :smallworld, :preferential, :configuration, :proportionatemixing]
 )
 ```
 """
-function plot_centrality_comparison(;network_types=[:random, :smallworld, :preferential], mean_degree=4, n_nodes=1000, link_axes=false)
+function plot_centrality_comparison(;network_types=[:random, :smallworld, :preferential], 
+                                   mean_degree=4, n_nodes=1000, link_axes=false, 
+                                   r̂=nothing, p̂=nothing)
     # Initialize empty DataFrames to store the centrality data
     centrality_data = Dict()
     
     # Generate and analyze each network type
     for nt in network_types
-        model = initialize(; network_type=nt, mean_degree=mean_degree, n_nodes=n_nodes)
+        model = initialize(; network_type=nt, mean_degree=mean_degree, n_nodes=n_nodes, r̂=r̂, p̂=p̂)
         analysis = analyze_graph(model.graph)
         centrality_data[nt] = analysis["centrality"]
     end
@@ -496,7 +503,8 @@ end
 
 
 """
-    plot_network_metrics_comparison(;network_types=[:random, :smallworld, :preferential], mean_degree=4, n_nodes=1000)
+    plot_network_metrics_comparison(;network_types=[:random, :smallworld, :preferential], 
+                                  mean_degree=4, n_nodes=1000, r̂=nothing, p̂=nothing)
 
 Create a horizontal bar plot comparing structural metrics across different network types.
 
@@ -504,6 +512,8 @@ Create a horizontal bar plot comparing structural metrics across different netwo
 - `network_types`: Vector of symbols representing the network types to compare
 - `mean_degree`: Mean degree for network generation
 - `n_nodes`: Number of nodes in each network
+- `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`
+- `p̂`: The p parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`
 
 # Returns
 - A horizontal bar chart comparing network metrics across network types
@@ -520,7 +530,8 @@ metrics_plot = plot_network_metrics_comparison(
 )
 ```
 """
-function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :preferential], mean_degree=4, n_nodes=1000)
+function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :preferential], 
+                                       mean_degree=4, n_nodes=1000, r̂=nothing, p̂=nothing)
     # Create storage for metrics
     density_values = Float64[]
     clustering_values = Float64[]
@@ -534,7 +545,7 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
     # Collect metrics for each network type
     for nt in network_types
         println("Analyzing $(nt) network...")
-        model = initialize(; network_type=nt, mean_degree=mean_degree, n_nodes=n_nodes)
+        model = initialize(; network_type=nt, mean_degree=mean_degree, n_nodes=n_nodes, r̂=r̂, p̂=p̂)
         analysis = analyze_graph(model.graph)
         
         # Extract key metrics

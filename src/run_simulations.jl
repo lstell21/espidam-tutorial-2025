@@ -13,16 +13,21 @@ Run simulations for an epidemiological model with different combinations of para
 - `fraction_high_risk::Float64`: The fraction of high-risk individuals in the population. Default is 1.0.
 - `trans_prob::Float64`: The transmission probability. Default is 0.1.
 - `n_steps::Int`: The number of simulation steps to run. Default is 100.
+- `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`. Default is nothing.
+- `p̂`: The p parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`. Default is nothing.
 
 # Returns
 - `mdf::DataFrame`: A DataFrame containing the simulation results.
 
 # Example
 ```julia
-mdf = run_simulations(:random, :random, 4, :random, 0.1)
+mdf = run_simulations(network_type=:random, mean_degree=4, patient_zero=:random, high_risk=:random, fraction_high_risk=0.1)
 ```
 """
-function run_simulations(; network_type::Symbol,  mean_degree::Int, n_nodes::Int=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=1.0, trans_prob::Float64=0.1, n_steps::Int=100)
+function run_simulations(; network_type::Symbol, mean_degree::Int, n_nodes::Int=1000, 
+                        dispersion::Float64=0.1, patient_zero::Symbol=:random, 
+                        high_risk::Symbol=:random, fraction_high_risk::Float64=1.0, 
+                        trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
     # Define parameters
     parameters = Dict(
         :seed => rand(UInt16, 100),
@@ -36,6 +41,14 @@ function run_simulations(; network_type::Symbol,  mean_degree::Int, n_nodes::Int
         :fraction_high_risk => fraction_high_risk,
         :days_to_recovered => 14
     )
+    
+    # Add r̂ and p̂ to parameters if provided
+    if r̂ !== nothing
+        parameters[:r̂] = r̂
+    end
+    if p̂ !== nothing
+        parameters[:p̂] = p̂
+    end
 
     # Run the simulation for all combinations of parameters
     _, mdf = paramscan(
