@@ -283,6 +283,8 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         layout=(1,3),
         size=(1200, 500),
         margin=3mm,
+        bottom_margin=10mm,
+        top_margin=5mm,
         title=["Epidemic Duration" "Maximum Infected" "Susceptible Fraction Remaining"],
         titlefontsize=10,
         plot_title="Epidemic Comparison (mean degree: $(mean_degree))", 
@@ -616,6 +618,7 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
 
     # Save the plot
     network_types_str = join([String(nt) for nt in network_types], "_")
+    println("Saving network metrics comparison plot to figures/network_metrics_comparison_$(network_types_str)_mdeg_$(mean_degree).pdf")
     savefig(metrics_plot, "figures/network_metrics_comparison_$(network_types_str)_mdeg_$(mean_degree).pdf")
 
     return metrics_plot
