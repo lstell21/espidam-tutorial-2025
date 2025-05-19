@@ -31,25 +31,22 @@ If you encounter any issues during installation, please check the [Julia documen
 
 ### Task 1: Getting Started with Random Networks
 
-1. Choose a graph type: `random`
-2. Run the model; these steps will be done automatically:
-   - Generate network (done with Initialization)
+1. Start with graph type: `random`
+2. Run the notebook; these steps will be done automatically:
+   - Generate network (done with initialization)
    - Calculate and visualize degree distribution
    - Calculate network properties (clustering coefficient, component sizes, diameter)
    - Calculate centrality measures for nodes
    - Run SIR model on the network with default parameters
-3. Import the output files into R or Excel, or any other software you like to work with
-4. Make figures of temporal dynamics, final size distribution, distribution of durations
-5. Start with one graph type to go through all steps
+3. Start with one graph type to go through all steps
 
 ### Task 2: Comparing Network Types
 
-1. Repeat the same analysis with graph types `smallworld` and `preferentialattachment`
+1. Repeat the same analysis with graph types `smallworld` and `preferential`
 2. Compare degree distributions and other graph-based measures
 3. Compare the dynamics of the outbreaks
 4. Compare the final sizes
-5. Make graphs to compare the epidemics on these 3 types of networks
-6. Investigate whether there is a relationship between any of the graph measures and the final epidemic size (number of infected individuals at the end of the outbreak)
+5. Investigate whether there is a relationship between any of the graph measures and the final epidemic size (number of infected individuals at the end of the outbreak)
 
 ### Task 3: Parameter Variation
 
