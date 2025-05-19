@@ -1,27 +1,34 @@
 """
-    analyze_graph(g)
+    analyze_graph(g::AbstractGraph)
 
-Analyze the given graph `g` and return a DataFrame containing various graph metrics.
+Analyze a graph and compute various network metrics and properties.
+
+This function calculates a comprehensive set of graph metrics including:
+- Basic statistics (mean degree, density, clustering coefficient)
+- Centrality measures (degree, betweenness, closeness, eigenvector)
+- Component analysis
+- Clique information
 
 # Arguments
-- `g`: The input graph.
+- `g::AbstractGraph`: The graph to analyze
 
 # Returns
-A DataFrame containing the following graph metrics:
-- `"density"`: The density of the graph.
-- `"mean_degree"`: The mean degree of the graph.
-- `"clustering_coefficient"`: The clustering coefficient of the graph.
-- `"assortativity"`: The assortativity of the graph.
-- `"connected_components"`: The number of connected components in the graph.
-- `"component_lengths"`: The lengths of each connected component in the graph.
-- `"max_component_length"`: The length of the largest connected component in the graph.
-- `"maximal_cliques"`: The maximal cliques in the graph.
-- `"diameter"`: The diameter of the graph if it is connected, otherwise "Graph is not connected".
-- `"degree_distribution"`: The degree distribution of the graph.
-- `"degree_centrality"`: The degree centrality of the graph.
-- `"betweenness_centrality"`: The betweenness centrality of the graph.
-- `"closeness_centrality"`: The closeness centrality of the graph.
-- `"eigenvector_centrality"`: The eigenvector centrality of the graph.
+A dictionary containing the following keys:
+- `"summary"`: DataFrame with scalar network metrics
+- `"centrality"`: DataFrame with node-level centrality measures
+- `"degree_distribution"`: Dictionary mapping degrees to their frequency
+- `"connected_components"`: Vector of components (each a vector of vertex IDs)
+- `"component_lengths"`: Vector of component sizes
+- `"maximal_cliques"`: Vector of maximal cliques in the graph
+
+# Examples
+```julia
+using Graphs, DataFrames
+g = erdos_renyi(100, 0.1)
+results = analyze_graph(g)
+summary_metrics = results["summary"]
+centrality_data = results["centrality"]
+```
 """
 function analyze_graph(g::AbstractGraph)
     # Calculate network metrics
@@ -40,8 +47,8 @@ function analyze_graph(g::AbstractGraph)
     
     # Calculate component information
     cnct_components = connected_components(g)
-    comp_lengths = map(length, connected_components(g))
-    max_comp_length = maximum(map(length, connected_components(g)))
+    comp_lengths = map(length, cnct_components)
+    max_comp_length = maximum(comp_lengths)
     max_cliques = maximal_cliques(g)
     
     # Create summary dataframe with scalar values
@@ -69,7 +76,6 @@ function analyze_graph(g::AbstractGraph)
     # Store more detailed node-level metrics in a separate dataframe
     centrality_measures = DataFrame(
         node_id = 1:nv(g),
-        degree = Graphs.degree(g),
         degree_centrality = dg_c,
         betweenness_centrality = btwn_c,
         closeness_centrality = clns_c,
@@ -106,21 +112,36 @@ function print_graph_analysis(analysis_results)
     
     # Get degree distribution info
     deg_dist = analysis_results["degree_distribution"]
+    deg_keys = collect(keys(deg_dist))
+    deg_values = collect(values(deg_dist))
+    
     deg_info = DataFrame(
-        metric = ["Min Degree", "Max Degree", "Most Common Degree", "Number of Connected Components"],
+        metric = ["Min Degree", "Max Degree", "Most Common Degree"],
         value = [
-            minimum(keys(deg_dist)), 
-            maximum(keys(deg_dist)),
-            findmax(collect(values(deg_dist)))[2],
-            length(analysis_results["connected_components"])
+            minimum(deg_keys),
+            maximum(deg_keys),
+            deg_keys[findmax(deg_values)[2]]
         ]
     )
+    
+    # Create a component sizes table and summary
+    comp_sizes = analysis_results["component_lengths"]
+    component_sizes_df = DataFrame(component_id = 1:length(comp_sizes), size = comp_sizes)
+    
+    # Create a component size summary table
+    size_counts = countmap(comp_sizes)
+    component_summary = DataFrame(
+        component_size = collect(keys(size_counts)),
+        count = collect(values(size_counts))
+    )
+    sort!(component_summary, :component_size)
     
     # Return a named tuple of dataframes that will display well in Jupyter
     return (
         summary = summary_df,
         centrality = centrality_summary,
         degree_info = deg_info,
-        component_sizes = DataFrame(size = analysis_results["component_lengths"])
+        component_sizes = component_sizes_df,
+        component_summary = component_summary
     )
 end

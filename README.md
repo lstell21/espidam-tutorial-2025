@@ -1,5 +1,32 @@
 # ESPIDAM Tutorial 2025
 
+## Installation instructions
+
+1. **Visual Studio Code**
+   - Install the latest version of [Visual Studio Code](https://code.visualstudio.com/)
+
+2. **Julia Language**
+   - Install the latest version of [Julia](https://julialang.org/downloads/)
+   - Alternatively, use [JuliaUp](https://github.com/JuliaLang/juliaup) for better version management
+
+3. **VS Code Extensions**
+   - Open VS Code and install the Julia extension
+   - You can find it by searching for "Julia" in the Extensions tab
+
+4. **Verify Installation**
+   - Open the Julia REPL in VS Code by pressing:
+     - Windows: `Alt+J, Alt+O`
+     - macOS: `Ctrl+J, Ctrl+O`
+     - Linux: `Ctrl+J, Ctrl+O`
+   - Alternatively, use the Command Palette (F1 or Ctrl/Cmd+Shift+P) and search for "Julia: Start REPL"
+   - If the REPL opens successfully, your setup is working correctly
+
+5. **Run the Tutorial**
+   - Clone or download this repository
+   - Open the notebook files (Part1.jpynb and Part2.jpynb) in VS Code
+   
+If you encounter any issues during installation, please check the [Julia documentation](https://docs.julialang.org/) or open an issue in this repository.
+
 ## Part 1: Network Types and Epidemic Modeling
 
 ### Task 1: Getting Started with Random Networks
