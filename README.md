@@ -58,7 +58,7 @@ If you encounter any issues during installation, please check the [Julia documen
 
 ## Part 2: Configuration Networks and Real-World Data
 
-We will explore the network types **configuration network** and **proportionate mixing network**. We do this with a degree distribution based on data, and with a degree distribution sampled from a negative binomial distribution.
+We will explore the network types `configuration network` and `proportionate mixing network`. We do this with a degree distribution based on data, and with a degree distribution sampled from a negative binomial distribution.
 
 ### Task 1: Data Preparation and Analysis
 
