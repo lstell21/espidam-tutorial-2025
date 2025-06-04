@@ -26,7 +26,7 @@ mdf = run_simulations(network_type=:random, mean_degree=4, patient_zero=:random,
 """
 function run_simulations(; network_type::Symbol, mean_degree::Int, n_nodes::Int=1000, 
                         dispersion::Float64=0.1, patient_zero::Symbol=:random, 
-                        high_risk::Symbol=:random, fraction_high_risk::Float64=1.0, 
+                        high_risk::Symbol=:random, fraction_high_risk::Float64=1.0, low_risk_factor::Float64=1.0,
                         trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
     # Define parameters
     parameters = Dict(
@@ -39,6 +39,7 @@ function run_simulations(; network_type::Symbol, mean_degree::Int, n_nodes::Int=
         :high_risk => high_risk,
         :trans_prob => trans_prob,
         :fraction_high_risk => fraction_high_risk,
+        :low_risk_factor => low_risk_factor,
         :days_to_recovered => 14
     )
     

@@ -79,14 +79,14 @@ end
 Create a consistent base filename from model parameters for saving files.
 """
 function create_base_filename(model)
-    return "$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_trans_$(model.trans_prob)"
+    return "$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_low_risk_factor_$(model.low_risk_factor)_trans_$(model.trans_prob)"
 end
 
 """
     plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, 
                    dispersion::Float64=0.1, patient_zero::Symbol=:random, 
                    high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, 
-                   trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
+                   low_risk_factor::Float64=1.0, trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
 
 Plot a single run of an epidemic simulation.
 
@@ -98,6 +98,7 @@ Plot a single run of an epidemic simulation.
 - `patient_zero::Symbol`: The type of patient zero to use for the simulation. Default is `:random`.
 - `high_risk::Symbol`: How high-risk individuals are distributed. Default is `:random`.
 - `fraction_high_risk::Float64`: The fraction of high-risk individuals in the population. Default is 0.1.
+- `low_risk_factor::Float64`: The factor by which low-risk individuals' transmission probability is multiplied. Default is 1.0.
 - `trans_prob::Float64`: The transmission probability. Default is 0.1.
 - `n_steps::Int`: The number of simulation steps to run. Default is 100.
 - `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`. Default is nothing.
@@ -116,10 +117,10 @@ dynamics_plot, degdist_plot, combined_plot = plot_single_run(network_type=:rando
 function plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, 
                        dispersion::Float64=0.1, patient_zero::Symbol=:random, 
                        high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, 
-                       trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
+                       low_risk_factor::Float64=1.0, trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
     # Initialize model and run simulation
     model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, 
-                     high_risk, fraction_high_risk, trans_prob, r̂, p̂)
+                     high_risk, fraction_high_risk, low_risk_factor, trans_prob, r̂, p̂)
     
     # Define adata and mdata locally to avoid relying on global variables
     adata = [:status]
@@ -192,16 +193,16 @@ end
     run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::Int=4, 
                           n_nodes::Int=1000, dispersion::Float64=0.1, 
                           patient_zero::Symbol=:random, high_risk::Symbol=:random, 
-                          fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, 
-                          n_steps::Int=100, boxplot_colors=nothing, r̂=nothing, p̂=nothing)
+                          fraction_high_risk::Float64=0.1, low_risk_factor::Float64=1.0,
+                          trans_prob::Float64=0.1, n_steps::Int=100, boxplot_colors=nothing, r̂=nothing, p̂=nothing)
 
 Run simulations for multiple network types and generate comparison plots.
 """
 function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::Int=4, 
                                n_nodes::Int=1000, dispersion::Float64=0.1, 
                                patient_zero::Symbol=:random, high_risk::Symbol=:random, 
-                               fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, 
-                               n_steps::Int=100, boxplot_colors=nothing, r̂=nothing, p̂=nothing)
+                               fraction_high_risk::Float64=0.1, low_risk_factor::Float64=1.0,
+                               trans_prob::Float64=0.1, n_steps::Int=100, boxplot_colors=nothing, r̂=nothing, p̂=nothing)
     # Store results for each network type
     all_results = Dict()
     
@@ -214,23 +215,46 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
     for network_type in network_types
         println("Running simulations for $(network_type) network...")
         model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, 
-                          high_risk, fraction_high_risk, trans_prob, r̂, p̂)
+                          high_risk, fraction_high_risk, low_risk_factor, trans_prob, r̂, p̂)
         
         # Run simulations
         multiple_runs = run_simulations(; network_type, mean_degree, n_nodes, dispersion, 
                                        patient_zero, high_risk, fraction_high_risk, 
-                                       trans_prob, n_steps, r̂, p̂)
+                                       low_risk_factor, trans_prob, n_steps, r̂, p̂)
         
         # Process results
         grouped_data = groupby(multiple_runs, [:seed])
-        final_results = combine(grouped_data, :infected_count => argmin => :first_to_last_infected, 
-                               :infected_count => maximum => :max_infected)
+        
+        # Calculate duration metrics properly
+        final_results = combine(grouped_data) do df
+            # Find the first step where infection appears (should be step 1 normally)
+            first_infected_step = findfirst(df.infected_count .> 0)
+            
+            # Find the last step where infection is present
+            last_infected_step = findlast(df.infected_count .> 0)
+            
+            # Calculate the duration - if epidemic never ends, use total steps
+            duration = if isnothing(last_infected_step)
+                length(df.infected_count)  # Epidemic didn't end
+            else
+                last_infected_step - first_infected_step + 1  # +1 to include both endpoints
+            end
+            
+            # Get maximum infected count
+            max_infected = maximum(df.infected_count)
+            
+            return DataFrame(
+                first_to_last_infected = duration,
+                max_infected = max_infected
+            )
+        end
+        
         last_rows = combine(grouped_data, names(multiple_runs) .=> last)
         final_results[!, :susceptible_fraction_remaining] = last_rows.susceptible_count_last ./ 
             (last_rows.susceptible_count_last + last_rows.infected_count_last + last_rows.recovered_count_last)
         
         # Save results
-        base_filename = "$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes)_disp_$(dispersion)_pat0_$(patient_zero)_hirisk_$(high_risk)_hr_frac_$(fraction_high_risk)_trans_$(trans_prob)"
+        base_filename = "$(network_type)_mdeg_$(mean_degree)_nn_$(n_nodes)_disp_$(dispersion)_pat0_$(patient_zero)_hirisk_$(high_risk)_hr_frac_$(fraction_high_risk)_low_risk_factor_$(low_risk_factor)_trans_$(trans_prob)"
         println("Saving simulation results to data/simulation_results...")
         CSV.write("data/simulation_results_$(base_filename).csv", multiple_runs)
         println("Saving final results to output/final_results...")
