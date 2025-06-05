@@ -15,6 +15,7 @@ Run simulations for an epidemiological model with different combinations of para
 - `n_steps::Int`: The number of simulation steps to run. Default is 100.
 - `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`. Default is nothing.
 - `p̂`: The p parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`. Default is nothing.
+- `low_risk_factor::Float64`: Factor to multiply the transmission probability for low risk agents. Must be between 0 and 1. Default is 1.0.
 
 # Returns
 - `mdf::DataFrame`: A DataFrame containing the simulation results.
@@ -26,8 +27,13 @@ mdf = run_simulations(network_type=:random, mean_degree=4, patient_zero=:random,
 """
 function run_simulations(; network_type::Symbol, mean_degree::Int, n_nodes::Int=1000, 
                         dispersion::Float64=0.1, patient_zero::Symbol=:random, 
-                        high_risk::Symbol=:random, fraction_high_risk::Float64=1.0, 
+                        high_risk::Symbol=:random, fraction_high_risk::Float64=1.0, low_risk_factor::Float64=1.0,
                         trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
+    # Validate low_risk_factor
+    if !(0 <= low_risk_factor <= 1)
+        error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
+    end
+    
     # Define parameters
     parameters = Dict(
         :seed => rand(UInt16, 100),
@@ -39,6 +45,7 @@ function run_simulations(; network_type::Symbol, mean_degree::Int, n_nodes::Int=
         :high_risk => high_risk,
         :trans_prob => trans_prob,
         :fraction_high_risk => fraction_high_risk,
+        :low_risk_factor => low_risk_factor,
         :days_to_recovered => 14
     )
     

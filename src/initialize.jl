@@ -1,5 +1,5 @@
 """
-initialize(; network_type, mean_degree = 4, n_nodes = 1000, dispersion = 0.1, patient_zero = :random, high_risk=:random, fraction_high_risk=0.1, trans_prob = 0.1, days_to_recovered = 14, seed = 42, r̂ = nothing, p̂ = nothing)
+initialize(; network_type, mean_degree = 4, n_nodes = 1000, dispersion = 0.1, patient_zero = :random, high_risk=:random, fraction_high_risk=0.1, trans_prob = 0.1, days_to_recovered = 14, seed = 42, r̂ = nothing, p̂ = nothing, low_risk_factor = 1.0)
 
 Initialize the model with default parameters.
 
@@ -16,16 +16,22 @@ Initialize the model with default parameters.
 - `seed`: The seed for the random number generator. Default is 42.
 - `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionate`. If not provided, will be calculated from mean_degree and dispersion.
 - `p̂`: The p parameter for negative binomial distribution, used only when `network_type` is `:proportionate`. If not provided, will be calculated from mean_degree and dispersion.
+- `low_risk_factor`: Factor to multiply the transmission probability for low risk agents. Default is 1.0.
 
 # Returns
 - `model`: The created model.
 """
-function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing)
+function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0)
+    # Validate low_risk_factor
+    if !(0 <= low_risk_factor <= 1)
+        error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
+    end
+    
     # create a graph space
     graph = create_graph(; network_type, mean_degree, n_nodes, dispersion, r̂, p̂)
     space = GraphSpace(graph)
     # set up properties
-    properties = create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, r̂, p̂)
+    properties = create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor, r̂, p̂)
     # set up RNG
     rng = Xoshiro(seed)
     # create the model
@@ -40,7 +46,7 @@ end
 ############################### helper functions ###############################
 
 """
-create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, r̂, p̂)
+create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor, r̂, p̂)
 
 Create a dictionary of properties for the simulation.
 
@@ -55,6 +61,7 @@ Create a dictionary of properties for the simulation.
 - `fraction_high_risk`: The fraction of high-risk nodes in the network.
 - `trans_prob`: The transmission probability.
 - `days_to_recovered`: The number of days it takes for an infected node to recover.
+- `low_risk_factor`: Factor to multiply the transmission probability for low risk agents.
 - `r̂`: The r parameter for negative binomial distribution.
 - `p̂`: The p parameter for negative binomial distribution.
 
@@ -62,7 +69,10 @@ Create a dictionary of properties for the simulation.
 - `properties`: A dictionary containing the properties for the simulation.
 
 """
-function create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, r̂=nothing, p̂=nothing)
+function create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor=1.0, r̂=nothing, p̂=nothing)
+    # Ensure low_risk_factor is between 0 and 1
+    low_risk_factor = clamp(low_risk_factor, 0.0, 1.0)
+    
     properties = Dict(
         :graph => graph,
         :network_type => network_type,
@@ -74,6 +84,7 @@ function create_properties(graph, network_type, n_nodes, mean_degree, dispersion
         :fraction_high_risk => fraction_high_risk,
         :trans_prob => trans_prob,
         :days_to_recovered => days_to_recovered,
+        :low_risk_factor => low_risk_factor,
         :susceptible_count => n_nodes,
         :infected_count => 1,
         :recovered_count => 0)
