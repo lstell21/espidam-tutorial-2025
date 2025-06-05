@@ -79,6 +79,7 @@ end
 Create a consistent base filename from model parameters for saving files.
 """
 function create_base_filename(model)
+    # low_risk_factor is guaranteed to be between 0 and 1
     return "$(model.network_type)_mdeg_$(model.mean_degree)_nn_$(model.n_nodes)_disp_$(model.dispersion)_pat0_$(model.patient_zero)_hirisk_$(model.high_risk)_hr_frac_$(model.fraction_high_risk)_low_risk_factor_$(model.low_risk_factor)_trans_$(model.trans_prob)"
 end
 
@@ -98,7 +99,7 @@ Plot a single run of an epidemic simulation.
 - `patient_zero::Symbol`: The type of patient zero to use for the simulation. Default is `:random`.
 - `high_risk::Symbol`: How high-risk individuals are distributed. Default is `:random`.
 - `fraction_high_risk::Float64`: The fraction of high-risk individuals in the population. Default is 0.1.
-- `low_risk_factor::Float64`: The factor by which low-risk individuals' transmission probability is multiplied. Default is 1.0.
+- `low_risk_factor::Float64`: The factor by which low-risk individuals' transmission probability is multiplied. Must be between 0 and 1. Default is 1.0.
 - `trans_prob::Float64`: The transmission probability. Default is 0.1.
 - `n_steps::Int`: The number of simulation steps to run. Default is 100.
 - `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionatemixing`. Default is nothing.
@@ -118,6 +119,11 @@ function plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::In
                        dispersion::Float64=0.1, patient_zero::Symbol=:random, 
                        high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, 
                        low_risk_factor::Float64=1.0, trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
+    # Validate low_risk_factor
+    if !(0 <= low_risk_factor <= 1)
+        error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
+    end
+    
     # Initialize model and run simulation
     model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, 
                      high_risk, fraction_high_risk, low_risk_factor, trans_prob, r̂, p̂)
@@ -203,6 +209,11 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
                                patient_zero::Symbol=:random, high_risk::Symbol=:random, 
                                fraction_high_risk::Float64=0.1, low_risk_factor::Float64=1.0,
                                trans_prob::Float64=0.1, n_steps::Int=100, boxplot_colors=nothing, r̂=nothing, p̂=nothing)
+    # Validate low_risk_factor
+    if !(0 <= low_risk_factor <= 1)
+        error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
+    end
+    
     # Store results for each network type
     all_results = Dict()
     

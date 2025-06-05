@@ -22,6 +22,11 @@ Initialize the model with default parameters.
 - `model`: The created model.
 """
 function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0)
+    # Validate low_risk_factor
+    if !(0 <= low_risk_factor <= 1)
+        error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
+    end
+    
     # create a graph space
     graph = create_graph(; network_type, mean_degree, n_nodes, dispersion, r̂, p̂)
     space = GraphSpace(graph)
@@ -65,6 +70,9 @@ Create a dictionary of properties for the simulation.
 
 """
 function create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor=1.0, r̂=nothing, p̂=nothing)
+    # Ensure low_risk_factor is between 0 and 1
+    low_risk_factor = clamp(low_risk_factor, 0.0, 1.0)
+    
     properties = Dict(
         :graph => graph,
         :network_type => network_type,

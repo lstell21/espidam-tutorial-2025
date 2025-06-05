@@ -70,13 +70,13 @@ We will explore the network types `configuration network` and `proportionate mix
 
 ### Task 2: Configuration Network and Proportionate Mixing
 
-1.     You now use the file deg_dist.csv to generate a configuration network and run the model on this network. 
-2.     Compare the results to those from the previous practical. How does the structure of this network compare to the other network types? 
-3.     Interpretation: in which aspects is the generated network not a realistic model of the real contact network measured by POLYMOD?
-4.     Run also the proportionate mixing network with the parameters for the negative binomial distribution estimated (roughly) from the data. Are the results similar to the results from the configuration network?
-5.     Now vary the mean degree of the negative binomial distribution and observe how this influences network structure and epidemic dynamics. (Optional: vary the dispersion parameter and observe how it influences the dynamics). 
-6.     How would you include the impact of mask use in this model? One possibility is that the transmission probability is reduced by a certain factor 0<m<1. Vary the factor m and observe the impact on the epidemic outcome. 
-7.     Does it matter for the effectiveness of mask use whether the index case is a random individual or has high centrality? 
+1. You now use the file deg_dist.csv to generate a configuration network and run the model on this network. 
+2. Compare the results to those from the previous practical. How does the structure of this network compare to the other network types? 
+3. Interpretation: in which aspects is the generated network not a realistic model of the real contact network measured by POLYMOD?
+4. Run also the proportionate mixing network with the parameters for the negative binomial distribution estimated (roughly) from the data. Are the results similar to the results from the configuration network?
+5. Now vary the mean degree of the negative binomial distribution and observe how this influences network structure and epidemic dynamics. (Optional: vary the dispersion parameter and observe how it influences the dynamics). 
+6. How would you include the impact of mask use in this model? One possibility is that the transmission probability is reduced by a certain factor 0<m<1. Vary the factor m and observe the impact on the epidemic outcome. 
+7. Does it matter for the effectiveness of mask use whether the index case is a random individual or has high centrality? 
 
 ### Task 3: Risk Factors and Interventions
 
