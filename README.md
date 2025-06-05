@@ -58,7 +58,7 @@ If you encounter any issues during installation, please check the [Julia documen
 
 ## Part 2: Configuration Networks and Real-World Data
 
-We will explore the network types **configuration network** and **proportionate mixing network**. We do this with a degree distribution based on data, and with a degree distribution sampled from a negative binomial distribution.
+We will explore the network types `configuration network` and `proportionate mixing network`. We do this with a degree distribution based on data, and with a degree distribution sampled from a negative binomial distribution.
 
 ### Task 1: Data Preparation and Analysis
 
@@ -70,12 +70,13 @@ We will explore the network types **configuration network** and **proportionate 
 
 ### Task 2: Configuration Network and Proportionate Mixing
 
-1. Use the `deg_dist.csv` file to generate a configuration network and run the SIR model simulation
-2. Examine key network metrics (clustering coefficient, centrality measures, etc.)
-3. Interpretation: In which aspects is the generated network not a realistic model of the real contact network measured by POLYMOD?
-4. Generate a proportionate mixing network using the parameters (μ, θ) estimated from the fitted negative binomial distribution
-5. Compare the structure and epidemic outcomes between different network types (random, configuration, and proportionate mixing)
-6. Investigate how the mean degree and dispersion parameters influence network structure and epidemic dynamics
+1. You now use the file deg_dist.csv to generate a configuration network and run the model on this network. 
+2. Compare the results to those from the previous practical. How does the structure of this network compare to the other network types? 
+3. Interpretation: in which aspects is the generated network not a realistic model of the real contact network measured by POLYMOD?
+4. Run also the proportionate mixing network with the parameters for the negative binomial distribution estimated (roughly) from the data. Are the results similar to the results from the configuration network?
+5. Now vary the mean degree of the negative binomial distribution and observe how this influences network structure and epidemic dynamics. (Optional: vary the dispersion parameter and observe how it influences the dynamics). 
+6. How would you include the impact of mask use in this model? One possibility is that the transmission probability is reduced by a certain factor 0<m<1. Vary the factor m and observe the impact on the epidemic outcome. 
+7. Does it matter for the effectiveness of mask use whether the index case is a random individual or has high centrality? 
 
 ### Task 3: Risk Factors and Interventions
 
