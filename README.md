@@ -78,7 +78,7 @@ We will explore the network types `configuration network` and `proportionate mix
 6. How would you include the impact of mask use in this model? One possibility is that the transmission probability is reduced by a certain factor 0<m<1. Vary the factor m and observe the impact on the epidemic outcome. 
 7. Does it matter for the effectiveness of mask use whether the index case is a random individual or has high centrality? 
 
-### Task 3: Risk Factors and Interventions
+### Task 3: Risk Factors and Interventions (part of the group exercise at the end)
 
 1. In `agent_step.jl` the transmission of infection is defined. Increase the transmission probability of high risk individuals by a factor between 1 and 5 (`trans_prob = 0.1` in default). Alternatively, add a reduction factor for low risk individuals.
 2. In `model.jl` at initialization you can choose whether high risk individuals are random, maxdegree, maxbetweenness, or maxeigenvector. This means that high risk individuals will be place on nodes with highest values of these centrality measures.
