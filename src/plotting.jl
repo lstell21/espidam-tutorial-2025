@@ -580,6 +580,17 @@ metrics_plot = plot_network_metrics_comparison(
 """
 function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :preferential], 
                                        mean_degree=4, n_nodes=1000, r̂=nothing, p̂=nothing)
+    # Define a colorblind-friendly palette for the five network types
+    # Using a modified version of Wong's palette which is colorblind-friendly
+    network_color_map = Dict(
+        :random => RGB(0/255, 114/255, 178/255),        # Blue
+        :smallworld => RGB(230/255, 159/255, 0/255),    # Orange
+        :preferential => RGB(0/255, 158/255, 115/255),  # Green
+        :configuration => RGB(204/255, 121/255, 167/255), # Purple
+        :proportionatemixing => RGB(213/255, 94/255, 0/255), # Red-orange
+        :proportionate => RGB(213/255, 94/255, 0/255)   # Same as proportionatemixing (alternative name)
+    )
+    
     # Create storage for metrics
     density_values = Float64[]
     clustering_values = Float64[]
@@ -589,6 +600,7 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
     closeness_cent_values = Float64[]
     eigenvector_cent_values = Float64[]
     network_labels = String[]
+    network_colors = []
 
     # Collect metrics for each network type
     for nt in network_types
@@ -614,6 +626,9 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
         push!(closeness_cent_values, closeness_cent)
         push!(eigenvector_cent_values, eigenvector_cent)
         
+        # Get consistent color for this network type
+        push!(network_colors, get(network_color_map, nt, :gray))
+        
         # Create display label
         label = if nt == :random
             "Random"
@@ -621,6 +636,10 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
             "Small-World"
         elseif nt == :preferential
             "Preferential Attachment"
+        elseif nt == :configuration
+            "Configuration"
+        elseif nt == :proportionatemixing || nt == :proportionate
+            "Proportionate Mixing"
         else
             String(nt)
         end
@@ -676,7 +695,8 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
         left_margin = 5mm,
         top_margin = 5mm,
         bottom_margin = 15mm,
-        xrotation = 45 
+        xrotation = 45,
+        palette = network_colors  # Use our defined colors
     )
 
     # Save the plot
