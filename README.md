@@ -62,29 +62,18 @@ We will explore the network types `configuration network` and `proportionate mix
 
 ### Task 1: Data Preparation and Analysis
 
-1. Explore the POLYMOD contact data (or sample data) to understand real-world contact patterns
-2. Sample or generate a list of 1000 contact degrees and save it to `deg_dist.csv`
+1. Make yourself familiar with the data files.
+2. Choose one of the country-specific degree distributions, named `deg_dist_"COUNTRY".csv`
 3. Calculate and visualize the basic statistics of the degree distribution
-4. Fit a negative binomial distribution to the data using maximum likelihood estimation
-5. Visualize how well the fitted distribution captures the observed data
+4. Fit a negative binomial distribution to the data using maximum likelihood estimation. The output parameters are the mean mu and the dispersion theta.
+5. Plot a histogram of the distribution. Visualize how well the fitted distribution captures the observed data
 
 ### Task 2: Configuration Network and Proportionate Mixing
 
-1. You now use the file deg_dist.csv to generate a configuration network and run the model on this network. 
+1. You now use the file `deg_dist_"COUNTRY".csv` to generate a configuration network and run the model on this network. 
 2. Compare the results to those from the previous practical. How does the structure of this network compare to the other network types? 
 3. Interpretation: in which aspects is the generated network not a realistic model of the real contact network measured by POLYMOD?
 4. Run also the proportionate mixing network with the parameters for the negative binomial distribution estimated (roughly) from the data. Are the results similar to the results from the configuration network?
 5. Now vary the mean degree of the negative binomial distribution and observe how this influences network structure and epidemic dynamics. (Optional: vary the dispersion parameter and observe how it influences the dynamics). 
-6. How would you include the impact of mask use in this model? One possibility is that the transmission probability is reduced by a certain factor 0<m<1. Vary the factor m and observe the impact on the epidemic outcome. 
-7. Does it matter for the effectiveness of mask use whether the index case is a random individual or has high centrality? 
-
-### Task 3: Risk Factors and Interventions (part of the group exercise at the end)
-
-1. In `agent_step.jl` the transmission of infection is defined. Increase the transmission probability of high risk individuals by a factor between 1 and 5 (`trans_prob = 0.1` in default). Alternatively, add a reduction factor for low risk individuals.
-2. In `model.jl` at initialization you can choose whether high risk individuals are random, maxdegree, maxbetweenness, or maxeigenvector. This means that high risk individuals will be place on nodes with highest values of these centrality measures.
-3. Investigate how the location of the high risk individuals (with a higher transmission probability) influences the epidemic dynamics and final size.
-4. Think about how to define interventions in this model. An intervention like mask wearing for example, would reduce the transmission probability. An intervention could be targeted to high risk individuals or spread evenly across the population.
-5. Think about how vaccination could be implemented in the model.
-6. Think about how contact reduction could be implemented in the model.
-7. If you have some programming experience, you could try to implement these interventions.
-8. Study how targeting interventions to high risk individuals compares to an intervention that is applied randomly.
+6. How would you include the impact of mask use in this model? One possibility is that the transmission probability is reduced by a certain factor `0<m<1`. Vary the factor m and observe the impact on the epidemic outcome. 
+7. Does it matter for the effectiveness of mask use whether the index case is a random individual or has high centrality?
