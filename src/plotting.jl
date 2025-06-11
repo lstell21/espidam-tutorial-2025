@@ -169,7 +169,14 @@ Create a standardized box plot for comparison data.
 # Returns
 - A boxplot comparing the data across network types
 """
-function create_comparison_box_plot(formatted_data, title, ylabel; filename=nothing, colors=nothing)
+function create_comparison_box_plot(formatted_data, title, ylabel; filename=nothing, colors=nothing, network_order=nothing)
+    # Convert network_type to a categorical variable with ordered levels if order is provided
+    if !isnothing(network_order)
+        formatted_data.network_type = CategoricalArray(formatted_data.network_type, 
+                                                      ordered=true, 
+                                                      levels=network_order)
+    end
+    
     # If colors are provided, use them for the boxplot
     p = boxplot(
         formatted_data.network_type, formatted_data.value,
@@ -289,13 +296,17 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         end
     end
     
+    # Create an ordered list of network types for consistent ordering across plots
+    network_order = [titlecase(String(nt)) for nt in network_types]
+    
     # Generate comparison plots using the pre-formatted data and colors
     duration_comparison = create_comparison_box_plot(
         duration_data,
         "Epidemic Duration Comparison\n(mean degree: $(mean_degree))",
         "Duration (steps)",
         filename="figures/duration_comparison_mdeg_$(mean_degree).pdf",
-        colors=boxplot_colors
+        colors=boxplot_colors,
+        network_order=network_order
     )
     
     max_infected_comparison = create_comparison_box_plot(
@@ -303,7 +314,8 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         "Maximum Infected Comparison\n(mean degree: $(mean_degree))",
         "Maximum Number of Infected",
         filename="figures/max_infected_comparison_mdeg_$(mean_degree).pdf",
-        colors=boxplot_colors
+        colors=boxplot_colors,
+        network_order=network_order
     )
     
     sfr_comparison = create_comparison_box_plot(
@@ -311,7 +323,8 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         "Susceptible Fraction Remaining Comparison\n(mean degree: $(mean_degree))",
         "Susceptible Fraction Remaining",
         filename="figures/sfr_comparison_mdeg_$(mean_degree).pdf",
-        colors=boxplot_colors
+        colors=boxplot_colors,
+        network_order=network_order
     )
     
     # Create combined comparison plot
@@ -628,7 +641,7 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
         "position" => 1:7
     )
 
-    # Add columns for each network type
+    # Add columns for each network type, maintaining the order from the network_types argument
     for (i, label) in enumerate(network_labels)
         df[!, label] = [
             density_values[i],
@@ -643,6 +656,10 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
 
     # Reshape for plotting
     df_long = stack(df, Not(["metric", "position"]), variable_name = "Model", value_name = "Value")
+    
+    # Convert Model to a categorical variable with ordered levels to preserve the order
+    # from the network_types argument
+    df_long.Model = CategoricalArray(df_long.Model, ordered=true, levels=network_labels)
 
     # Create grouped bar plot with improved spacing and margins
     metrics_plot = @df df_long groupedbar(
