@@ -24,6 +24,7 @@
 5. **Run the Tutorial**
    - Clone or download this repository
    - Open the notebook files (Part1.jpynb and Part2.jpynb) in VS Code
+   - Select your version of Julia as the kernel
    
 If you encounter any issues during installation, please check the [Julia documentation](https://docs.julialang.org/) or open an issue in this repository.
 
