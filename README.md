@@ -7,11 +7,14 @@
 
 2. **Julia Language**
    - Install the latest version of [Julia](https://julialang.org/downloads/)
+   - On Windows, you can also install it through the Microsoft Store
    - Alternatively, use [JuliaUp](https://github.com/JuliaLang/juliaup) for better version management
 
 3. **VS Code Extensions**
    - Open VS Code and install the Julia extension
    - You can find it by searching for "Julia" in the Extensions tab
+   - If the Julia extension crashes, you might have to set the path to the Julia executable manually
+   - Go to Preferences → Settings → search for "Julia executable path" and paste the path to your `julia.exe`
 
 4. **Verify Installation**
    - Open the Julia REPL in VS Code by pressing:
@@ -23,11 +26,15 @@
 
 5. **Run the Tutorial**
    - Clone or download this repository
+     - Open the source control tab in VS Code and click "Clone repository" (you need git installed for this)
+     - Paste the link from Slack and select the path where you want to clone it
+     - After successful cloning, you should see all the necessary files in your workspace
    - Open the notebook files (Part1.jpynb and Part2.jpynb) in VS Code
    - Select your version of Julia as the kernel
+   - You can run the first two cells to test if everything works and to already install all necessary packages
    - Allow network access for Julia if prompted
 
-If you encounter any issues during installation, please check the [Julia documentation](https://docs.julialang.org/) or open an issue in this repository.
+If you encounter any issues during installation, please check the [Julia documentation](https://docs.julialang.org/) or open an issue in this repository. Reinstalling the Julia Extension as well as restarting VS Code (preferably running it as an administrator) might help.
 
 ## Part 1: Network Types and Epidemic Modeling
 
