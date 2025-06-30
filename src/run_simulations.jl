@@ -22,7 +22,7 @@ Run simulations for an epidemiological model with different combinations of para
 
 # Example
 ```julia
-mdf = run_simulations(network_type=:random, mean_degree=4, patient_zero=:random, high_risk=:random, fraction_high_risk=0.1)
+mdf = run_simulations(network_type=:random, mean_degree=4, patient_zero=:random, high_risk=:random, fraction_high_risk=1.0)
 ```
 """
 function run_simulations(; network_type::Symbol, mean_degree::Int, n_nodes::Int=1000, 

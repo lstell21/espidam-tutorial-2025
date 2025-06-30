@@ -98,7 +98,7 @@ Plot a single run of an epidemic simulation.
 - `dispersion::Float64`: The dispersion parameter for the network. Default is 0.1.
 - `patient_zero::Symbol`: The type of patient zero to use for the simulation. Default is `:random`.
 - `high_risk::Symbol`: How high-risk individuals are distributed. Default is `:random`.
-- `fraction_high_risk::Float64`: The fraction of high-risk individuals in the population. Default is 0.1.
+- `fraction_high_risk::Float64`: The fraction of high-risk individuals in the population. Default is 1.0.
 - `low_risk_factor::Float64`: The factor by which low-risk individuals' transmission probability is multiplied. Must be between 0 and 1. Default is 1.0.
 - `trans_prob::Float64`: The transmission probability. Default is 0.1.
 - `n_steps::Int`: The number of simulation steps to run. Default is 100.
@@ -117,7 +117,7 @@ dynamics_plot, degdist_plot, combined_plot = plot_single_run(network_type=:rando
 """
 function plot_single_run(; network_type::Symbol, mean_degree::Int=4, n_nodes::Int=1000, 
                        dispersion::Float64=0.1, patient_zero::Symbol=:random, 
-                       high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, 
+                       high_risk::Symbol=:random, fraction_high_risk::Float64=1.0, 
                        low_risk_factor::Float64=1.0, trans_prob::Float64=0.1, n_steps::Int=100, r̂=nothing, p̂=nothing)
     # Validate low_risk_factor
     if !(0 <= low_risk_factor <= 1)
@@ -189,6 +189,7 @@ function create_comparison_box_plot(formatted_data, title, ylabel; filename=noth
         guidefontsize=9,
         titlefontsize=10,
         xtickfontsize=8,
+        xrotation=30,
         linewidth=1,
         left_margin=8mm,
         outliers=false
@@ -206,7 +207,7 @@ end
     run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::Int=4, 
                           n_nodes::Int=1000, dispersion::Float64=0.1, 
                           patient_zero::Symbol=:random, high_risk::Symbol=:random, 
-                          fraction_high_risk::Float64=0.1, low_risk_factor::Float64=1.0,
+                          fraction_high_risk::Float64=1.0, low_risk_factor::Float64=1.0,
                           trans_prob::Float64=0.1, n_steps::Int=100, boxplot_colors=nothing, r̂=nothing, p̂=nothing)
 
 Run simulations for multiple network types and generate comparison plots.
@@ -214,7 +215,7 @@ Run simulations for multiple network types and generate comparison plots.
 function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::Int=4, 
                                n_nodes::Int=1000, dispersion::Float64=0.1, 
                                patient_zero::Symbol=:random, high_risk::Symbol=:random, 
-                               fraction_high_risk::Float64=0.1, low_risk_factor::Float64=1.0,
+                               fraction_high_risk::Float64=1.0, low_risk_factor::Float64=1.0,
                                trans_prob::Float64=0.1, n_steps::Int=100, boxplot_colors=nothing, r̂=nothing, p̂=nothing)
     # Validate low_risk_factor
     if !(0 <= low_risk_factor <= 1)
