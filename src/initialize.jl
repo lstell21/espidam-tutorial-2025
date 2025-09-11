@@ -1,10 +1,10 @@
 """
-initialize(; network_type, mean_degree = 4, n_nodes = 1000, dispersion = 0.1, patient_zero = :random, high_risk=:random, fraction_high_risk=0.1, trans_prob = 0.1, days_to_recovered = 14, seed = 42, r̂ = nothing, p̂ = nothing, low_risk_factor = 1.0)
+initialize(; network_type, mean_degree = 4, n_nodes = 1000, dispersion = 0.1, patient_zero = :random, high_risk=:random, fraction_high_risk=0.1, trans_prob = 0.1, days_to_recovered = 14, seed = 42, r̂ = nothing, p̂ = nothing, low_risk_factor = 1.0, custom_graph = nothing, edgelist_path = "degs/network")
 
 Initialize the model with default parameters.
 
 # Arguments
-- `network_type`: The type of network to create. Can be `:random`, `:smallworld`, `:preferentialattachment`, `:configuration` or `:proportionatemixing`.
+- `network_type`: The type of network to create. Can be `:random`, `:smallworld`, `:preferentialattachment`, `:configuration`, `:proportionatemixing`, or `:edgelist`.
 - `mean_degree`: The mean degree of the network. For :preferentialattachment, k is used as mean_degree/2 (for even numbers). Default is 4.
 - `n_nodes`: The number of nodes in the network. For :configuration, the number of nodes is fixed to 1000. Default is 1000.
 - `dispersion`: The dispersion parameter for the negative binomial distribution, used only when `network_type` is `:proportionatemixing` and r̂ and p̂ are not provided. Default is 0.1.
@@ -17,18 +17,35 @@ Initialize the model with default parameters.
 - `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionate`. If not provided, will be calculated from mean_degree and dispersion.
 - `p̂`: The p parameter for negative binomial distribution, used only when `network_type` is `:proportionate`. If not provided, will be calculated from mean_degree and dispersion.
 - `low_risk_factor`: Factor to multiply the transmission probability for low risk agents. Default is 1.0.
+- `custom_graph`: A pre-loaded graph to use instead of creating a new one. If provided, network_type will be set to :custom.
+- `edgelist_path`: Path to the edgelist file when network_type is :edgelist. Default is "degs/network".
 
 # Returns
 - `model`: The created model.
 """
-function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0)
+function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0, custom_graph=nothing, edgelist_path::String="degs/network")
     # Validate low_risk_factor
     if !(0 <= low_risk_factor <= 1)
         error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
     end
     
-    # create a graph space
-    graph = create_graph(; network_type, mean_degree, n_nodes, dispersion, r̂, p̂)
+    # Create or use provided graph
+    if custom_graph !== nothing
+        # Use the provided custom graph
+        graph = custom_graph
+        network_type = :custom
+        n_nodes = nv(graph)
+        mean_degree = round(Int, 2 * ne(graph) / nv(graph))
+    else
+        # Create a new graph
+        graph = create_graph(; network_type, mean_degree, n_nodes, dispersion, r̂, p̂, edgelist_path)
+        # Update n_nodes and mean_degree for edgelist graphs
+        if network_type == :edgelist
+            n_nodes = nv(graph)
+            mean_degree = round(Int, 2 * ne(graph) / nv(graph))
+        end
+    end
+    
     space = GraphSpace(graph)
     # set up properties
     properties = create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor, r̂, p̂)
@@ -118,10 +135,13 @@ Populates the model with agents based on the specified risk distribution.
 """
 function populate(model::ABM, high_risk::Symbol, fraction_high_risk::Float64=0.1)
     if high_risk == :random
-        for _ in 1:Int(fraction_high_risk * model.n_nodes)
+        n_high_risk = Int(round(fraction_high_risk * model.n_nodes))
+        n_low_risk = model.n_nodes - n_high_risk
+        
+        for _ in 1:n_high_risk
             add_agent_single!(model, :S, 0, :high)
         end
-        for _ in 1:(model.n_nodes-fraction_high_risk*model.n_nodes)
+        for _ in 1:n_low_risk
             add_agent_single!(model, :S, 0, :low)
         end
     elseif high_risk == :maxdegree

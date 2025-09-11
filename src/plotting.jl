@@ -92,7 +92,7 @@ end
 Plot a single run of an epidemic simulation.
 
 # Arguments
-- `network_type::Symbol`: The type of network to use for the simulation. Possible values are `:random`, `:smallworld`, `:preferential`, `:configuration`, or `:proportionatemixing`.
+- `network_type::Symbol`: The type of network to use for the simulation. Possible values are `:random`, `:smallworld`, `:preferential`, `:configuration`, `:proportionatemixing`, `:edgelist`, or `:custom`.
 - `mean_degree::Int`: The mean degree of the network. Default is 4.
 - `n_nodes::Int`: The number of nodes in the network. Default is 1000.
 - `dispersion::Float64`: The dispersion parameter for the network. Default is 0.1.
@@ -589,7 +589,9 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
         :preferential => RGB(0/255, 158/255, 115/255),  # Green
         :configuration => RGB(204/255, 121/255, 167/255), # Purple
         :proportionatemixing => RGB(213/255, 94/255, 0/255), # Red-orange
-        :proportionate => RGB(213/255, 94/255, 0/255)   # Same as proportionatemixing (alternative name)
+        :proportionate => RGB(213/255, 94/255, 0/255),   # Same as proportionatemixing (alternative name)
+        :edgelist => RGB(86/255, 180/255, 233/255),     # Light blue
+        :custom => RGB(240/255, 228/255, 66/255)        # Yellow
     )
     
     # Create storage for metrics
@@ -641,6 +643,10 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
             "Configuration"
         elseif nt == :proportionatemixing || nt == :proportionate
             "Proportionate Mixing"
+        elseif nt == :edgelist
+            "Edgelist"
+        elseif nt == :custom
+            "Custom"
         else
             String(nt)
         end
