@@ -34,17 +34,35 @@ function create_graph(; network_type::Symbol, mean_degree::Integer, n_nodes::Int
         graph = Graphs.barabasi_albert(n_nodes, Int(round(mean_degree / 2)))
     elseif network_type == :configuration
         graph = Graphs.random_configuration_model(1000, degrees[!, 1])
-    elseif network_type == :proportionate
-        # Use provided r̂ and p̂ parameters if available
-        if r̂ === nothing || p̂ === nothing
-            # If not provided, use dispersion to calculate them
-            r = mean_degree * dispersion / (1 - dispersion)
-            p = dispersion
-            graph = Graphs.expected_degree_graph(rand(NegativeBinomial(r, p), n_nodes))
-        else
-            # Use the provided r̂ and p̂ parameters
-            graph = Graphs.expected_degree_graph(rand(NegativeBinomial(r̂, p̂), n_nodes))
+    elseif network_type == :proportionatemixing || network_type == :proportionate
+        if isnothing(r̂) || isnothing(p̂)
+            error("Both r̂ and p̂ must be provided for proportionate mixing networks")
         end
+        
+        # Generate degree sequence from negative binomial distribution
+        degree_sequence = rand(NegativeBinomial(r̂, p̂), n_nodes)
+        
+        # Ensure all degrees are within valid bounds [0, n_nodes-1]
+        degree_sequence = clamp.(degree_sequence, 0, n_nodes - 1)
+        
+        # Ensure the sum is even for a valid graph
+        if sum(degree_sequence) % 2 != 0
+            degree_sequence[1] = max(0, degree_sequence[1] - 1)
+        end
+        
+        # Validate that the degree sequence is graphical
+        if !is_graphical(degree_sequence)
+            # If not graphical, fall back to a configuration model with fixed mean degree
+            @warn "Generated degree sequence is not graphical for n_nodes=$n_nodes, falling back to configuration model"
+            degree_sequence = fill(mean_degree, n_nodes)
+            # Adjust to make sum even
+            if sum(degree_sequence) % 2 != 0
+                degree_sequence[end] += 1
+            end
+        end
+        
+        # Create the graph with the validated degree sequence
+        graph = expected_degree_graph(degree_sequence)
     elseif network_type == :edgelist
         # Load graph from edgelist file
         graph = loadgraph(edgelist_path, "graph_key", EdgeListFormat())
