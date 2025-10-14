@@ -55,19 +55,33 @@ Plot the epidemic trajectories of susceptible, infected, and recovered individua
 plot_epidemic_trajectories(mdf, :random)
 ```
 """
-function plot_epidemic_trajectories(mdf::DataFrame, network_type::Symbol)
-    # Extract the data and create time vector
-    susceptible = mdf[!, :susceptible_count]
-    infected = mdf[!, :infected_count]
-    recovered = mdf[!, :recovered_count]
-    time = 1:length(susceptible)
-
-    # Create and return the plot
-    p = plot(time, susceptible, label="Susceptible", legend=:topright, 
-             xlabel="Time", ylabel="Count", linewidth=2,
-             title="Epidemic Dynamics ($(String(network_type)))")
-    plot!(p, time, infected, label="Infected", linewidth=2)
-    plot!(p, time, recovered, label="Recovered", linewidth=2)
+function plot_epidemic_trajectories(mdf, network_type; title_suffix="")
+    # Create the plot
+    p = plot(mdf.time, mdf.susceptible_count, 
+             label="Susceptible", 
+             linewidth=2, 
+             color=:blue,
+             xlabel="Time (days)", 
+             ylabel="Number of agents",
+             title="SIHR Epidemic Dynamics - $(titlecase(string(network_type))) Network$(title_suffix)",
+             legend=:right,
+             size=(800, 500),
+             margin=5mm)
+    
+    plot!(p, mdf.time, mdf.infected_count, 
+          label="Infected", 
+          linewidth=2, 
+          color=:red)
+    
+    plot!(p, mdf.time, mdf.hospitalized_count, 
+          label="Hospitalized", 
+          linewidth=2, 
+          color=:orange)
+    
+    plot!(p, mdf.time, mdf.recovered_count, 
+          label="Recovered", 
+          linewidth=2, 
+          color=:green)
     
     return p
 end
@@ -712,4 +726,70 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
     savefig(metrics_plot, "figures/network_metrics_comparison_$(network_types_str)_mdeg_$(mean_degree).pdf")
 
     return metrics_plot
+end
+
+"""
+    plot_epidemic_comparison(results_dict; save_plots=true)
+
+Plot the comparison of epidemic trajectories across different network types.
+
+# Arguments
+- `results_dict`: A dictionary containing the results of the epidemic simulations for different network types.
+- `save_plots`: Boolean indicating whether to save the plot as a PDF file. Default is true.
+
+# Returns
+- `p`: A plot object representing the epidemic comparison plot.
+
+# Example
+```julia
+plot_epidemic_comparison(results_dict)
+```
+"""
+function plot_epidemic_comparison(results_dict; save_plots=true)
+    # Create comparison plot
+    p = plot(xlabel="Time (days)", 
+             ylabel="Number of agents",
+             title="SIHR Epidemic Comparison Across Network Types",
+             legend=:outertopright,
+             size=(1000, 600),
+             margin=8mm)
+    
+    colors = Dict(:random => :blue, :smallworld => :red, :preferential => :green, 
+                  :proportionate => :purple, :edgelist => :orange)
+    
+    for (network_type, result) in results_dict
+        if haskey(result, "mean_df")
+            mdf = result["mean_df"]
+            
+            # Plot mean trajectories with confidence intervals if available
+            plot!(p, mdf.time, mdf.infected_count_mean, 
+                  label="$(titlecase(string(network_type))) - Infected",
+                  linewidth=2, 
+                  color=colors[network_type],
+                  linestyle=:solid)
+            
+            plot!(p, mdf.time, mdf.hospitalized_count_mean, 
+                  label="$(titlecase(string(network_type))) - Hospitalized",
+                  linewidth=2, 
+                  color=colors[network_type],
+                  linestyle=:dash)
+            
+            # Add confidence intervals if available
+            if haskey(mdf, :infected_count_ci_lower)
+                plot!(p, mdf.time, mdf.infected_count_ci_lower, 
+                      fillto=mdf.infected_count_ci_upper,
+                      alpha=0.2, 
+                      color=colors[network_type],
+                      label="")
+            end
+        end
+    end
+    
+    # Save plot if requested
+    if save_plots
+        savefig(p, "figures/epidemic_comparison_SIHR.pdf")
+        println("Epidemic comparison plot saved to figures/epidemic_comparison_SIHR.pdf")
+    end
+    
+    return p
 end

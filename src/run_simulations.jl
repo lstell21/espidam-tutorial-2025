@@ -57,13 +57,46 @@ function run_simulations(; network_type::Symbol, mean_degree::Int, n_nodes::Int=
         parameters[:p̂] = p̂
     end
 
+    # Data to collect
+    adata = [:status]
+    mdata = [:susceptible_count, :infected_count, :hospitalized_count, :recovered_count]
+    
     # Run the simulation for all combinations of parameters
     _, mdf = paramscan(
         parameters,
         initialize;
-        mdata=[:susceptible_count, :infected_count, :recovered_count],
+        mdata=mdata,
         n=n_steps,
         showprogress=false
     );
-    return mdf
+    
+    # Calculate summary statistics
+    summary_stats = DataFrame()
+    for step in 0:n_steps
+        step_data = filter(row -> row.step == step, all_mdata)
+        if nrow(step_data) > 0
+            summary_row = DataFrame(
+                step = step,
+                susceptible_count_mean = mean(step_data.susceptible_count),
+                susceptible_count_std = std(step_data.susceptible_count),
+                infected_count_mean = mean(step_data.infected_count),
+                infected_count_std = std(step_data.infected_count),
+                hospitalized_count_mean = mean(step_data.hospitalized_count),
+                hospitalized_count_std = std(step_data.hospitalized_count),
+                recovered_count_mean = mean(step_data.recovered_count),
+                recovered_count_std = std(step_data.recovered_count)
+            )
+            
+            # Add confidence intervals (95%)
+            n_sims = nrow(step_data)
+            summary_row.infected_count_ci_lower = summary_row.infected_count_mean[1] - 1.96 * summary_row.infected_count_std[1] / sqrt(n_sims)
+            summary_row.infected_count_ci_upper = summary_row.infected_count_mean[1] + 1.96 * summary_row.infected_count_std[1] / sqrt(n_sims)
+            summary_row.hospitalized_count_ci_lower = summary_row.hospitalized_count_mean[1] - 1.96 * summary_row.hospitalized_count_std[1] / sqrt(n_sims)
+            summary_row.hospitalized_count_ci_upper = summary_row.hospitalized_count_mean[1] + 1.96 * summary_row.hospitalized_count_std[1] / sqrt(n_sims)
+            
+            append!(summary_stats, summary_row)
+        end
+    end
+    
+    return summary_stats
 end

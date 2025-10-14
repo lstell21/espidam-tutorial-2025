@@ -23,7 +23,7 @@ Initialize the model with default parameters.
 # Returns
 - `model`: The created model.
 """
-function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0, custom_graph=nothing, edgelist_path::String="degs/network")
+function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0, custom_graph=nothing, edgelist_path::String="degs/network", hospitalization_prob::Float64=0.1, days_to_hospital_recovery::Integer=7)
     # Validate low_risk_factor
     if !(0 <= low_risk_factor <= 1)
         error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
@@ -48,7 +48,7 @@ function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Int
     
     space = GraphSpace(graph)
     # set up properties
-    properties = create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor, r̂, p̂)
+    properties = create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor, r̂, p̂, hospitalization_prob, days_to_hospital_recovery)
     # set up RNG
     rng = Xoshiro(seed)
     # create the model
@@ -86,7 +86,7 @@ Create a dictionary of properties for the simulation.
 - `properties`: A dictionary containing the properties for the simulation.
 
 """
-function create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor=1.0, r̂=nothing, p̂=nothing)
+function create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor=1.0, r̂=nothing, p̂=nothing, hospitalization_prob=0.1, days_to_hospital_recovery=7)
     # Ensure low_risk_factor is between 0 and 1
     low_risk_factor = clamp(low_risk_factor, 0.0, 1.0)
     
@@ -102,8 +102,11 @@ function create_properties(graph, network_type, n_nodes, mean_degree, dispersion
         :trans_prob => trans_prob,
         :days_to_recovered => days_to_recovered,
         :low_risk_factor => low_risk_factor,
+        :hospitalization_prob => hospitalization_prob,
+        :days_to_hospital_recovery => days_to_hospital_recovery,
         :susceptible_count => n_nodes,
         :infected_count => 1,
+        :hospitalized_count => 0,
         :recovered_count => 0)
     
     # Add r̂ and p̂ to properties if provided
