@@ -23,7 +23,7 @@ Initialize the model with default parameters.
 # Returns
 - `model`: The created model.
 """
-function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0, custom_graph=nothing, edgelist_path::String="degs/network", hospitalization_prob::Float64=0.1, days_to_hospital_recovery::Integer=7)
+function initialize_old(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0, custom_graph=nothing, edgelist_path::String="degs/network", hospitalization_prob::Float64=0.1, days_to_hospital_recovery::Integer=7)
     # Validate low_risk_factor
     if !(0 <= low_risk_factor <= 1)
         error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
@@ -58,6 +58,29 @@ function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Int
     set_patient_zero!(model, patient_zero)
     return model
 end
+
+
+function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0)
+    # Validate low_risk_factor
+    if !(0 <= low_risk_factor <= 1)
+        error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
+    end
+    
+    # create a graph space
+    graph = create_graph(; network_type, mean_degree, n_nodes, dispersion, r̂, p̂)
+    space = GraphSpace(graph)
+    # set up properties
+    properties = create_properties(graph, network_type, n_nodes, mean_degree, dispersion, patient_zero, high_risk, fraction_high_risk, trans_prob, days_to_recovered, low_risk_factor, r̂, p̂)
+    # set up RNG
+    rng = Xoshiro(seed)
+    # create the model
+    model = ABM(Person, space; properties, agent_step!, model_step!, rng)
+    # add agents, if high_risk is random, add high risk agents randomly
+    populate(model, high_risk, fraction_high_risk)
+    set_patient_zero!(model, patient_zero)
+    return model
+end
+
 
 
 ############################### helper functions ###############################
