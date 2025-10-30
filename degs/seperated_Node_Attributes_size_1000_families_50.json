@@ -1,0 +1,8001 @@
+{"nodes":[
+{
+"Name": "1",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "2",
+"Age": "50.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "3",
+"Age": "59.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "4",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "5",
+"Age": "81.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "6",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "7",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "8",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "9",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "10",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "11",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "12",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "13",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "14",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "15",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "16",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "17",
+"Age": "43.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "18",
+"Age": "59.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "19",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "20",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "21",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "22",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "23",
+"Age": "86.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "24",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "25",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "26",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "25",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "28",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "29",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "30",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "31",
+"Age": "80.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "32",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "33",
+"Age": "81.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "28",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "35",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "36",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "37",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "38",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "35",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "40",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "41",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "42",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "43",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "44",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "45",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "46",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "47",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "48",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "49",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "50",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "51",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "52",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "53",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "54",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "55",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "56",
+"Age": "88.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "57",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "58",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "59",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "60",
+"Age": "59.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "61",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "62",
+"Age": "85.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "63",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "64",
+"Age": "51.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "65",
+"Age": "86.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "66",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "67",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "68",
+"Age": "81.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "69",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "70",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "71",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "72",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "73",
+"Age": "81.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "74",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "75",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "76",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "77",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "78",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "79",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "80",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "81",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "82",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "83",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "84",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "85",
+"Age": "49.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "86",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "87",
+"Age": "62.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "88",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "84",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "90",
+"Age": "51.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "91",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "92",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "93",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "94",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "95",
+"Age": "52.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "96",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "97",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "98",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "99",
+"Age": "48.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "95",
+"Age": "52.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "101",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "102",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "103",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "103",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "105",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "106",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "107",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "108",
+"Age": "41.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "109",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "110",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "111",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "106",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "113",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "114",
+"Age": "92.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "114",
+"Age": "92.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "116",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "117",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "118",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "119",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "120",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "121",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "122",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "123",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "124",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "125",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "126",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "127",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "128",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "127",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "130",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "131",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "132",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "133",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "134",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "135",
+"Age": "46.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "136",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "137",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "138",
+"Age": "87.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "139",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "140",
+"Age": "59.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "141",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "142",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "143",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "144",
+"Age": "80.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "145",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "146",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "147",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "148",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "149",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "150",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "151",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "152",
+"Age": "62.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "153",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "154",
+"Age": "57.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "155",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "156",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "157",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "158",
+"Age": "52.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "159",
+"Age": "49.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "160",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "161",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "162",
+"Age": "78.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "163",
+"Age": "51.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "164",
+"Age": "83.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "165",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "166",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "167",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "168",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "169",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "170",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "171",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "172",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "173",
+"Age": "78.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "174",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "175",
+"Age": "83.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "176",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "177",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "178",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "179",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "180",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "181",
+"Age": "56.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "182",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "183",
+"Age": "81.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "184",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "185",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "186",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "187",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "188",
+"Age": "85.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "189",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "190",
+"Age": "56.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "191",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "192",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "193",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "186",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "195",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "196",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "197",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "198",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "199",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "200",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "201",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "202",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "203",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "204",
+"Age": "33.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "205",
+"Age": "84.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "206",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "207",
+"Age": "82.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "208",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "209",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "210",
+"Age": "50.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "211",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "210",
+"Age": "50.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "213",
+"Age": "75.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "214",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "215",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "216",
+"Age": "86.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "217",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "218",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "219",
+"Age": "88.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "220",
+"Age": "80.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "221",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "222",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "223",
+"Age": "82.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "223",
+"Age": "82.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "225",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "218",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "227",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "228",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "229",
+"Age": "88.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "230",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "231",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "232",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "233",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "234",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "235",
+"Age": "88.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "236",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "237",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "238",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "239",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "240",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "241",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "238",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "243",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "244",
+"Age": "59.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "245",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "245",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "232",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "248",
+"Age": "84.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "249",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "250",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "251",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "252",
+"Age": "45.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "253",
+"Age": "52.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "254",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "255",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "256",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "257",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "258",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "259",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "260",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "261",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "262",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "263",
+"Age": "83.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "264",
+"Age": "57.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "265",
+"Age": "50.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "266",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "267",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "268",
+"Age": "94.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "269",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "270",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "271",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "269",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "273",
+"Age": "56.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "274",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "274",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "276",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "277",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "278",
+"Age": "53.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "279",
+"Age": "52.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "280",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "281",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "282",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "283",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "284",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "280",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "286",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "287",
+"Age": "82.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "288",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "289",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "290",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "291",
+"Age": "52.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "292",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "293",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "294",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "295",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "296",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "297",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "298",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "299",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "300",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "301",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "302",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "303",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "304",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "305",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "306",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "307",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "308",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "309",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "310",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "311",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "312",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "313",
+"Age": "86.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "314",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "315",
+"Age": "78.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "316",
+"Age": "62.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "317",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "318",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "319",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "314",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "321",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "322",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "323",
+"Age": "78.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "324",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "325",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "326",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "327",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "328",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "329",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "330",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "331",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "332",
+"Age": "85.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "333",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "334",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "335",
+"Age": "51.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "336",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "337",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "338",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "339",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "340",
+"Age": "57.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "341",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "342",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "343",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "344",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "345",
+"Age": "48.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "346",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "347",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "348",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "349",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "350",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "351",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "352",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "353",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "354",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "355",
+"Age": "80.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "356",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "357",
+"Age": "51.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "358",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "359",
+"Age": "43.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "360",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "361",
+"Age": "51.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "362",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "363",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "364",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "363",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "366",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "367",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "368",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "369",
+"Age": "81.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "370",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "370",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "372",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "373",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "374",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "362",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "376",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "377",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "378",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "379",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "380",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "381",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "382",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "383",
+"Age": "51.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "384",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "385",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "386",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "387",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "388",
+"Age": "80.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "385",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "390",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "391",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "392",
+"Age": "56.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "393",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "394",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "395",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "396",
+"Age": "75.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "397",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "398",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "393",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "400",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "401",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "402",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "400",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "404",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "405",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "406",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "407",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "408",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "409",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "410",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "411",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "412",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "413",
+"Age": "59.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "414",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "415",
+"Age": "81.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "416",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "417",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "418",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "419",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "420",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "421",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "422",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "423",
+"Age": "62.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "424",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "425",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "426",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "427",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "428",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "429",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "430",
+"Age": "51.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "431",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "432",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "433",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "434",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "435",
+"Age": "57.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "436",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "437",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "438",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "439",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "440",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "441",
+"Age": "84.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "442",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "443",
+"Age": "57.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "444",
+"Age": "82.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "445",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "446",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "447",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "448",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "449",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "450",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "451",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "452",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "453",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "454",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "455",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "456",
+"Age": "96.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "457",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "458",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "459",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "460",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "461",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "462",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "463",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "464",
+"Age": "51.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "465",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "466",
+"Age": "62.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "467",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "468",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "469",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "470",
+"Age": "56.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "471",
+"Age": "75.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "472",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "473",
+"Age": "86.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "474",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "475",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "476",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "477",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "478",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "479",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "480",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "481",
+"Age": "54.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "482",
+"Age": "81.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "483",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "484",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "485",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "486",
+"Age": "83.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "487",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "488",
+"Age": "90.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "489",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "490",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "491",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "492",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "493",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "494",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "495",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "496",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "497",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "485",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "499",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "500",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "501",
+"Age": "39.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "502",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "503",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "504",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "505",
+"Age": "80.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "506",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "507",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "508",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "509",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "510",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "511",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "511",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "513",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "514",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "515",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "516",
+"Age": "84.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "517",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "518",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "519",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "520",
+"Age": "90.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "521",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "518",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "523",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "517",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "525",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "521",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "527",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "528",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "529",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "530",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "531",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "532",
+"Age": "47.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "533",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "534",
+"Age": "82.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "535",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "536",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "537",
+"Age": "91.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "538",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "539",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "540",
+"Age": "56.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "541",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "542",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "543",
+"Age": "54.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "544",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "545",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "546",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "547",
+"Age": "42.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "546",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "549",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "550",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "551",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "552",
+"Age": "59.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "553",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "554",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "555",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "556",
+"Age": "57.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "544",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "558",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "554",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "560",
+"Age": "51.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "549",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "562",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "563",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "564",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "565",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "566",
+"Age": "51.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "567",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "568",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "569",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "570",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "571",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "572",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "573",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "574",
+"Age": "51.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "575",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "576",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "577",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "578",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "579",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "580",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "581",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "582",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "583",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "584",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "585",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "586",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "587",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "588",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "589",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "590",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "591",
+"Age": "51.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "592",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "593",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "594",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "595",
+"Age": "51.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "596",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "597",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "598",
+"Age": "80.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "599",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "600",
+"Age": "47.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "598",
+"Age": "80.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "602",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "603",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "604",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "605",
+"Age": "82.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "606",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "607",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "608",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "609",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "599",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "611",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "612",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "613",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "614",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "615",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "616",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "617",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "618",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "619",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "620",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "621",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "622",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "623",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "624",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "625",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "626",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "627",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "628",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "629",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "630",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "631",
+"Age": "62.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "632",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "633",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "634",
+"Age": "88.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "635",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "636",
+"Age": "82.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "637",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "638",
+"Age": "86.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "639",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "640",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "641",
+"Age": "59.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "642",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "643",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "644",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "645",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "646",
+"Age": "41.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "647",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "648",
+"Age": "49.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "649",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "650",
+"Age": "52.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "651",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "652",
+"Age": "46.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "653",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "654",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "644",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "656",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "657",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "656",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "659",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "660",
+"Age": "56.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "661",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "662",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "663",
+"Age": "74.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "664",
+"Age": "75.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "665",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "666",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "667",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "668",
+"Age": "56.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "666",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "670",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "671",
+"Age": "41.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "672",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "673",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "673",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "675",
+"Age": "62.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "676",
+"Age": "81.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "677",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "678",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "679",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "680",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "681",
+"Age": "82.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "682",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "683",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "684",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "685",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "685",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "687",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "688",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "689",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "684",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "691",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "692",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "693",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "694",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "695",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "696",
+"Age": "78.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "697",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "698",
+"Age": "51.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "699",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "698",
+"Age": "51.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "701",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "702",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "703",
+"Age": "53.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "704",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "705",
+"Age": "84.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "706",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "707",
+"Age": "87.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "708",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "709",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "710",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "711",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "712",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "713",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "714",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "715",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "716",
+"Age": "48.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "717",
+"Age": "88.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "718",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "719",
+"Age": "65.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "720",
+"Age": "82.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "721",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "722",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "723",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "714",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "725",
+"Age": "57.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "726",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "727",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "728",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "729",
+"Age": "86.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "718",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "731",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "732",
+"Age": "75.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "733",
+"Age": "56.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "734",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "735",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "736",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "737",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "738",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "739",
+"Age": "83.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "740",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "741",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "742",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "743",
+"Age": "80.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "737",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "745",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "746",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "747",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "748",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "742",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "750",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "750",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "752",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "753",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "754",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "755",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "756",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "757",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "758",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "759",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "760",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "761",
+"Age": "48.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "762",
+"Age": "78.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "763",
+"Age": "52.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "764",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "765",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "761",
+"Age": "48.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "767",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "768",
+"Age": "46.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "769",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "770",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "771",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "772",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "773",
+"Age": "56.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "774",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "775",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "776",
+"Age": "80.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "777",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "778",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "779",
+"Age": "81.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "780",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "781",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "782",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "778",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "784",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "785",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "786",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "787",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "788",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "789",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "790",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "791",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "785",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "793",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "794",
+"Age": "56.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "795",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "796",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "797",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "798",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "799",
+"Age": "80.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "800",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "801",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "802",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "803",
+"Age": "62.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "802",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "805",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "806",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "807",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "803",
+"Age": "62.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "809",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "810",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "805",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "812",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "813",
+"Age": "64.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "814",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "815",
+"Age": "84.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "816",
+"Age": "83.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "817",
+"Age": "82.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "818",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "819",
+"Age": "85.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "820",
+"Age": "64.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "821",
+"Age": "78.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "822",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "823",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "824",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "825",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "826",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "827",
+"Age": "84.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "824",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "829",
+"Age": "43.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "830",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "831",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "832",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "833",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "834",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "835",
+"Age": "53.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "836",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "837",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "838",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "839",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "840",
+"Age": "86.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "841",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "842",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "843",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "844",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "845",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "846",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "847",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "848",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "848",
+"Age": "55.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "850",
+"Age": "88.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "851",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "852",
+"Age": "85.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "853",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "854",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "855",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "856",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "857",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "858",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "859",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "860",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "861",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "862",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "863",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "864",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "865",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "866",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "867",
+"Age": "73.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "868",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "869",
+"Age": "85.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "870",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "871",
+"Age": "84.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "872",
+"Age": "83.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "873",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "874",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "875",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "875",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "877",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "878",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "873",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "880",
+"Age": "53.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "880",
+"Age": "53.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "882",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "883",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "884",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "885",
+"Age": "48.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "886",
+"Age": "81.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "887",
+"Age": "93.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "888",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "889",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "890",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "891",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "892",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "893",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "894",
+"Age": "76.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "895",
+"Age": "67.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "896",
+"Age": "60.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "897",
+"Age": "44.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "897",
+"Age": "44.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "899",
+"Age": "71.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "900",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "901",
+"Age": "81.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "902",
+"Age": "72.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "903",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "892",
+"Age": "71.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "905",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "906",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "907",
+"Age": "86.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "908",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "909",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "910",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "911",
+"Age": "77.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "912",
+"Age": "83.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "913",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "914",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "915",
+"Age": "78.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "916",
+"Age": "83.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "917",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "918",
+"Age": "57.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "919",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "920",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "916",
+"Age": "83.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "922",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "923",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "924",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "925",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "926",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "927",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "928",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "929",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "930",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "931",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "932",
+"Age": "61.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "933",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "934",
+"Age": "80.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "935",
+"Age": "92.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "936",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "937",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "938",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "939",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "940",
+"Age": "68.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "941",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "942",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "943",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "944",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "945",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "946",
+"Age": "60.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "938",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "948",
+"Age": "74.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "949",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "950",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "951",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "951",
+"Age": "58.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "953",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "954",
+"Age": "80.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "955",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "956",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "957",
+"Age": "68.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "958",
+"Age": "75.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "959",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "960",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "961",
+"Age": "78.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "962",
+"Age": "78.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "963",
+"Age": "81.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "964",
+"Age": "59.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "965",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "966",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "967",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "968",
+"Age": "58.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "969",
+"Age": "79.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "970",
+"Age": "85.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "971",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "972",
+"Age": "75.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "973",
+"Age": "62.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "974",
+"Age": "52.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "975",
+"Age": "70.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "976",
+"Age": "73.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "977",
+"Age": "52.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "978",
+"Age": "54.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "979",
+"Age": "67.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "980",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "981",
+"Age": "66.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "false",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "982",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "1.0"
+},
+{
+"Name": "983",
+"Age": "77.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "984",
+"Age": "72.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "985",
+"Age": "86.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "986",
+"Age": "55.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "987",
+"Age": "70.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "988",
+"Age": "63.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "989",
+"Age": "63.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "990",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "991",
+"Age": "66.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "992",
+"Age": "76.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "993",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "994",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "994",
+"Age": "61.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "996",
+"Age": "79.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "false",
+"protectiveMeasureScore": "2.0"
+},
+{
+"Name": "997",
+"Age": "69.0,"
+"Gender": "FEMALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "0.0"
+},
+{
+"Name": "998",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+},
+{
+"Name": "999",
+"Age": "69.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "false",
+"contactRestricting": "true",
+"protectiveMeasureScore": "4.0"
+},
+{
+"Name": "1000",
+"Age": "65.0,"
+"Gender": "MALE,"
+"percievedSeverityHigh": "true",
+"contactRestricting": "true",
+"protectiveMeasureScore": "3.0"
+}]}
