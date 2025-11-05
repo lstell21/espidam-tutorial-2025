@@ -235,20 +235,6 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         println("Running simulations for $(network_type) network...")
         model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, 
                           high_risk, fraction_high_risk, low_risk_factor, trans_prob, r̂, p̂)
-
-                        # Print model properties
-                        println("Model properties for $(network_type):")
-                        println("  Network type: $(model.network_type)")
-                        println("  Number of nodes: $(model.n_nodes)")
-                        println("  Mean degree: $(model.mean_degree)")
-                        println("  Dispersion: $(model.dispersion)")
-                        println("  Patient zero: $(model.patient_zero)")
-                        println("  High risk distribution: $(model.high_risk)")
-                        println("  Fraction high risk: $(model.fraction_high_risk)")
-                        println("  Low risk factor: $(model.low_risk_factor)")
-                        println("  Transmission probability: $(model.trans_prob)")
-                        println("  Graph: $(typeof(model.graph)) with $(nv(model.graph)) vertices and $(ne(model.graph)) edges")
-                        println()
         
         # Run simulations
         multiple_runs = run_simulations(; network_type, mean_degree, n_nodes, dispersion, 
