@@ -92,7 +92,7 @@ end
 Plot a single run of an epidemic simulation.
 
 # Arguments
-- `network_type::Symbol`: The type of network to use for the simulation. Possible values are `:random`, `:smallworld`, `:preferential`, `:configuration`, `:proportionatemixing`, `:edgelist`, or `:custom`.
+- `network_type::Symbol`: The type of network to use for the simulation. Possible values are `:random`, `:smallworld`, `:preferential`, `:configuration`, `:proportionatemixing`, or `:edgelist`.
 - `mean_degree::Int`: The mean degree of the network. Default is 4.
 - `n_nodes::Int`: The number of nodes in the network. Default is 1000.
 - `dispersion::Float64`: The dispersion parameter for the network. Default is 0.1.
@@ -235,6 +235,20 @@ function run_and_plot_comparison(; network_types::Vector{Symbol}, mean_degree::I
         println("Running simulations for $(network_type) network...")
         model = initialize(; network_type, mean_degree, n_nodes, dispersion, patient_zero, 
                           high_risk, fraction_high_risk, low_risk_factor, trans_prob, r̂, p̂)
+
+                        # Print model properties
+                        println("Model properties for $(network_type):")
+                        println("  Network type: $(model.network_type)")
+                        println("  Number of nodes: $(model.n_nodes)")
+                        println("  Mean degree: $(model.mean_degree)")
+                        println("  Dispersion: $(model.dispersion)")
+                        println("  Patient zero: $(model.patient_zero)")
+                        println("  High risk distribution: $(model.high_risk)")
+                        println("  Fraction high risk: $(model.fraction_high_risk)")
+                        println("  Low risk factor: $(model.low_risk_factor)")
+                        println("  Transmission probability: $(model.trans_prob)")
+                        println("  Graph: $(typeof(model.graph)) with $(nv(model.graph)) vertices and $(ne(model.graph)) edges")
+                        println()
         
         # Run simulations
         multiple_runs = run_simulations(; network_type, mean_degree, n_nodes, dispersion, 
@@ -590,8 +604,7 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
         :configuration => RGB(204/255, 121/255, 167/255), # Purple
         :proportionatemixing => RGB(213/255, 94/255, 0/255), # Red-orange
         :proportionate => RGB(213/255, 94/255, 0/255),   # Same as proportionatemixing (alternative name)
-        :edgelist => RGB(86/255, 180/255, 233/255),     # Light blue
-        :custom => RGB(240/255, 228/255, 66/255)        # Yellow
+        :edgelist => RGB(86/255, 180/255, 233/255)       # Light blue
     )
     
     # Create storage for metrics
@@ -645,8 +658,6 @@ function plot_network_metrics_comparison(;network_types=[:random, :smallworld, :
             "Proportionate Mixing"
         elseif nt == :edgelist
             "Edgelist"
-        elseif nt == :custom
-            "Custom"
         else
             String(nt)
         end

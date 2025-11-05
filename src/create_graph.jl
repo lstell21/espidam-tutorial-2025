@@ -64,6 +64,30 @@ function create_graph(; network_type::Symbol, mean_degree::Integer, n_nodes::Int
         # Create the graph with the validated degree sequence
         graph = expected_degree_graph(degree_sequence)
     elseif network_type == :edgelist
+        # Handle different edgelist file formats
+        if endswith(edgelist_path, ".txt")
+            # Check if we need to convert from arrow format to comma-separated
+            input_file = edgelist_path
+            output_file = replace(edgelist_path, ".txt" => "")
+            
+            if isfile(input_file)
+                # Read all lines and convert arrow format to comma-separated
+                edge_lines = readlines(input_file)
+                transformed_edges = [replace(line, " -> " => ",") for line in edge_lines if !isempty(strip(line)) && contains(line, " -> ")]
+                
+                # Write converted edges to output file
+                open(output_file, "w") do f
+                    for edge in transformed_edges
+                        println(f, edge)
+                    end
+                end
+                
+                edgelist_path = output_file  # Use the converted file
+            else
+                error("Edgelist file $input_file not found")
+            end
+        end
+        
         # Load graph from edgelist file
         graph = loadgraph(edgelist_path, "graph_key", EdgeListFormat())
         
@@ -76,10 +100,6 @@ function create_graph(; network_type::Symbol, mean_degree::Integer, n_nodes::Int
         
         # Convert to undirected simple graph
         graph = SimpleGraph(graph)
-    elseif network_type == :custom
-        # Custom network type is handled differently in initialize.jl
-        # This should not be called directly through create_graph
-        error("Custom network type should use the custom_graph parameter in initialize() instead of create_graph()")
     else
         error("Unknown network type: $network_type")
     end

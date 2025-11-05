@@ -1,5 +1,5 @@
 """
-initialize(; network_type, mean_degree = 4, n_nodes = 1000, dispersion = 0.1, patient_zero = :random, high_risk=:random, fraction_high_risk=0.1, trans_prob = 0.1, days_to_recovered = 14, seed = 42, r̂ = nothing, p̂ = nothing, low_risk_factor = 1.0, custom_graph = nothing, edgelist_path = "degs/network")
+initialize(; network_type, mean_degree = 4, n_nodes = 1000, dispersion = 0.1, patient_zero = :random, high_risk=:random, fraction_high_risk=0.1, trans_prob = 0.1, days_to_recovered = 14, seed = 42, r̂ = nothing, p̂ = nothing, low_risk_factor = 1.0, edgelist_path = "degs/2000.txt")
 
 Initialize the model with default parameters.
 
@@ -8,7 +8,7 @@ Initialize the model with default parameters.
 - `mean_degree`: The mean degree of the network. For :preferentialattachment, k is used as mean_degree/2 (for even numbers). Default is 4.
 - `n_nodes`: The number of nodes in the network. For :configuration, the number of nodes is fixed to 1000. Default is 1000.
 - `dispersion`: The dispersion parameter for the negative binomial distribution, used only when `network_type` is `:proportionatemixing` and r̂ and p̂ are not provided. Default is 0.1.
-- `patient_zero`: The type of patient zero. Can be `:random`(a random agent), `:maxdegree` (the agent with highest degree_centrality), `:maxbetweenness`, and `:maxeigenvector`.
+- `patient_zero`: The type of patient zero. Can be `:random`(a random agent), `:maxdegree` (the agent with highest degree_centrality), `:maxbetweenness` (based on betweenness centrality), and `:maxeigenvector` (based on eigenvector centrality).
 - `high_risk`: The distribution of high and low risk agents. Can be `:random` (randomly distributed), `:maxdegree` (based on degree centrality), `:maxbetweenness` (based on betweenness centrality), and `:maxeigenvector` (based on eigenvector centrality).
 - `fraction_high_risk`: The fraction of high risk agents in the network. Default is 0.1.
 - `trans_prob`: The transmission probability of the disease. Default is 0.1.
@@ -17,33 +17,24 @@ Initialize the model with default parameters.
 - `r̂`: The r parameter for negative binomial distribution, used only when `network_type` is `:proportionate`. If not provided, will be calculated from mean_degree and dispersion.
 - `p̂`: The p parameter for negative binomial distribution, used only when `network_type` is `:proportionate`. If not provided, will be calculated from mean_degree and dispersion.
 - `low_risk_factor`: Factor to multiply the transmission probability for low risk agents. Default is 1.0.
-- `custom_graph`: A pre-loaded graph to use instead of creating a new one. If provided, network_type will be set to :custom.
-- `edgelist_path`: Path to the edgelist file when network_type is :edgelist. Default is "degs/network".
+- `edgelist_path`: Path to the edgelist file when network_type is :edgelist. Default is "degs/2000.txt".
 
 # Returns
 - `model`: The created model.
 """
-function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0, custom_graph=nothing, edgelist_path::String="degs/network")
+function initialize(; network_type::Symbol, mean_degree::Integer=4, n_nodes::Integer=1000, dispersion::Float64=0.1, patient_zero::Symbol=:random, high_risk::Symbol=:random, fraction_high_risk::Float64=0.1, trans_prob::Float64=0.1, days_to_recovered::Integer=14, seed=42, r̂=nothing, p̂=nothing, low_risk_factor::Float64=1.0, edgelist_path::String="degs/2000.txt")
     # Validate low_risk_factor
     if !(0 <= low_risk_factor <= 1)
         error("low_risk_factor must be between 0 and 1, got $low_risk_factor")
     end
     
-    # Create or use provided graph
-    if custom_graph !== nothing
-        # Use the provided custom graph
-        graph = custom_graph
-        network_type = :custom
+    # Create graph using the standard approach for all network types
+    graph = create_graph(; network_type, mean_degree, n_nodes, dispersion, r̂, p̂, edgelist_path)
+    
+    # Update n_nodes and mean_degree for edgelist graphs
+    if network_type == :edgelist
         n_nodes = nv(graph)
         mean_degree = round(Int, 2 * ne(graph) / nv(graph))
-    else
-        # Create a new graph
-        graph = create_graph(; network_type, mean_degree, n_nodes, dispersion, r̂, p̂, edgelist_path)
-        # Update n_nodes and mean_degree for edgelist graphs
-        if network_type == :edgelist
-            n_nodes = nv(graph)
-            mean_degree = round(Int, 2 * ne(graph) / nv(graph))
-        end
     end
     
     space = GraphSpace(graph)
